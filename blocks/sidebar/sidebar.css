@@ -1,0 +1,85 @@
+.sidebar-container{
+
+}
+
+.sidebar-container{
+    h3{
+        font-size: var(--heading-font-size-m);
+        text-align: center;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border-black-01);
+
+        @media (max-width: 768px) {
+            padding-bottom: 8px;
+        }
+    }
+
+    .images-wrapper{
+        img{
+            max-width: 240px;
+
+            @media (max-width: 768px) {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .sidebar-button{
+        margin-top: 24px;
+
+        a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-white);
+            font-size: var(--heading-font-size-l);
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            padding: 24px 16px;
+            gap: 8px;
+            background: linear-gradient(274deg, #039DDD 0%, #007BFF 100%);
+            transition: opacity 0.4s;
+            will-change: opacity;
+
+            img{
+                width: 28px;
+                vertical-align: baseline;
+            }
+
+            &:hover{
+                text-decoration: none;
+                opacity: 0.6;
+            }
+        }
+        
+    }
+}
+
+/* トップの記事一覧とサイドバーのwrap */
+.top-article-wrap{
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    gap: 48px;
+    margin: 56px auto 0 !important;
+
+    @media (max-width: 768px) {
+        display: block;
+        margin-top: 40px !important;
+    }
+
+    .cards-container{
+        flex: 1;
+    }
+
+    .sidebar-container{
+        width: 240px;
+        flex-basis: 240px;
+        margin-top: 0;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            margin-top: 40px;
+        }
+    }
+}

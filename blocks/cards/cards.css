@@ -1,19 +1,84 @@
 .cards > ul {
-  list-style: none;
+  /* list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  grid-gap: 24px;
+  grid-gap: 24px; */
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 24px;
+  column-gap: 16px;
+  justify-content: center;
 }
 
 .cards > ul > li {
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
   border: 1px solid #dadada;
-  background-color: var(--background-color);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
+.border > ul > li {
+  border: 1px solid #C1C6CC;
 }
 
+.nobackground > ul > li {
+  background: #FFF;
+}
+
+.borderradius > ul > li {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+
 .cards .cards-card-body {
-  margin: 16px;
+  display: flex;
+  padding: 16px 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex-grow: 1;
+
+  p{
+    color: #323232;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.5px;
+    margin: 0;
+  }
+  h3{
+    color: #323232;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+  }
+  ul{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: auto;
+    flex-wrap: wrap;
+
+    li{
+      display: flex;
+      padding: 4px 12px;
+      align-items: center;
+      gap: 8px;
+      border-radius: 4px;
+      border: 1px solid #C1C6CC;
+      background: #FFF;
+
+      color: #323232;
+      font-size: 13px;
+
+      font-weight: 400;
+      line-height: 16.5px;
+    }
+  }
 }
 
 .cards .cards-card-image {
@@ -22,6 +87,46 @@
 
 .cards > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  /* aspect-ratio: 4 / 3; */
+  /* aspect-ratio: 70 / 39; */
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+
+@media only screen and (max-width: 768px){
+  .cards > ul { 
+    flex-direction: column;
+  }
+  
+  .cards > ul > li {
+    max-width: 327px;
+  }
+  
+  .cards .cards-card-body {
+    /* width: 280px; */
+    padding: 16px 24px;
+    gap: 16px;
+  
+    p{
+      font-size: 12px;
+      line-height: 18px;
+      /* margin: 0; */
+    }
+    h3{
+      font-size: 17px;
+      line-height: 23px;
+    }
+    ul{
+      gap: 8px;
+  
+      /* li{
+        gap: 8px;
+      } */
+    }
+  }
+  
+  /* .cards .cards-card-image {
+    line-height: 0;
+  } */
+  
 }

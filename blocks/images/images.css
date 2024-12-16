@@ -1,0 +1,22 @@
+.images{
+
+}
+
+.images{
+    a{
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+
+        img{
+            transition: opacity 0.4s;
+            will-change: opacity;
+        }
+
+        &:hover{
+            img{
+                opacity: 0.6;
+            }
+        }
+    }
+}
