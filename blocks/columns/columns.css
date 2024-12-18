@@ -19,7 +19,7 @@
   display: block;
 }
 
-@media (width >= 900px) {
+@media (max-width: 768px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;

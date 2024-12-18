@@ -1,0 +1,48 @@
+.table-wrapper {
+    margin-top: 8px !important;
+}
+
+.table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table{
+    table {
+        width: 100%;
+        max-width: 100%;
+        border-collapse: collapse;
+        font-size: var(--body-font-size-default);
+
+        @media (max-width: 768px) {
+            font-size: 12px;
+        }
+
+        tbody{
+            tr{
+                th, td{
+                    padding: 16px;
+                    border: 1px solid var(--border-black-02);
+
+                    @media (max-width: 768px) {
+                        padding: 8px;
+                    }
+                }
+
+                th{
+                    width: 240px;
+                    text-align: center;
+                    background-color: var(--background-gray-01);
+
+                    @media (max-width: 768px) {
+                        width: 120px;
+                    }
+                }
+
+                td{
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
