@@ -1,5 +1,9 @@
-.table-wrapper {
-    margin-top: 8px !important;
+.table-container {
+    margin-top: 32px;
+
+    @media (max-width: 768px) {
+        margin-top: 20px;
+    }
 }
 
 .table {
@@ -37,11 +41,34 @@
                     @media (max-width: 768px) {
                         width: 120px;
                     }
+
+                    > p:first-child{
+                        margin-top: 0;
+                    }
                 }
 
                 td{
                     text-align: left;
+
+                    > p:first-child{
+                        margin-top: 0;
+                    }
                 }
+            }
+        }
+    }
+}
+
+/* 表組みのタイトル */
+
+.table-container{
+    .default-content-wrapper:has(h5) + .table-wrapper{
+        margin-top: 8px;
+    }
+    .default-content-wrapper{
+        h5{
+            @media (max-width: 768px) {
+                font-size: 14px;
             }
         }
     }

@@ -15,15 +15,18 @@ export default function decorate(block) {
     link.href = linkUrl;
     link.title = linkTitle;
 
-    // pictureとpを取得してaタグに追加
-    const picture = row.querySelector('picture');
-    const text = row.querySelector('div:nth-child(2) p').textContent;
-    
-    link.appendChild(picture);
-    
-    const p = document.createElement('p');
-    p.textContent = text;
-    link.appendChild(p);
+    // テキストを取得してaタグに追加
+    const divs = [...row.children];
+    const text1 = divs[0].querySelector('p').textContent;
+    const text2 = divs[1].querySelector('p').textContent;
+
+    const p1 = document.createElement('p');
+    p1.textContent = text1;
+    link.appendChild(p1);
+
+    const p2 = document.createElement('p');
+    p2.textContent = text2;
+    link.appendChild(p2);
 
     li.appendChild(link);
     ul.appendChild(li);

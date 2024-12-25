@@ -1,0 +1,33 @@
+.text-group-container{
+    margin-top: 32px;
+
+    @media (max-width: 768px) {
+        margin-top: 24px;
+    }
+}
+
+.text-group {
+
+    > div{
+        margin-top: 16px;
+
+        @media (max-width: 768px) {
+            margin-top: 12px;
+        }
+
+        .text-group-title {
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            line-height: 1.75 !important;
+            padding: 0 !important;
+            margin: 0;
+            border: none !important;
+        }
+    
+        .text-group-paragraph {
+            margin-top: 8px !important;
+        }
+    }
+
+    
+}

@@ -7,16 +7,29 @@ export default function decorate(block) {
     if (picture && link) {
       const href = link.href;
       
+      // target="_blank"を設定
+      if (!href.includes('https://main--softbank-eds-develop--aquaring.aem.page/') &&
+          !href.includes('https://www.softbank.jp/biz/') &&
+          !href.includes('http://localhost:3000/')) {
+        link.setAttribute('target', '_blank');
+      }
+
       // 新しいaタグを作成
       const newLink = document.createElement('a');
       newLink.href = href;
       
+      // linkのtargetを新しいリンクに引き継ぐ
+      const target = link.getAttribute('target');
+      if (target) {
+        newLink.setAttribute('target', target);
+      }
+
       // リンク内に画像を配置
       newLink.appendChild(picture);
       
-      // ブロックの内容を置き換え
-      block.textContent = '';
-      block.appendChild(newLink);
+      // 元のrowの内容を新しいリンクで置き換え
+      row.textContent = '';
+      row.appendChild(newLink);
     }
   });
 }

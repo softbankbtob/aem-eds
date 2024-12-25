@@ -20,6 +20,12 @@ export default function decorate(block) {
       // buttonContainerがsidebarContainerの子であることを確認
       if (buttonContainer.parentNode) {
         buttonContainer.parentNode.replaceChild(newButtonDiv, buttonContainer);
+        
+        // sidebar-buttonの直下のaタグにtarget="_blank"を付与
+        const buttonLink = newButtonDiv.querySelector('a');
+        if (buttonLink) {
+          buttonLink.setAttribute('target', '_blank');
+        }
       }
 
       // div.sidebar-button内のa.buttonのクラス名を削除
@@ -30,9 +36,11 @@ export default function decorate(block) {
     }
 
     // トップ用
-    // cardsとsidebarを囲むdivを生成
     const main = document.querySelector('main');
-    if (main) {
+    const firstChild = main.firstElementChild;
+
+    // mainタグの直下の要素の一番はじめがcarousel-containerの場合
+    if (firstChild && firstChild.classList.contains('carousel-container')) {
       const cardsContainer = main.querySelector('.cards-container');
       const fragmentContainer = main.querySelector('.fragment-container');
       

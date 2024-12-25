@@ -132,12 +132,6 @@ export default async function decorate(block) {
     while (footerFragment.firstElementChild) gnavWrap.append(footerFragment.firstElementChild);
   }
 
-  // SNSアイコンの処理
-  // const footerGnavSns = gnavWrap.querySelector('.footer-gnav-sns');
-  // if (footerGnavSns) {
-  //   processSnsIcons(footerGnavSns);
-  // }
-
   // フラグメントラッパーの移動
   moveFragmentWrapper(gnavWrap, footerGlobal);
 
@@ -167,4 +161,15 @@ export default async function decorate(block) {
   if (footerGnavLinks) {
     processFooterNavLinks(footerGnavLinks);
   }
+
+  // 各aタグに対してtarget="_blank"を設定（別窓処理）
+  const links = gnavWrap.querySelectorAll('a');
+  links.forEach(link => {
+    const href = link.href;
+    if (!href.includes('https://main--softbank-eds-develop--aquaring.aem.page/') &&
+        !href.includes('https://www.softbank.jp/biz/') &&
+        !href.includes('http://localhost:3000/')) {
+      link.setAttribute('target', '_blank');
+    }
+  });
 }

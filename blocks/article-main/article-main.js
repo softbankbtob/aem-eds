@@ -4,6 +4,14 @@ export default function decorate(block) {
   const main = document.querySelector('main');
 
   if (articleMainContainer) {
+    // シェアボタンのリストを作成
+    const socialShareWrp = document.createElement('div');
+    const socialShareList = document.createElement('ul');
+    const socialShareClassName = 't-socialShareButton';
+    socialShareWrp.className = socialShareClassName;
+    socialShareList.className = `${socialShareClassName}-list`;
+
+
     // mainタグに"page-article"のクラスを付与
     main.classList.add('page-article');
 
@@ -11,15 +19,67 @@ export default function decorate(block) {
     const articleContainer = document.createElement('div');
     articleContainer.className = 'article-container';
 
+    // 現在のURLをエンコード
+    const currentUrl = encodeURIComponent(location.href);
+    
     // mainタグ直下の要素を取得
     const children = Array.from(main.children);
 
-    // section.article-main-containerとsection.fragment-container以外の要素をarticle-containerに移動
+    // section.article-main-containerとsection.fragment-containerとsection.related-articles以外の要素をarticle-containerに移動
     children.forEach((child) => {
-      if (!child.classList.contains('article-main-container') && !child.classList.contains('fragment-container')) {
+      if (!child.classList.contains('article-main-container') && 
+          !child.classList.contains('fragment-container') && 
+          !child.classList.contains('related-articles')) {
         articleContainer.appendChild(child);
       }
     });
+
+
+    // 各ソーシャルメディアのボタンを追加
+    const socialMediaLinks = [
+      {
+        className: '-facebook',
+        url: `https://www.facebook.com/share.php?u=${currentUrl}%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3D_BIZ_0017`,
+        imgSrc: '/icons/sns-facebook.svg',
+        alt: 'facebook icon'
+      },
+      {
+        className: '-twitter',
+        url: `https://twitter.com/share?url=${currentUrl}%3Futm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3D_BIZ_0018`,
+        imgSrc: '/icons/sns-x-black.svg',
+        alt: 'x icon'
+      },
+      {
+        className: '-linkedin',
+        url: `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}%3Futm_source%3Dlinkdin%26utm_medium%3Dsocial%26utm_campaign%3D_BIZ_0019`,
+        imgSrc: '/icons/sns-linkedin.svg',
+        alt: 'linkedin icon'
+      }
+    ];
+
+    // 各アイテムを追加
+    socialMediaLinks.forEach(link => {
+      const li = document.createElement('li');
+      li.className = `${socialShareClassName + '-list-item'} ${link.className}`;
+
+      const a = document.createElement('a');
+      a.href = link.url;
+      a.target = '_blank';
+      a.className = `${socialShareList.className + '-list-item'}__link`;
+
+      const img = document.createElement('img');
+      img.src = link.imgSrc;
+      img.alt = link.alt;
+      img.className = `${socialShareList.className + '-list-item'}__icon`;
+
+      a.appendChild(img);
+      li.appendChild(a);
+      socialShareList.appendChild(li);
+    });
+
+    // article-containerに追加
+    socialShareWrp.appendChild(socialShareList);
+    articleContainer.appendChild(socialShareWrp);
 
     // article-containerをmainタグに追加
     main.insertBefore(articleContainer, articleMainContainer.nextSibling);

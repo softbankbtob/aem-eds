@@ -4,6 +4,7 @@ main > .section.article-main-container{
 }
 
 .article-main-container{
+    position: relative;
 
     @media (max-width: 768px) {
         overflow: hidden;
@@ -77,22 +78,24 @@ main > .section.article-main-container{
 
     .page-article-container{
         display: flex;
-        max-width: 1248px;
+        max-width: calc(1200px + (72px * 2));
         justify-content: center;
         flex-wrap: wrap;
         gap: 56px 42px;
         margin: auto;
-        padding: 0 24px;
+        padding: 0 72px;
         position: relative;
         z-index: 1;
 
         @media (max-width: 768px) {
-            display: block;
+            flex-direction: column;
+            gap: 0;
             padding: 0;
         }
     }
 
     .article-container{
+        position: relative;
         flex: 1;
         max-width: 920px;
         background: var(--background-color);
@@ -100,7 +103,70 @@ main > .section.article-main-container{
         padding: 48px;
 
         @media (max-width: 768px) {
-            padding: 24px;
+            padding: 24px 24px 40px;
+        }
+
+        /* SNSシェアボタン */
+        .t-socialShareButton {
+
+            @media (min-width: 769px) {
+                position: absolute;
+                top: 0;
+                right: calc(100% + min((100vw - 100%) / 20, 38px));
+                width: 32px;
+                height: 100%;
+            }
+
+            @media (max-width: 768px) {
+                position: fixed;
+                left: 0;
+                bottom: 16px;
+                width: 100%;
+            }
+
+            .t-socialShareButton-list {
+                @media (min-width: 769px) {
+                    position: sticky;
+                    top: 150px;
+                }
+                @media (max-width: 768px) {
+                    display: flex;
+                    margin-inline: auto;
+                    width: fit-content;
+                }
+                .t-socialShareButton-list-item {
+                    display: block;
+                    @media (min-width: 769px) {
+                        width: 100%;
+                        height: 32px;
+                        &:not(:first-child) {
+                            margin-top: 16px;
+                        }
+                    }
+                    @media (max-width: 768px) {
+                        width: 32px;
+                        height: 32px;
+                        &:not(:first-child) {
+                            margin-left: 16px;
+                        }
+                    }
+                }
+                .t-socialShareButton-list-list-item__link {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    
+                    &::after{
+                        display: none;
+                    }
+                }
+                .t-socialShareButton-list-list-item__icon {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
         }
     }
 
@@ -113,7 +179,30 @@ main > .section.article-main-container{
         @media (max-width: 768px) {
             width: 100%;
             max-width: 100%;
-            padding: 0 24px;
+            padding: 40px 24px 0;
+            border-top: 6px solid var(--background-color);
         }
+    }
+}
+
+/* SPでの表示順番入れ替え */
+.article-main-container{
+    @media (max-width: 768px) {
+        order: 0;
+    }
+}
+.article-container{
+    @media (max-width: 768px) {
+        order: 1;
+    }
+}
+.related-articles-container{
+    @media (max-width: 768px) {
+        order: 2;
+    }
+}
+.fragment-container.sidebar-container{
+    @media (max-width: 768px) {
+        order: 3;
     }
 }

@@ -7,17 +7,32 @@
   grid-gap: 24px; */
   display: flex;
   flex-wrap: wrap;
+  column-gap: calc((100% - 864px) / 2);
   row-gap: 24px;
-  column-gap: 16px;
-  justify-content: center;
 }
 
 .cards > ul > li {
   display: flex;
-  flex-direction: column;
-  max-width: 280px;
+  max-width: 288px;
   border: 1px solid #dadada;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 300ms ease-out;
+  &:hover{
+    transition: box-shadow 300ms ease-out, color 300ms ease-out;
+    box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.30);
+    h3{
+      color: #007BFF;
+    }
+  }
+}
+
+.cards > ul > li > a {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  &:hover{
+    text-decoration: none;
+  }
 }
 .border > ul > li {
   border: 1px solid #C1C6CC;
@@ -39,7 +54,6 @@
   padding: 16px 24px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
   flex-grow: 1;
 
   p{
@@ -48,12 +62,15 @@
     font-weight: 500;
     line-height: 17.5px;
     margin: 0;
+    margin-bottom: 8px;
   }
   h3{
+    transition: color 300ms ease-out;
     color: #323232;
     font-size: 18px;
     font-weight: 700;
     line-height: 24px;
+    margin-bottom: 16px;
   }
   ul{
     display: flex;
@@ -62,15 +79,13 @@
     gap: 8px;
     margin-top: auto;
     flex-wrap: wrap;
-
     li{
       display: flex;
       padding: 4px 12px;
       align-items: center;
       gap: 8px;
       border-radius: 4px;
-      border: 1px solid #C1C6CC;
-      background: #FFF;
+      background: #F4F8FA;
 
       color: #323232;
       font-size: 13px;
@@ -85,7 +100,7 @@
   line-height: 0;
 }
 
-.cards > ul > li img {
+.cards > ul > li > a img {
   width: 100%;
   /* aspect-ratio: 4 / 3; */
   /* aspect-ratio: 70 / 39; */
@@ -97,8 +112,12 @@
   .cards > ul { 
     flex-direction: column;
   }
+
+  .cards > ul > li{
+    max-width: 100%;
+  }
   
-  .cards > ul > li {
+  .cards > ul > li > a {
     max-width: 327px;
   }
   
@@ -110,11 +129,12 @@
     p{
       font-size: 12px;
       line-height: 18px;
-      /* margin: 0; */
+      margin-bottom: 0;
     }
     h3{
       font-size: 17px;
       line-height: 23px;
+      margin-bottom: 0;
     }
     ul{
       gap: 8px;
