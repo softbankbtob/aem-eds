@@ -1,5 +1,19 @@
 import { fetchPlaceholders } from '../../scripts/aem.js';
 
+// button-containerクラスのdivからhrefを取得し、削除する関数
+function removeButtonContainer(block) {
+  const buttonContainers = block.querySelectorAll('.button-container');
+  
+  buttonContainers.forEach(buttonContainer => {
+    const href = buttonContainer.querySelector('a')?.getAttribute('href'); // pタグ内のaタグからhrefを取得
+    if (href) {
+      
+    }
+    buttonContainer.remove(); // divを削除
+  });
+}
+
+
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
   const slideIndex = parseInt(slide.dataset.slideIndex, 10);
@@ -70,16 +84,22 @@ function bindEvents(block) {
   });
 }
 
-function createSlide(row, slideIndex, carouselId) {
+function createSlide(row, slideIndex, carouselId, href) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
 
+   // 新しいaタグを作成し、hrefを設定
+  const newLink = document.createElement('a');
+  newLink.href = href; // hrefを設定
+
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
-    slide.append(column);
+    newLink.append(column); // aタグにcolumnを追加
+    // slide.append(column);
   });
+  slide.appendChild(newLink); // liにaタグを追加
 
   const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
   if (labeledBy) {
@@ -91,6 +111,7 @@ function createSlide(row, slideIndex, carouselId) {
 
 let carouselId = 0;
 export default async function decorate(block) {
+  removeButtonContainer(block);
   carouselId += 1;
   block.setAttribute('id', `carousel-${carouselId}`);
   const rows = block.querySelectorAll(':scope > div');
@@ -128,7 +149,9 @@ export default async function decorate(block) {
   }
 
   rows.forEach((row, idx) => {
-    const slide = createSlide(row, idx, carouselId);
+    const buttonContainer = row.querySelector('.button-container'); // button-containerを取得
+    const href = buttonContainer?.querySelector('a')?.getAttribute('href'); // hrefを取得
+    const slide = createSlide(row, idx, carouselId, href);
     slidesWrapper.append(slide);
 
     if (slideIndicators) {
@@ -152,9 +175,8 @@ export default async function decorate(block) {
   const pauseButton = document.createElement('button');
   pauseButton.type = 'button';
   pauseButton.classList.add('pause-button');
-  pauseButton.innerText = '一時停止アイコンに変える'; // ボタンのテキスト
+  pauseButton.innerHTML = '<img src="../icons/pause.svg" alt="一時停止アイコン">'; // アイコンを使用
   slideIndicators.append(pauseButton); // インジケーターに追加
-
   // 自動スライドの設定
   let autoSlideInterval = setInterval(() => {
     showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
@@ -168,13 +190,12 @@ export default async function decorate(block) {
       autoSlideInterval = setInterval(() => {
         showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
       }, 3000);
-      pauseButton.innerText = '一時停止アイコンに変える'; // ボタンのテキストを更新
+      pauseButton.innerHTML = '<img src="../icons/pause.svg" alt="一時停止アイコン">';
     } else {
       // 一時停止
       clearInterval(autoSlideInterval);
-      pauseButton.innerText = '再生アイコンに変える'; // ボタンのテキストを更新
+      pauseButton.innerHTML = '<img src="../icons/play.svg" alt="再生アイコン">';
     }
     isPaused = !isPaused; // 状態を反転
   });
-
 }

@@ -89,6 +89,17 @@ async function loadEager(doc) {
   } catch (e) {
     // do nothing
   }
+
+  // 各aタグに対してtarget="_blank"を設定（別窓処理）
+  const links = document.querySelectorAll('a');
+  links.forEach(link => {
+    const href = link.href;
+    if (!href.includes('https://main--softbank-eds-develop--aquaring.aem.page/') &&
+        !href.includes('https://www.softbank.jp/biz/') &&
+        !href.includes('http://localhost:3000/')) {
+      link.setAttribute('target', '_blank');
+    }
+  });
 }
 
 /**

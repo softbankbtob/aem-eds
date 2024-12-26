@@ -8,6 +8,7 @@
   --background-gray-01: #ECECEC;
   --background-gray-02: #D6D6D6;
   --background-gray-03: #E1E1E6;
+  --background-blue-hover: #D7ECF7;
 
   /* colors text */
   --text-black: #323232;
@@ -69,9 +70,9 @@
     --heading-font-size-xxl: 24px;
     --heading-font-size-xl: 18px;
     --heading-font-size-l: 15px;
-    --heading-font-size-m: 14px; /* 仮 */
-    --heading-font-size-s: 14px; /* 仮 */
-    --heading-font-size-xs: 14px; /* 仮 */
+    --heading-font-size-m: 14px;
+    --heading-font-size-s: 12px;
+    --heading-font-size-xs: 10px;
   }
 }
 
@@ -150,17 +151,13 @@ a:any-link {
   word-break: break-word;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 /* buttons */
 a.button:any-link,
 button {
   box-sizing: border-box;
-  display: inline-block;
-  max-width: 100%;
-  margin: 12px 0;
+  display: block;
+  width: fit-content;
+  margin: 12px 0 0;
   border: 2px solid transparent;
   border-radius: 2.4em;
   padding: 0.5em 1.2em;
@@ -220,6 +217,10 @@ p{
     font-style: normal;
     font-weight: 400;
     line-height: 1.75;
+
+    @media (max-width: 768px) {
+        line-height: 1.5;
+    }
 }
 p sup,
 p sub {
@@ -232,13 +233,12 @@ main{
     padding-bottom: 80px;
 
     @media (max-width: 768px) {
-        background-color: var(--background-color);
         padding-bottom: 40px;
     }
 }
 main > .section{
     max-width: 1248px;
-    margin: auto;
+    margin: 0 auto;
     padding: 0 24px;
 }
 
@@ -248,4 +248,113 @@ main .section.highlight {
   background-color: var(--background-blue-01);
   margin: 0;
   padding: 40px 0;
+}
+
+/* article-container */
+.page-article{
+    .article-container{
+        h2 {
+            position: relative;
+            padding-left: 12px;
+            font-size: var(--heading-font-size-xl);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-top: 60px;
+            scroll-margin-top: 84px; /* ヘッダーの高さ調整用 仮 */
+
+            @media (max-width: 768px) {
+                line-height: 1.33;
+                margin-top: 40px;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background-color: var(--link-blue);
+            }
+        }
+
+        h3 {
+            position: relative;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-gray);
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.27;
+            margin-top: 32px;
+
+            @media (max-width: 768px) {
+                padding-bottom: 4px;
+                font-size: var(--heading-font-size-l);
+                line-height: 1.53;
+                margin-top: 24px;
+            }
+        }
+
+        ol{
+            list-style-type: decimal;
+            font-size: var(--body-font-size-default);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.75;
+            padding-left: 1em;
+            margin-top: 16px;
+
+            @media (max-width: 768px) {
+                margin-top: 12px;
+            }
+        }
+
+        a[target="_blank"] {
+            &::after{
+                content: '';
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                background: url("../icons/icon-target-blank.svg") no-repeat center / contain;
+                vertical-align: middle;
+                margin: 0 0.5em;
+            }
+        }
+
+        /* テキストマージン */
+        h2 + h3{
+            margin-top: 32px;
+        }
+
+        p{
+            margin-top: 16px;
+
+            @media (max-width: 768px) {
+                margin-top: 12px;
+            }
+
+            &:first-child{
+                margin-top: 0;
+            }
+
+            a{
+                text-decoration: underline;
+            }
+        }
+
+        .text-group-container{
+            + p,
+            + .section{
+                margin-top: 32px;
+
+                @media (max-width: 768px) {
+                    margin-top: 24px;
+                }
+            }
+        }
+    }
 }

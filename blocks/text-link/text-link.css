@@ -1,0 +1,13 @@
+.text-link-container{
+    margin-top: 16px;
+
+    @media only screen and (max-width: 768px){
+        margin-top: 8px;
+    }
+}
+
+.text-link-container{
+    a{
+        text-decoration: underline;
+    }
+}
