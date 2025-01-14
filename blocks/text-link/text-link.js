@@ -2,10 +2,7 @@ export default function decorate(block) {
   // block内のすべてのaタグを取得
   const links = block.querySelectorAll('a');
 
-  links.forEach(link => {
-    // aタグのhrefを取得
-    const href = link.href;
-
+  links.forEach((link) => {
     // target="_blank"を設定
     link.setAttribute('target', '_blank');
 

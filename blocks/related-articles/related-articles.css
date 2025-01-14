@@ -2,15 +2,12 @@
     width: 100%;
     margin-top: 24px; /* 80px - 56px */
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         padding: 24px;
         background: var(--background-blue-02);
         margin-top: 0;
     }
-    
-}
 
-.related-articles-container{
     .related-articles-wrapper{
         h2{
             text-align: center;
@@ -19,7 +16,7 @@
         .cards-wrapper{
             margin-top: 32px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 margin-top: 24px;
             }
 
@@ -31,7 +28,7 @@
                         max-width: 384px;
                         width: calc((100% - (24px * 2)) / 3);
 
-                        @media (max-width: 768px) {
+                        @media (width <= 768px) {
                             max-width: 100%;
                             width: 100%;
                         }

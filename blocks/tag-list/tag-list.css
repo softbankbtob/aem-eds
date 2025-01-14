@@ -1,7 +1,7 @@
 .tag-list-container{
     margin-top: 56px;
 
-    @media only screen and (max-width: 768px){
+    @media only screen and (width <= 768px){
         margin-top: 40px;
     }
 }
@@ -32,12 +32,13 @@
 .tag-list-container > .tag-list-wrapper > .tag-list {
   margin: 16px 0;
 }
+
 .tag-list-container > .tag-list-wrapper{
-  border-top: 1px solid rgba(97, 97, 97, 0.80);
-  border-bottom: 1px solid rgba(97, 97, 97, 0.80);
+  border-top: 1px solid rgb(97 97 97 / 80%);
+  border-bottom: 1px solid rgb(97 97 97 / 80%);
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (width <= 768px){
   .tag-list-container > .tag-list-wrapper > .tag-list > ul > li {
     padding: 4px 8px;
     white-space: normal;

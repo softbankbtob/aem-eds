@@ -3,16 +3,15 @@ import { fetchPlaceholders } from '../../scripts/aem.js';
 // button-containerクラスのdivからhrefを取得し、削除する関数
 function removeButtonContainer(block) {
   const buttonContainers = block.querySelectorAll('.button-container');
-  
-  buttonContainers.forEach(buttonContainer => {
-    const href = buttonContainer.querySelector('a')?.getAttribute('href'); // pタグ内のaタグからhrefを取得
-    if (href) {
-      
-    }
+
+  buttonContainers.forEach((buttonContainer) => {
+    // const href = buttonContainer.querySelector('a')?.getAttribute('href'); // pタグ内のaタグからhrefを取得
+    // if (href) {
+
+    // }
     buttonContainer.remove(); // divを削除
   });
 }
-
 
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
@@ -90,7 +89,7 @@ function createSlide(row, slideIndex, carouselId, href) {
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
 
-   // 新しいaタグを作成し、hrefを設定
+  // 新しいaタグを作成し、hrefを設定
   const newLink = document.createElement('a');
   newLink.href = href; // hrefを設定
 

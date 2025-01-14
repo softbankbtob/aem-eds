@@ -73,14 +73,12 @@ const processFooterNavLinks = (footerGnavLinks) => {
   // リスト項目にクラスを追加
   linksList.querySelectorAll(':scope > li').forEach((navSection) => {
     navSection.classList.add(
-      navSection.querySelector('ul') ? 'footer-gnav-links-items' : 'footer-gnav-links-items-last'
+      navSection.querySelector('ul') ? 'footer-gnav-links-items' : 'footer-gnav-links-items-last',
     );
   });
 
   // 最後のセクションの処理
-  const lastItems = Array.from(linksList.children).filter((item) => 
-    item.classList.contains('footer-gnav-links-items-last')
-  );
+  const lastItems = Array.from(linksList.children).filter((item) => item.classList.contains('footer-gnav-links-items-last'));
 
   if (lastItems.length > 0) {
     const lastSection = document.createElement('li');
@@ -118,8 +116,8 @@ const processButton = (element, newClassName, newContainerClassName) => {
  * @param {Element} block フッターブロック要素
  */
 export default async function decorate(block) {
-  const footerPath = getMetadata('footer') 
-    ? new URL(getMetadata('footer'), window.location).pathname 
+  const footerPath = getMetadata('footer')
+    ? new URL(getMetadata('footer'), window.location).pathname
     : '/footer';
   const footerFragment = await loadFooterFragment(footerPath);
 
@@ -164,11 +162,11 @@ export default async function decorate(block) {
 
   // 各aタグに対してtarget="_blank"を設定（別窓処理）
   const links = gnavWrap.querySelectorAll('a');
-  links.forEach(link => {
-    const href = link.href;
-    if (!href.includes('https://main--softbank-eds-develop--aquaring.aem.page/') &&
-        !href.includes('https://www.softbank.jp/biz/') &&
-        !href.includes('http://localhost:3000/')) {
+  links.forEach((link) => {
+    const { href } = link;
+    if (!href.includes('https://main--softbank-eds-develop--aquaring.aem.page/')
+        && !href.includes('https://www.softbank.jp/biz/')
+        && !href.includes('http://localhost:3000/')) {
       link.setAttribute('target', '_blank');
     }
   });

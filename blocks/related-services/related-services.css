@@ -1,12 +1,10 @@
 .related-services-wrapper{
     margin-top: 32px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         margin-top: 24px;
     }
-}
 
-.related-services-wrapper{
     .related-services{
         ul{
             display: flex;
@@ -14,7 +12,7 @@
             flex-wrap: wrap;
             gap: 32px 24px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 flex-direction: column;
                 gap: 24px;
             }
@@ -22,13 +20,13 @@
             > li{
                 width: calc((100% - (24px * 2)) / 3);
 
-                @media (max-width: 768px) {
+                @media (width <= 768px) {
                     width: 100%;
                 }
 
                 /* SPでは4つ目以降の記事は非表示 */
                 &:nth-child(n+4){
-                    @media (max-width: 768px) {
+                    @media (width <= 768px) {
                         display: none;
                     }
                 }
@@ -40,7 +38,7 @@
                         width: 100%;
                         height: 145px;
 
-                        @media (max-width: 768px) {
+                        @media (width <= 768px) {
                             height: 188px;
                         }
 
@@ -56,7 +54,7 @@
                         > p{
                             margin-top: 0;
 
-                            @media (max-width: 768px) {
+                            @media (width <= 768px) {
                                 font-size: 14px;
                             }
 
@@ -64,7 +62,7 @@
                                 color: var(--link-blue);
                                 margin: 8px 0;
 
-                                @media (max-width: 768px) {
+                                @media (width <= 768px) {
                                     font-size: 16px;
                                     text-decoration: underline;
                                 }
