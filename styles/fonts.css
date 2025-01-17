@@ -41,8 +41,8 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/NotoSansJP-Regular.ttf') format('truetype');
-    unicode-range: U+3000-30FF, U+4E00-9FFF, U+FF00-FFEF;
+    src: url('../fonts/NotoSansJP-Regular.woff') format('woff'),
+        url('../fonts/NotoSansJP-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -50,8 +50,8 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url('../fonts/NotoSansJP-Medium.ttf') format('truetype');
-    unicode-range: U+3000-30FF, U+4E00-9FFF, U+FF00-FFEF;
+    src: url('../fonts/NotoSansJP-Medium.woff') format('woff'),
+        url('../fonts/NotoSansJP-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -59,6 +59,6 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/NotoSansJP-Bold.ttf') format('truetype');
-    unicode-range: U+3000-30FF, U+4E00-9FFF, U+FF00-FFEF;
+    src: url('../fonts/NotoSansJP-Bold.woff') format('woff'),
+        url('../fonts/NotoSansJP-Bold.ttf') format('truetype');
 }

@@ -159,6 +159,10 @@
             }
 
             .t-social-share-button-list {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+
                 @media (width >= 769px) {
                     position: sticky;
                     top: 150px;

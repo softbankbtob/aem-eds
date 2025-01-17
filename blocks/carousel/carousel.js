@@ -43,17 +43,51 @@ function updateActiveSlide(slide) {
 
 function showSlide(block, slideIndex = 0) {
   const slides = block.querySelectorAll('.carousel-slide');
-  let realSlideIndex = slideIndex < 0 ? slides.length - 1 : slideIndex;
-  if (slideIndex >= slides.length) realSlideIndex = 0;
-  const activeSlide = slides[realSlideIndex];
+  const slidesWrapper = block.querySelector('.carousel-slides');
+  const totalSlides = slides.length;
 
-  activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
-  block.querySelector('.carousel-slides').scrollTo({
-    top: 0,
-    left: activeSlide.offsetLeft,
-    behavior: 'smooth',
+  let realSlideIndex = slideIndex;
+  if (slideIndex >= totalSlides) {
+    realSlideIndex = 0;
+  }
+
+  // インジケーターの更新
+  const indicators = block.querySelectorAll('.carousel-slide-indicator');
+  indicators.forEach((indicator, idx) => {
+    if (idx === realSlideIndex) {
+      indicator.querySelector('button').setAttribute('disabled', 'true');
+    } else {
+      indicator.querySelector('button').removeAttribute('disabled');
+    }
   });
+
+  if (slideIndex >= totalSlides) {
+    // 最後のスライドから最初に戻る場合
+    const lastSlideWidth = slides[totalSlides - 1].offsetWidth;
+    const additionalSlide = slides[0].cloneNode(true);
+    slidesWrapper.appendChild(additionalSlide);
+    
+    slidesWrapper.scrollTo({
+      left: (totalSlides) * lastSlideWidth,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => {
+      slidesWrapper.style.scrollBehavior = 'auto';
+      slidesWrapper.scrollTo(0, 0);
+      additionalSlide.remove();
+      slidesWrapper.style.scrollBehavior = 'smooth';
+    }, 900);
+  } else {
+    slidesWrapper.scrollTo({
+      left: slides[realSlideIndex].offsetLeft,
+      behavior: 'smooth'
+    });
+  }
+
+  block.dataset.activeSlide = realSlideIndex;
 }
+
 
 function bindEvents(block) {
   const slideIndicators = block.querySelector('.carousel-slide-indicators');
@@ -179,7 +213,7 @@ export default async function decorate(block) {
   // 自動スライドの設定
   let autoSlideInterval = setInterval(() => {
     showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
-  }, 3000); // 3秒ごとに次のスライドに移動
+  }, 5000); // 5秒ごとに次のスライドに移動
 
   // 一時停止ボタンのクリックイベント
   let isPaused = false; // 一時停止状態を管理するフラグ
@@ -188,7 +222,7 @@ export default async function decorate(block) {
       // 再開
       autoSlideInterval = setInterval(() => {
         showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
-      }, 3000);
+      }, 5000);
       pauseButton.innerHTML = '<img src="../icons/pause.svg" alt="一時停止アイコン">';
     } else {
       // 一時停止

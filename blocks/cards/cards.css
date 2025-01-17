@@ -7,12 +7,12 @@
   grid-gap: 24px; */
   display: flex;
   flex-wrap: wrap;
-  gap: 24px calc((100% - 864px) / 2);
+  gap: 24px;
 }
 
 .cards > ul > li {
   display: flex;
-  max-width: 288px;
+  width: calc((100% - (24px * 2)) / 3);
   border: 1px solid #dadada;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 12%);
   transition: box-shadow 300ms ease-out;
@@ -120,7 +120,7 @@
   }
 
   .cards > ul > li{
-    max-width: 100%;
+    width: 100%;
   }
 
   .cards .cards-card-body {
