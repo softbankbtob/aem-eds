@@ -34,26 +34,5 @@ export default function decorate(block) {
         buttonLink.className = ''; // クラス名を削除
       }
     }
-
-    // トップ用
-    const main = document.querySelector('main');
-    const firstChild = main.firstElementChild;
-
-    // mainタグの直下の要素の一番はじめがcarousel-containerの場合
-    if (firstChild && firstChild.classList.contains('carousel-container')) {
-      const cardsContainer = main.querySelector('.cards-container');
-      const fragmentContainer = main.querySelector('.fragment-container');
-
-      if (cardsContainer && cardsContainer.nextElementSibling === fragmentContainer) {
-        // top-article-wrapを作成
-        const topArticleWrap = document.createElement('div');
-        topArticleWrap.className = 'section top-article-wrap';
-
-        // 既存の要素を新しいdivで囲む
-        main.insertBefore(topArticleWrap, fragmentContainer); // mainを親要素として使用
-        topArticleWrap.appendChild(cardsContainer);
-        topArticleWrap.appendChild(fragmentContainer);
-      }
-    }
   }
 }

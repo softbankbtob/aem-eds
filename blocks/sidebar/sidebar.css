@@ -68,30 +68,40 @@
 }
 
 /* トップの記事一覧とサイドバーのwrap */
-.top-article-wrap{
-    display: flex;
+.p-index-content {
     width: 100%;
     max-width: 1200px;
-    gap: 48px;
     margin: 56px auto 0 !important;
 
     @media (width <= 768px) {
-        display: block;
-        margin-top: 40px !important;
+        padding: 0 24px;
     }
 
-    .cards-container{
-        flex: 1;
-    }
-
-    .sidebar-container{
-        width: 240px;
-        flex-basis: 240px;
-        margin-top: 0;
+    .top-article-wrap {
+        display: flex;
+        width: 100%;
+        gap: 48px;
+        margin-top: 56px;
 
         @media (width <= 768px) {
-            width: 100%;
+            display: block;
             margin-top: 40px;
         }
+    
+        .cards-container{
+            flex: 1;
+        }
+    
+        .sidebar-container{
+            width: 240px;
+            flex-basis: 240px;
+            margin-top: 0;
+    
+            @media (width <= 768px) {
+                width: 100%;
+                margin-top: 40px;
+            }
+        }
     }
+
 }
