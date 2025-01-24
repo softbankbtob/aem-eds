@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { buildBreadcrumbs } from '../../scripts/scripts.js';
 
 /**
  * フッターのフラグメントを読み込む
@@ -170,4 +171,8 @@ export default async function decorate(block) {
       link.setAttribute('target', '_blank');
     }
   });
+
+  // パンくずリストを追加
+  const breadcrumbs = await buildBreadcrumbs();
+  footerGlobal.insertAdjacentElement('beforebegin', breadcrumbs);
 }
