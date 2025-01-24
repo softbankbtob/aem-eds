@@ -19,7 +19,7 @@ export default function decorate(block) {
 
   // 残りのpタグを移動
   const remainingParagraphs = originalContent.querySelectorAll('p:not(:has(picture))');
-  remainingParagraphs.forEach(p => {
+  remainingParagraphs.forEach((p) => {
     textDiv.appendChild(p);
   });
 

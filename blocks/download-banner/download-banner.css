@@ -1,12 +1,4 @@
 .download-banner-wrapper{
-    margin-top: 32px;
-
-    @media (max-width: 768px) {
-        margin-top: 24px;
-    }
-}
-
-.download-banner-wrapper{
     a{
         display: flex;
         width: 100%;
@@ -16,13 +8,15 @@
         border: 1px solid var(--border-gray);
         padding: 24px;
         transition: background-color 300ms ease-out;
+        margin-top: 32px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             flex-direction: column;
+            margin-top: 24px;
         }
 
         &:hover{
-            @media (min-width: 769px) {
+            @media (width >= 769px) {
                 background-color: var(--background-blue-hover);
                 text-decoration: none;
             }
@@ -38,7 +32,7 @@
             width: 240px;
             flex-basis: 240px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 width: 100%;
                 flex-basis: 100%;
             }
@@ -55,7 +49,7 @@
                 &:has(strong){
                     font-size: 18px;
 
-                    @media (max-width: 768px) {
+                    @media (width <= 768px) {
                         font-size: 15px;
                     }
                 }
@@ -63,7 +57,7 @@
                 & + &{
                     margin-top: 8px;
 
-                    @media (max-width: 768px) {
+                    @media (width <= 768px) {
                         margin-top: 10px;
                     }
                 }

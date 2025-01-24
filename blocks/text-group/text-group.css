@@ -1,17 +1,16 @@
 .text-group-container{
     margin-top: 32px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         margin-top: 24px;
     }
 }
 
 .text-group {
-
     > div{
         margin-top: 16px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             margin-top: 12px;
         }
 

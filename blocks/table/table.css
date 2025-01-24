@@ -1,24 +1,32 @@
 .table-container {
     margin-top: 32px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         margin-top: 20px;
     }
-}
 
-.table {
-  width: 100%;
-  overflow-x: auto;
+    /* 表組みのタイトル */
+    .default-content-wrapper:has(h5) + .table-wrapper{
+        margin-top: 8px;
+    }
+
+    .default-content-wrapper{
+        h5{
+            @media (width <= 768px) {
+                font-size: 14px;
+            }
+        }
+    }
 }
 
 .table{
     table {
         width: 100%;
-        max-width: 100%;
+        overflow-x: auto;
         border-collapse: collapse;
         font-size: var(--body-font-size-default);
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             font-size: 12px;
         }
 
@@ -28,7 +36,7 @@
                     padding: 16px;
                     border: 1px solid var(--border-black-02);
 
-                    @media (max-width: 768px) {
+                    @media (width <= 768px) {
                         padding: 8px;
                     }
                 }
@@ -38,7 +46,7 @@
                     text-align: center;
                     background-color: var(--background-gray-01);
 
-                    @media (max-width: 768px) {
+                    @media (width <= 768px) {
                         width: 120px;
                     }
 
@@ -54,21 +62,6 @@
                         margin-top: 0;
                     }
                 }
-            }
-        }
-    }
-}
-
-/* 表組みのタイトル */
-
-.table-container{
-    .default-content-wrapper:has(h5) + .table-wrapper{
-        margin-top: 8px;
-    }
-    .default-content-wrapper{
-        h5{
-            @media (max-width: 768px) {
-                font-size: 14px;
             }
         }
     }

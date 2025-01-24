@@ -9,13 +9,11 @@ export default function decorate(block) {
 
     // button-containerが存在する場合
     if (buttonContainer) {
-
       // 新しいdiv内のaタグのクラス名を削除
       const link = buttonContainer.querySelector('a');
       if (link) {
         link.classList.remove('button'); // クラス名を削除
       }
-      
     }
   }
 }

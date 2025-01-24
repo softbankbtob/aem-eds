@@ -3,16 +3,15 @@ import { fetchPlaceholders } from '../../scripts/aem.js';
 // button-containerクラスのdivからhrefを取得し、削除する関数
 function removeButtonContainer(block) {
   const buttonContainers = block.querySelectorAll('.button-container');
-  
-  buttonContainers.forEach(buttonContainer => {
-    const href = buttonContainer.querySelector('a')?.getAttribute('href'); // pタグ内のaタグからhrefを取得
-    if (href) {
-      
-    }
+
+  buttonContainers.forEach((buttonContainer) => {
+    // const href = buttonContainer.querySelector('a')?.getAttribute('href'); // pタグ内のaタグからhrefを取得
+    // if (href) {
+
+    // }
     buttonContainer.remove(); // divを削除
   });
 }
-
 
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
@@ -44,17 +43,51 @@ function updateActiveSlide(slide) {
 
 function showSlide(block, slideIndex = 0) {
   const slides = block.querySelectorAll('.carousel-slide');
-  let realSlideIndex = slideIndex < 0 ? slides.length - 1 : slideIndex;
-  if (slideIndex >= slides.length) realSlideIndex = 0;
-  const activeSlide = slides[realSlideIndex];
+  const slidesWrapper = block.querySelector('.carousel-slides');
+  const totalSlides = slides.length;
 
-  activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
-  block.querySelector('.carousel-slides').scrollTo({
-    top: 0,
-    left: activeSlide.offsetLeft,
-    behavior: 'smooth',
+  let realSlideIndex = slideIndex;
+  if (slideIndex >= totalSlides) {
+    realSlideIndex = 0;
+  }
+
+  // インジケーターの更新
+  const indicators = block.querySelectorAll('.carousel-slide-indicator');
+  indicators.forEach((indicator, idx) => {
+    if (idx === realSlideIndex) {
+      indicator.querySelector('button').setAttribute('disabled', 'true');
+    } else {
+      indicator.querySelector('button').removeAttribute('disabled');
+    }
   });
+
+  if (slideIndex >= totalSlides) {
+    // 最後のスライドから最初に戻る場合
+    const lastSlideWidth = slides[totalSlides - 1].offsetWidth;
+    const additionalSlide = slides[0].cloneNode(true);
+    slidesWrapper.appendChild(additionalSlide);
+    
+    slidesWrapper.scrollTo({
+      left: (totalSlides) * lastSlideWidth,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => {
+      slidesWrapper.style.scrollBehavior = 'auto';
+      slidesWrapper.scrollTo(0, 0);
+      additionalSlide.remove();
+      slidesWrapper.style.scrollBehavior = 'smooth';
+    }, 900);
+  } else {
+    slidesWrapper.scrollTo({
+      left: slides[realSlideIndex].offsetLeft,
+      behavior: 'smooth'
+    });
+  }
+
+  block.dataset.activeSlide = realSlideIndex;
 }
+
 
 function bindEvents(block) {
   const slideIndicators = block.querySelector('.carousel-slide-indicators');
@@ -90,7 +123,7 @@ function createSlide(row, slideIndex, carouselId, href) {
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
 
-   // 新しいaタグを作成し、hrefを設定
+  // 新しいaタグを作成し、hrefを設定
   const newLink = document.createElement('a');
   newLink.href = href; // hrefを設定
 
@@ -180,7 +213,7 @@ export default async function decorate(block) {
   // 自動スライドの設定
   let autoSlideInterval = setInterval(() => {
     showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
-  }, 3000); // 3秒ごとに次のスライドに移動
+  }, 5000); // 5秒ごとに次のスライドに移動
 
   // 一時停止ボタンのクリックイベント
   let isPaused = false; // 一時停止状態を管理するフラグ
@@ -189,7 +222,7 @@ export default async function decorate(block) {
       // 再開
       autoSlideInterval = setInterval(() => {
         showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
-      }, 3000);
+      }, 5000);
       pauseButton.innerHTML = '<img src="../icons/pause.svg" alt="一時停止アイコン">';
     } else {
       // 一時停止

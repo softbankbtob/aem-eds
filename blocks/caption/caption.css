@@ -1,14 +1,16 @@
 .caption-container {
   margin-top: 16px;
   
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     margin-top: 8px;
   }
 }
+
 .caption {
   p{
     font-size: 12px;
     line-height: 1.25;
+
     a{
       img{
         margin-inline: 3px;
@@ -17,7 +19,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .caption {
     p{
       font-size: 11px;

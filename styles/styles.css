@@ -25,8 +25,8 @@
   --border-black-03: #555;
 
   /* fonts */
-  --body-font-family: noto sans jp, "Hiragino Kaku Gothic ProN", "Hiragino Sans", system-ui, sans-serif;
-  --heading-font-family: noto sans jp, "Hiragino Kaku Gothic ProN", "Hiragino Sans", system-ui, sans-serif;
+  --body-font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", system-ui, sans-serif;
+  --heading-font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", system-ui, sans-serif;
 
   /* body sizes */
   --body-font-size-default: 16px;
@@ -40,7 +40,8 @@
   --heading-font-size-xs: 14px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-local-height: 60px;
+  --nav-breadcrumbs-height: 21px;
 
   /* breakpoint */
   --breakpoint-sp: 768px;
@@ -48,7 +49,7 @@
 
 /* fallback fonts */
 @font-face {
-  font-family: Noto Sans JP;
+  font-family: "Noto Sans JP";
   font-size: 16px;
   size-adjust: 88.82%;
   src: local('Arial');
@@ -61,7 +62,7 @@
 } */
 
 /* SP用 */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   :root {
     /* body sizes */
     --body-font-size-default: 14px;
@@ -73,35 +74,20 @@
     --heading-font-size-m: 14px;
     --heading-font-size-s: 12px;
     --heading-font-size-xs: 10px;
+
+    /* nav height */
+    --nav-local-height: 45px;
+    --nav-breadcrumbs-height: 21px;
   }
 }
 
 body {
-  display: none;
   margin: 0;
   background-color: var(--background-color);
   color: var(--text-black);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-default);
   font-weight: 400;
-}
-
-body.appear {
-  display: block;
-}
-
-header {
-  height: var(--nav-height);
-}
-
-/* header .header,
-footer .footer {
-  visibility: hidden;
-} */
-
-header .header[data-block-status="loaded"],
-footer .footer[data-block-status="loaded"] {
-  visibility: visible;
 }
 
 h1,
@@ -218,10 +204,11 @@ p{
     font-weight: 400;
     line-height: 1.75;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         line-height: 1.5;
     }
 }
+
 p sup,
 p sub {
   font-size: 10px;
@@ -232,10 +219,11 @@ main{
     background-color: var(--background-blue-02);
     padding-bottom: 80px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         padding-bottom: 40px;
     }
 }
+
 main > .section{
     max-width: 1248px;
     margin: 0 auto;
@@ -248,6 +236,78 @@ main .section.highlight {
   background-color: var(--background-blue-01);
   margin: 0;
   padding: 40px 0;
+}
+
+/* パンくずリスト */
+.breadcrumbs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: var(--nav-breadcrumbs-height);
+    max-width: none;
+    font-size: 11px;
+    background-color: #e6e8eb;
+    padding: 0;
+
+    ol{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        max-width: 1248px;
+        padding: 0 24px;
+        margin: 0 auto;
+
+        > li{
+            display: flex;
+            width: fit-content;
+            align-items: center;
+
+            &:first-child{
+                &::before{
+                    content: '';
+                    width: 12px;
+                    height: 11px;
+                    background: url("../../icons/home.svg") no-repeat center / contain;
+                    margin-right: 6px;
+                }
+            }
+
+            a{
+                color: currentcolor;
+            }
+
+            & + &{
+                &::before{
+                    content: ">";
+                    display: block;
+                    margin: 0 6px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media (width <= 768px) {
+    .breadcrumbs{
+        overflow-x: scroll;
+        white-space: nowrap;
+
+        ol{
+            padding: 0 0 0 20px;
+
+            > li{
+                display: flex;
+                width: fit-content;
+                align-items: center;
+
+                &:last-child{
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
 }
 
 /* article-container */
@@ -263,7 +323,7 @@ main .section.highlight {
             margin-top: 60px;
             scroll-margin-top: 84px; /* ヘッダーの高さ調整用 仮 */
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 line-height: 1.33;
                 margin-top: 40px;
             }
@@ -291,7 +351,7 @@ main .section.highlight {
             line-height: 1.27;
             margin-top: 32px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 padding-bottom: 4px;
                 font-size: var(--heading-font-size-l);
                 line-height: 1.53;
@@ -299,8 +359,8 @@ main .section.highlight {
             }
         }
 
+        ul,
         ol{
-            list-style-type: decimal;
             font-size: var(--body-font-size-default);
             font-style: normal;
             font-weight: 400;
@@ -308,9 +368,17 @@ main .section.highlight {
             padding-left: 1em;
             margin-top: 16px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 margin-top: 12px;
             }
+        }
+        
+        ul{
+            list-style-type: disc;
+        }
+
+        ol{
+            list-style-type: decimal;
         }
 
         a[target="_blank"] {
@@ -333,7 +401,7 @@ main .section.highlight {
         p{
             margin-top: 16px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 margin-top: 12px;
             }
 
@@ -351,7 +419,7 @@ main .section.highlight {
             + .section{
                 margin-top: 32px;
 
-                @media (max-width: 768px) {
+                @media (width <= 768px) {
                     margin-top: 24px;
                 }
             }

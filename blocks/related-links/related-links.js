@@ -16,7 +16,7 @@ export default function decorate(block) {
       // 'icon'クラスを持つspanタグを取得
       const iconSpan = link.querySelector('span.icon');
       if (iconSpan) {
-        const hasIconArrowClass = [...iconSpan.classList].some(className => className.startsWith('icon-arrow'));
+        const hasIconArrowClass = [...iconSpan.classList].some((className) => className.startsWith('icon-arrow'));
         if (hasIconArrowClass) {
           iconSpan.classList.add('related-links-icon');
         }
