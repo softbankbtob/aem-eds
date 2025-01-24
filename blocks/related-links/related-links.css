@@ -1,8 +1,6 @@
 .related-links-wrapper{
-    margin-top: 16px !important;
-}
+    margin-top: 16px;
 
-.related-links-wrapper{
     .related-links{
         ul{
             width: 100%;
@@ -19,17 +17,17 @@
                     font-weight: 700;
                     line-height: normal;
 
-                    @media (max-width: 768px) {
+                    @media (width <= 768px) {
                         font-size: 14px;
                     }
-                    
+
                     .related-links-icon {
                         display: block;
                         width: 8.5px;
                         height: fit-content;
                         transform: rotate(180deg);
 
-                        @media (max-width: 768px) {
+                        @media (width <= 768px) {
                             width: 10px;
                         }
 
@@ -41,7 +39,6 @@
                         }
                     }
                 }
-                
             }
         }
     }

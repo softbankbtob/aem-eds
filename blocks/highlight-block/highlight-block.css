@@ -1,17 +1,15 @@
 .highlight-block-container{
     margin-top: 32px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         margin-top: 24px;
     }
-}
 
-.highlight-block-container{
     .highlight-block{
         background: var(--background-blue-01);
         border-radius: 8px;
         padding: 24px;
-        
+
         p{
             font-weight: 700;
 

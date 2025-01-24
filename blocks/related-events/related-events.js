@@ -6,7 +6,7 @@ export default function decorate(block) {
 
     // 各セクションにクラス名を追加
     const [tagSection, dateSection, eventsSection] = row.children;
-    
+
     // タグセクションの処理
     if (tagSection) {
       tagSection.className = 'related-events-tag';
@@ -31,7 +31,7 @@ export default function decorate(block) {
     }
 
     // button-containerクラスを削除
-    row.querySelectorAll('.button-container').forEach(container => {
+    row.querySelectorAll('.button-container').forEach((container) => {
       container.classList.remove('button-container');
     });
   });

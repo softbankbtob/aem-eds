@@ -20,7 +20,7 @@ export default function decorate(block) {
       // buttonContainerがsidebarContainerの子であることを確認
       if (buttonContainer.parentNode) {
         buttonContainer.parentNode.replaceChild(newButtonDiv, buttonContainer);
-        
+
         // sidebar-buttonの直下のaタグにtarget="_blank"を付与
         const buttonLink = newButtonDiv.querySelector('a');
         if (buttonLink) {
@@ -43,7 +43,7 @@ export default function decorate(block) {
     if (firstChild && firstChild.classList.contains('carousel-container')) {
       const cardsContainer = main.querySelector('.cards-container');
       const fragmentContainer = main.querySelector('.fragment-container');
-      
+
       if (cardsContainer && cardsContainer.nextElementSibling === fragmentContainer) {
         // top-article-wrapを作成
         const topArticleWrap = document.createElement('div');

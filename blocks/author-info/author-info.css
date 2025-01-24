@@ -1,25 +1,22 @@
 .author-info-container{
     margin-top: 56px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         margin-top: 40px;
     }
-}
 
-.author-info-container{
-    
     .author-info > div{
         background-color: var(--background-gray-01);
         padding: 24px;
         border-radius: 8px;
         position: relative;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             padding: 24px 20px;
         }
 
         .author-info-heading{
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 display: flex;
                 width: 100%;
                 gap: 24px;
@@ -27,6 +24,20 @@
 
             p{
                 margin-top: 0;
+                flex: 1;
+
+                @media (width <= 768px) {
+                    font-size: 15px;
+                }
+            }
+
+            &:has(picture) p{
+                padding-left: 104px;
+
+                @media (width <= 768px) {
+                    line-height: 1.5;
+                    padding-left: 0;
+                }
             }
 
             picture{
@@ -42,40 +53,25 @@
                 top: 24px;
                 left: 24px;
 
-                @media (max-width: 768px) {
+                @media (width <= 768px) {
                     width: 64px;
                     height: 64px;
                     position: static;
                 }
-    
+
                 img{
                     object-fit: contain;
                 }
             }
 
-            p{
-                flex: 1;
-
-                @media (max-width: 768px) {
-                    font-size: 15px;
-                }
-            }
-            
-        }
-
-        &:has(picture) p{
-            padding-left: 104px;
-
-            @media (max-width: 768px) {
-                line-height: 1.5;
-                padding-left: 0;
-            }
         }
 
         .author-info-text{
+            padding-left: 104px;
             margin-top: 8px;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
+                padding-left: 0;
                 margin-top: 24px;
             }
 

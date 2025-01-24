@@ -26,11 +26,11 @@ export default function decorate(block) {
   // タイトルと説明文を移動
   const titleP = downloadBannerBlock.querySelector('div:nth-child(3) p:nth-child(1)');
   const descriptionP = downloadBannerBlock.querySelector('div:nth-child(3) p:nth-child(2)');
-  
+
   if (titleP) {
     downloadBannerText.appendChild(titleP.cloneNode(true));
   }
-  
+
   if (descriptionP) {
     downloadBannerText.appendChild(descriptionP.cloneNode(true));
   }

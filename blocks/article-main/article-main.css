@@ -1,20 +1,44 @@
-main > .section.article-main-container{
-    max-width: 100%;
-    margin: 0;
+/* SPでの表示順番入れ替え */
+.article-main-container{
+    @media (width <= 768px) {
+        order: 0;
+    }
 }
 
-.article-main-container{
+.article-container{
+    @media (width <= 768px) {
+        order: 1;
+    }
+}
+
+.related-articles-container{
+    @media (width <= 768px) {
+        order: 2;
+    }
+}
+
+.fragment-container.sidebar-container{
+    @media (width <= 768px) {
+        order: 3;
+    }
+}
+
+/* article-main-container */
+.section.article-main-container{
+    width: 100%;
+    margin: 0;
     position: relative;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
+        background-color: var(--background-color);
         overflow: hidden;
     }
 
     .article-main-wrapper{
-        max-width: 1248px;
+        width: 100%;
         margin: 0 auto;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             padding: 0 24px;
         }
     }
@@ -22,37 +46,48 @@ main > .section.article-main-container{
     h1{
         margin: 56px 0 24px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             margin: 16px 0 24px;
         }
     }
 
-    P{
+    p{
         text-align: right;
         font-size: 14px;
         line-height: 1.25;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             text-align: left;
             font-size: 12px;
-        }
-
-        & + &{
-            margin-top: 8px;
-
-            @media (max-width: 768px) {
-                margin-top: 4px;
-            }
         }
 
         &:last-of-type{
             margin-top: 24px !important;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 width: calc(100% + (24px * 2));
                 position: relative;
                 left: -24px;
             }
+        }
+
+        & + &{
+            margin-top: 8px;
+
+            @media (width <= 768px) {
+                margin-top: 4px;
+            }
+        }
+
+    }
+
+    picture{
+        margin: 0 auto;
+        text-align: center;
+
+        img{
+            display: block;
+            margin: 0 auto;
         }
     }
 }
@@ -71,7 +106,7 @@ main > .section.article-main-container{
         top: 0;
         left: 0;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             display: none;
         }
     }
@@ -87,7 +122,7 @@ main > .section.article-main-container{
         position: relative;
         z-index: 1;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             flex-direction: column;
             gap: 0;
             padding: 0;
@@ -102,14 +137,13 @@ main > .section.article-main-container{
         border-radius: 12px;
         padding: 48px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             padding: 24px 24px 40px;
         }
 
         /* SNSシェアボタン */
-        .t-socialShareButton {
-
-            @media (min-width: 769px) {
+        .t-social-share-button {
+            @media (width >= 769px) {
                 position: absolute;
                 top: 0;
                 right: calc(100% + min((100vw - 100%) / 20, 38px));
@@ -117,50 +151,62 @@ main > .section.article-main-container{
                 height: 100%;
             }
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 position: fixed;
                 left: 0;
                 bottom: 16px;
                 width: 100%;
             }
 
-            .t-socialShareButton-list {
-                @media (min-width: 769px) {
+            .t-social-share-button-list {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+
+                @media (width >= 769px) {
                     position: sticky;
                     top: 150px;
                 }
-                @media (max-width: 768px) {
+
+                @media (width <= 768px) {
                     display: flex;
                     margin-inline: auto;
                     width: fit-content;
                 }
-                .t-socialShareButton-list-item {
+
+                .t-social-share-button-list-item {
                     display: block;
-                    @media (min-width: 769px) {
+
+                    @media (width >= 769px) {
                         width: 100%;
                         height: 32px;
+
                         &:not(:first-child) {
                             margin-top: 16px;
                         }
                     }
-                    @media (max-width: 768px) {
+
+                    @media (width <= 768px) {
                         width: 32px;
                         height: 32px;
+
                         &:not(:first-child) {
                             margin-left: 16px;
                         }
                     }
                 }
-                .t-socialShareButton-list-list-item__link {
+
+                .t-social-share-button-list-list-item-link {
                     display: block;
                     width: 100%;
                     height: 100%;
-                    
+
                     &::after{
                         display: none;
                     }
                 }
-                .t-socialShareButton-list-list-item__icon {
+
+                .t-social-share-button-list-list-item-icon {
                     display: block;
                     width: 100%;
                     height: 100%;
@@ -176,33 +222,11 @@ main > .section.article-main-container{
         padding: 0;
         margin: 0;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             width: 100%;
             max-width: 100%;
             padding: 40px 24px 0;
             border-top: 6px solid var(--background-color);
         }
-    }
-}
-
-/* SPでの表示順番入れ替え */
-.article-main-container{
-    @media (max-width: 768px) {
-        order: 0;
-    }
-}
-.article-container{
-    @media (max-width: 768px) {
-        order: 1;
-    }
-}
-.related-articles-container{
-    @media (max-width: 768px) {
-        order: 2;
-    }
-}
-.fragment-container.sidebar-container{
-    @media (max-width: 768px) {
-        order: 3;
     }
 }

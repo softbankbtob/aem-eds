@@ -1,19 +1,13 @@
 .table-of-contents-wrapper{
-    margin-top: 32px;
-
-    @media (max-width: 768px) {
-        margin-top: 24px;
-    }
-}
-
-.table-of-contents-wrapper{
     .table-of-contents{
         background: var(--background-gray-01);
         padding: 24px;
         border-radius: 8px;
+        margin-top: 32px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             padding: 24px 20px;
+            margin-top: 24px;
         }
     }
 
@@ -22,14 +16,14 @@
         padding-left: 24px;
         margin-top: 8px;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             padding-left: 20px;
         }
 
         li{
             line-height: 1.75;
 
-            @media (max-width: 768px) {
+            @media (width <= 768px) {
                 line-height: 1.5;
             }
 
@@ -46,7 +40,7 @@
             a{
                 color: var(--text-black);
 
-                @media (max-width: 768px) {
+                @media (width <= 768px) {
                     font-size: 14px;
                 }
             }

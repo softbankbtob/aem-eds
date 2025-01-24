@@ -19,11 +19,11 @@ export default function decorate(block) {
     imageDiv.className = 'related-services-image';
     const picture = row.querySelector('picture').cloneNode(true);
     imageDiv.appendChild(picture);
-    
+
     // テキスト用のdivを作成
     const textDiv = document.createElement('div');
     textDiv.className = 'related-services-text';
-    
+
     // タイトルと説明を取得
     const title = row.querySelector('div:nth-child(2) p strong').textContent;
     const description = row.querySelector('div:nth-child(2) p:nth-child(2)').textContent;
@@ -40,7 +40,7 @@ export default function decorate(block) {
     // aタグに画像とテキストを追加
     link.appendChild(imageDiv);
     link.appendChild(textDiv);
-    
+
     // サービスアイテムにaタグを追加
     serviceItem.appendChild(link);
     relatedServicesList.appendChild(serviceItem);

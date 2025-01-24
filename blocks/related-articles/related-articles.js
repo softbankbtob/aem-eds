@@ -1,19 +1,18 @@
 export default function decorate(block) {
   const section = block.closest('.section');
-  
+
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      if (mutation.type === 'attributes' && 
-          mutation.attributeName === 'data-section-status' && 
-          mutation.target.dataset.sectionStatus === 'loaded') {
-        
+      if (mutation.type === 'attributes'
+          && mutation.attributeName === 'data-section-status'
+          && mutation.target.dataset.sectionStatus === 'loaded') {
         // DOM構造を変更
         const relatedArticlesContainer = section;
         if (relatedArticlesContainer) {
           // default-content-wrapperとcards-wrapperを移動
           const defaultContent = relatedArticlesContainer.querySelector('.default-content-wrapper');
           const cardsWrapper = relatedArticlesContainer.querySelector('.cards-wrapper');
-          
+
           if (defaultContent && cardsWrapper) {
             const relatedArticlesBlock = relatedArticlesContainer.querySelector('.related-articles.block');
             if (relatedArticlesBlock) {
@@ -31,7 +30,7 @@ export default function decorate(block) {
             pageArticleContainer.appendChild(section);
           }
         }
-        
+
         observer.disconnect();
       }
     });
@@ -40,7 +39,7 @@ export default function decorate(block) {
   if (section) {
     observer.observe(section, {
       attributes: true,
-      attributeFilter: ['data-section-status']
+      attributeFilter: ['data-section-status'],
     });
   }
 }
