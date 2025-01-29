@@ -55,6 +55,7 @@
 .cards .cards-card-body {
   display: flex;
   padding: 16px 24px;
+  background-color: #fff;
   flex-direction: column;
   align-items: flex-start;
   flex-grow: 1;

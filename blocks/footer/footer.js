@@ -166,6 +166,7 @@ export default async function decorate(block) {
   links.forEach((link) => {
     const { href } = link;
     if (!href.includes('https://main--softbank-eds-develop--aquaring.aem.page/')
+        && !href.includes('https://main--aem-eds--softbankbtob.aem.page/')
         && !href.includes('https://www.softbank.jp/biz/')
         && !href.includes('http://localhost:3000/')) {
       link.setAttribute('target', '_blank');

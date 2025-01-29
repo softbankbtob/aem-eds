@@ -66,10 +66,10 @@ function showSlide(block, slideIndex = 0) {
     const lastSlideWidth = slides[totalSlides - 1].offsetWidth;
     const additionalSlide = slides[0].cloneNode(true);
     slidesWrapper.appendChild(additionalSlide);
-    
+
     slidesWrapper.scrollTo({
       left: (totalSlides) * lastSlideWidth,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
 
     setTimeout(() => {
@@ -81,13 +81,12 @@ function showSlide(block, slideIndex = 0) {
   } else {
     slidesWrapper.scrollTo({
       left: slides[realSlideIndex].offsetLeft,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 
   block.dataset.activeSlide = realSlideIndex;
 }
-
 
 function bindEvents(block) {
   const slideIndicators = block.querySelector('.carousel-slide-indicators');
@@ -144,7 +143,6 @@ function createSlide(row, slideIndex, carouselId, href) {
 
 let carouselId = 0;
 export default async function decorate(block) {
-  removeButtonContainer(block);
   carouselId += 1;
   block.setAttribute('id', `carousel-${carouselId}`);
   const rows = block.querySelectorAll(':scope > div');
@@ -197,6 +195,7 @@ export default async function decorate(block) {
     row.remove();
   });
 
+  removeButtonContainer(block);
   container.append(slidesWrapper);
   block.prepend(container);
 

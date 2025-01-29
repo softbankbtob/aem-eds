@@ -1,0 +1,218 @@
+{
+	"total": 20,
+	"offset": 0,
+	"limit": 20,
+	"data": [
+		{
+			"path": "/aquaring-authoring-20241225/aquaring-authoring-20241225/bcp/",
+			"title": "BCPとは？ 非常時に実行できる計画の策定方法もご紹介｜ビジネスブログ｜ソフトバンク",
+			"image": "/aquaring-authoring-20241225/aquaring-authoring-20241225/bcp/media_16f2839c04e7e2ee1a7677238716aa7fbd963a4cf.jpeg?width=1200&format=pjpg&optimize=medium",
+			"description": "BCPとは何か？非常時に実行できる計画の策定方法を解説。事業継続のための具体的な対策や手順についてご紹介します。",
+			"tags": "[\"ITインフラのクラウド化, クラウド, 中小規模のお客さま\"]",
+			"navigation-title": "BCPとは？ 非常時に実行できる計画の策定方法もご紹介",
+			"hide-in-navigation": "true",
+			"lastModified": "1736304074"
+		},
+		{
+			"path": "/tools/sidekick/blocks/author-info",
+			"title": "Author-info",
+			"image": "/tools/sidekick/blocks/media_1a30c8393fe64b3700bb5c53c963b3a036cfb3428.png?width=1200&format=pjpg&optimize=medium",
+			"description": "ビジネスブログ「Future Stride」では、ビジネスの「今」と「未来」を発信します。DXや業務改革をはじめとしたみなさまのビジネスに「今」すぐ役立つ最新トレンドを伝えるほか、最先端の技術を用いて「未来」を「今」に引き寄せるさまざまな取り組みにフォーカスを当てることで、すでに到来しつつある新しいビジネスの姿を映し出していきます。",
+			"tags": "",
+			"navigation-title": "",
+			"hide-in-navigation": "",
+			"lastModified": "1734531482"
+		},
+		{
+			"path": "/tools/sidekick/blocks/card",
+			"title": "生成AI時代を切り拓くサービスが集結 SoftBank World 2024 展示ブースレポート ~協賛パートナー企業展示エリア編~",
+			"image": "/tools/sidekick/blocks/media_1de9937bc66b6f21b5ca7c30b0bac5f56a304f8f3.png?width=1200&format=pjpg&optimize=medium",
+			"description": "",
+			"tags": "",
+			"navigation-title": "",
+			"hide-in-navigation": "",
+			"lastModified": "1736241362"
+		},
+		{
+			"path": "/tools/sidekick/blocks/card-nobackground",
+			"title": "生成AI時代を切り拓くサービスが集結 SoftBank World 2024 展示ブースレポート ~協賛パートナー企業展示エリア編~",
+			"image": "/tools/sidekick/blocks/media_1de9937bc66b6f21b5ca7c30b0bac5f56a304f8f3.png?width=1200&format=pjpg&optimize=medium",
+			"description": "",
+			"tags": "",
+			"navigation-title": "",
+			"hide-in-navigation": "",
+			"lastModified": "1736241446"
+		},
+		{
+			"path": "/tools/sidekick/blocks/card-borderradius",
+			"title": "生成AI時代を切り拓くサービスが集結 SoftBank World 2024 展示ブースレポート ~協賛パートナー企業展示エリア編~",
+			"image": "/tools/sidekick/blocks/media_1de9937bc66b6f21b5ca7c30b0bac5f56a304f8f3.png?width=1200&format=pjpg&optimize=medium",
+			"description": "",
+			"tags": "",
+			"navigation-title": "",
+			"hide-in-navigation": "",
+			"lastModified": "1736241509"
+		},
+		{
+			"path": "/tools/sidekick/blocks/table-of-content",
+			"title": "table-of-contents",
+			"image": "/default-meta-image.png?width=1200&format=pjpg&optimize=medium",
+			"description": "",
+			"tags": "",
+			"navigation-title": "",
+			"hide-in-navigation": "",
+			"lastModified": "1736244700"
+		},
+		{
+			"path": "/tools/sidekick/blocks/table",
+			"title": "Table",
+			"image": "/default-meta-image.png?width=1200&format=pjpg&optimize=medium",
+			"description": "",
+			"tags": "",
+			"navigation-title": "",
+			"hide-in-navigation": "",
+			"lastModified": "1736244757"
+		},
+		{
+			"path": "/aquaring-authoring-20241225/aquaring-authoring-20241225/bcp/test-tamura",
+			"title": "テスト｜ビジネスブログ｜ソフトバンク",
+			"image": "/aquaring-authoring-20241225/aquaring-authoring-20241225/bcp/media_16f2839c04e7e2ee1a7677238716aa7fbd963a4cf.jpeg?width=1200&format=pjpg&optimize=medium",
+			"description": "テストページです",
+			"tags": "[\"ITインフラのクラウド化, クラウド, 中小規模のお客さま\"]",
+			"navigation-title": "テストページ",
+			"hide-in-navigation": "",
+			"lastModified": "1736304344"
+		},
+		{
+			"path": "/blog/business/",
+			"title": "ビジネスブログ｜ソフトバンク",
+			"image": "/default-meta-image.png?width=1200&format=pjpg&optimize=medium",
+			"description": "ソフトバンクビジネスブログは、ビジネスの「今」と「未来」を発信するブログです。DXや業務改革をはじめとしたみなさまのビジネスに「今」すぐ役立つ最新トレンドを伝えるほか、最先端の技術を用いて「未来」を「今」に引き寄せるさまざまな取り組みにフォーカスを当てることで、すでに到来しつつある新しいビジネスの姿を映し出していきます。",
+			"tags": "[]",
+			"navigation-title": "ビジネスブログ",
+			"hide-in-navigation": "",
+			"lastModified": "1736307023"
+		},
+		{
+			"path": "/blog/",
+			"title": "法人のお客さま向けブログ | 法人向け | ソフトバンク",
+			"image": "/default-meta-image.png?width=1200&format=pjpg&optimize=medium",
+			"description": "最新のビジネストレンドと成功の秘訣をお届けするビジネスブログとクラウドテクノロジーブログをご覧ください。実践的なヒントがお客さまのビジネスの成長へとつながります。さまざまな業界の成功事例や有識者のインタビューも掲載しています。",
+			"tags": "[]",
+			"navigation-title": "ブログ",
+			"hide-in-navigation": "",
+			"lastModified": "1736306797"
+		},
+		{
+			"path": "/blog/business/articles/202501/lixil-1nce",
+			"title": "IoT事例：LIXIL岩井工場で進むフォークリフトのデータ活用～IoT SIM 「1NCE」を活用した実証実験～｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202501/media_1076d9d6f56ea7f704f7f59a1cea7021dd0e7cfc8.png?width=1200&format=pjpg&optimize=medium",
+			"description": "現代の物流現場では、効率化とコスト削減、さらには環境保全がますます重要視されています。株式会社LIXIL（以下、LIXIL）では、これらの課題を解決するために、IoT（インターネット・オブ・シングズ）を活用したデータ取得によるフォークリフトの実証実験（PoC）を開始しました。今回は、その取り組みと成果、さらには今後の展望について詳しくご紹介します。",
+			"tags": "[\"バックオフィス業務の効率化, テクノロジー, IoT, 製造, 1NCE\"]",
+			"navigation-title": "IoT事例：LIXIL岩井工場で進むフォークリフトのデータ活用～IoT SIM 「1NCE」を活用した実証実験～",
+			"hide-in-navigation": "true",
+			"lastModified": "1736699066"
+		},
+		{
+			"path": "/blog/business/articles/202502/giga-school-interview",
+			"title": "GIGAスクール構想の現状から見えた課題【専門家対談：前編】｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202502/media_16f2839c04e7e2ee1a7677238716aa7fbd963a4cf.jpeg?width=1200&format=pjpg&optimize=medium",
+			"description": "GIGAスクール構想の現状から見えた課題【専門家対談：前編】",
+			"tags": "[\"現場プロセスの自動化, 地方創生, 公共\"]",
+			"navigation-title": "毎年夏に開催されるソフトバンク主催の「GIGAスクールサミット」は、全国の教育関係者が広く情報交換共有できる場として、学校現場の先生方や教育委員会のみなさまを始め、教育の情報化やGIGAスクール構想の推進に関わる方々に参加いただいています。今年で5回目を迎えた本イベントでは、初回から参加いただいている、奈良教育大学大学院 小﨑誠二先生と認定NPO法人ほっかいどう学推進フォーラム 新保元康先生のお二人をお招きし、対談いただきました。前編にあたる本記事では、イベントの振り返りと共に「教育現場におけるICT活用の今と未来」と題した対談の模様をまとめたものです。",
+			"hide-in-navigation": "",
+			"lastModified": "1736420477"
+		},
+		{
+			"path": "/blog/business/articles/202502/giga-school-interview-generative-ai",
+			"title": "教育×生成AIの未来はどうなる？【専門家対談：後編】｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202502/media_1076d9d6f56ea7f704f7f59a1cea7021dd0e7cfc8.png?width=1200&format=pjpg&optimize=medium",
+			"description": "「GIGAスクールサミット」に毎年ご登壇いただいている奈良教育大学大学院 小﨑誠二先生と認定NPO法人ほっかいどう学推進フォーラム 新保元康先生のお二人をお招きし、GIGAスクール構想における教育のデジタル化と未来について語っていただく本対談企画。後編のテーマは「教育×生成AI」です。教育への生成AI活用についてはさまざまな議論があるものの、今現在教育現場ではどのような影響が及んでいるのか、お二人に伺いました。",
+			"tags": "[\"現場プロセスの自動化, 地方創生, 公共\"]",
+			"navigation-title": "教育×生成AIの未来はどうなる？【専門家対談：後編】",
+			"hide-in-navigation": "",
+			"lastModified": "1736697879"
+		},
+		{
+			"path": "/blog/business/articles/202503/jpaawg-smishing",
+			"title": "スミッシング対策 各携帯キャリアの対応と連携（JPAAWG講演レポート）｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202503/media_16f2839c04e7e2ee1a7677238716aa7fbd963a4cf.jpeg?width=1200&format=pjpg&optimize=medium",
+			"description": "近年、サイバー攻撃は巧妙化を続けており攻撃の対象となる範囲は拡大しています。スマートフォンなどモバイルの領域も例外ではなく、昨今メールを用いた従来のフィッシングに加えて猛威をふるっているのがスミッシングです。この脅威に対する携帯電話キャリアの各社取り組みについてレポートします。本記事は、2024年11月JPAAGで開催された講演「SMSフィッシング（スミッシング）対策パネル」の内容を取材したものです。",
+			"tags": "[\"セキュリティ強化, 情報漏えい, サイバーセキュリティ, セキュリティ\"]",
+			"navigation-title": "スミッシング対策 各携帯キャリアの対応と連携（JPAAWG講演レポート）",
+			"hide-in-navigation": "",
+			"lastModified": "1736698486"
+		},
+		{
+			"path": "/blog/business/articles/202503/sbw2024-special-closing-session",
+			"title": "今からでも「AIネイティブ」になれる方法とは？ SoftBank World 2024 セッションダイジェスト｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202503/media_1076d9d6f56ea7f704f7f59a1cea7021dd0e7cfc8.png?width=1200&format=pjpg&optimize=medium",
+			"description": "SoftBank World 2024のクロージング特別セッションでは、Gen-AXの砂金氏と瀧口氏がMCを務め、THE GUILDの深津氏とソフトバンクの鈴木氏が対談。生成AI時代の働き方、活用法、ビジネスの可能性について議論が行われました。",
+			"tags": "[]",
+			"navigation-title": "今からでも「AIネイティブ」になれる方法とは？ SoftBank World 2024 セッションダイジェスト",
+			"hide-in-navigation": "",
+			"lastModified": "1736698192"
+		},
+		{
+			"path": "/blog/business/articles/202504/before-long-vacation",
+			"title": "セキュリティ対策は長期休暇前の見直しが肝心｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202504/media_16f2839c04e7e2ee1a7677238716aa7fbd963a4cf.jpeg?width=1200&format=pjpg&optimize=medium",
+			"description": "長期休暇は楽しみですが、サイバーセキュリティの観点では、休暇中はサイバー攻撃のリスクが高まるため注意が必要です。もし休暇中に感染が広がると、業務再開時に大きな混乱や損失を招く恐れがあります。あらためて、マルウェアをはじめとしたサイバー攻撃に対する長期休暇時の対応を確認しましょう。",
+			"tags": "[\"セキュリティ強化, 情報漏えい, サイバーセキュリティ, セキュリティ, Cybereason\"]",
+			"navigation-title": "セキュリティ対策は長期休暇前の見直しが肝心",
+			"hide-in-navigation": "",
+			"lastModified": "1736698445"
+		},
+		{
+			"path": "/blog/business/articles/202504/child-care-and-family-care-leave-act-2025",
+			"title": "育児介護休業法改正のポイントと企業への影響とは？（2025年4月に向けて)｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202504/media_1076d9d6f56ea7f704f7f59a1cea7021dd0e7cfc8.png?width=1200&format=pjpg&optimize=medium",
+			"description": "2025年4月から段階的に施行される育児介護休業法。これにより、中堅中小企業にも柔軟な働き方が求められるようになります。本記事では、育児介護休業法改正の背景や企業への影響とその対応策について、弁護士の柄澤氏に解説いただきました。",
+			"tags": "[\"スマートワークの実現, 働き方改革, 中小規模のお客様さま\"]",
+			"navigation-title": "育児介護休業法改正のポイントと企業への影響とは？（2025年4月に向けて)",
+			"hide-in-navigation": "",
+			"lastModified": "1736698625"
+		},
+		{
+			"path": "/blog/business/articles/202412/what-is-rpa",
+			"title": "RPAとは？ ツールの選び方やRDAとの違いを分かりやすく解説｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202412/media_16f2839c04e7e2ee1a7677238716aa7fbd963a4cf.jpeg?width=1200&format=pjpg&optimize=medium",
+			"description": "RPAとは、PC上の操作を記録して人の代わりに作業するソフトウェア型ロボットのことです。本記事では、RPA概要やRDAとの違い、RPAツールの区分や選ぶ際に重要になる要素認識技術について分かりやすく解説します。",
+			"tags": "[\"現場プロセスの自動化, テクノロジー, RPA・ロボット, SynchRoid\"]",
+			"navigation-title": "RPAとは？ ツールの選び方やRDAとの違いを分かりやすく解説",
+			"hide-in-navigation": "",
+			"lastModified": "1736698779"
+		},
+		{
+			"path": "/blog/business/articles/202412/global-security",
+			"title": "グローバルのセキュリティリスクと対策。海外拠点から情報漏えいさせないために）｜ビジネスブログ｜ソフトバンク",
+			"image": "/blog/business/articles/202412/media_1076d9d6f56ea7f704f7f59a1cea7021dd0e7cfc8.png?width=1200&format=pjpg&optimize=medium",
+			"description": "グローバル化が進展する現代社会の中で、日本企業も積極的に海外市場に進出しています。新たな市場の開拓や生産拠点の拡充は企業にとって大きな成長機会を意味しますが、その一方でセキュリティリスクの増大という課題も抱えています。今回は見逃されがちな海外拠点からの情報漏えいリスクとその対策について解説します。",
+			"tags": "[\"セキュリティ強化, サイバーセキュリティ, 全業種, 情報漏えい, セキュリティ\"]",
+			"navigation-title": "グローバルのセキュリティリスクと対策。海外拠点から情報漏えいさせないために",
+			"hide-in-navigation": "",
+			"lastModified": "1736698980"
+		},
+		{
+			"path": "/nav",
+			"title": "ビジネスブログ",
+			"image": "/default-meta-image.png?width=1200&format=pjpg&optimize=medium",
+			"description": "",
+			"tags": "[]",
+			"navigation-title": "",
+			"hide-in-navigation": "",
+			"lastModified": "1737685718"
+		}
+	],
+	"columns": [
+		"path",
+		"title",
+		"image",
+		"description",
+		"tags",
+		"navigation-title",
+		"hide-in-navigation",
+		"lastModified"
+	],
+	":type": "sheet"
+}

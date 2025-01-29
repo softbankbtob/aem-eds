@@ -352,18 +352,37 @@ main .section.highlight {
             
             .accordion-content {
                 display: block;
-                padding: 0 24px;
 
                 &:first-of-type {
                     border-top: 1px solid var(--border-gray);
                 }
 
                 .tag-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    padding: 16px 0;
-                    gap: 8px 12px;
-                    list-style: none;
+                    padding: 0 24px;
+                    .tag-group {
+                        .tag-group-item {
+                            display: grid;
+                            grid-template-columns: 1fr 6fr;
+                            padding: 16px 0;
+                            align-items: center;
+                            .tag-group-title {
+                                font-size: 14px;
+                                font-weight: 600;
+                                line-height: 1.5;
+                                letter-spacing: .05em;
+                            }
+                            .tag-list {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 8px 12px;
+                                list-style: none;
+                            }
+                        }
+
+                        & + .tag-group {
+                            border-top: 1px solid var(--border-gray);
+                        }
+                    }
 
                     .tag-label {
                         position: relative;
@@ -423,12 +442,6 @@ main .section.highlight {
                         }
                     }
                 }
-
-                & + .accordion-content {
-                    .tag-container {
-                        border-top: 1px solid var(--border-gray);
-                    }
-                }
             }
         }
         @media (width <= 768px) {
@@ -442,6 +455,18 @@ main .section.highlight {
                 }
                 .accordion-content {
                     .tag-container {
+                        padding: 0 24px;
+                        .tag-group {
+                            .tag-group-item {
+                                display: block;
+                                .tag-group-title {
+                                    font-size: 12px;
+                                }
+                                .tag-list {
+                                    margin-top: 10px;
+                                }
+                            }
+                        }
                         .tag-label {
                             padding: 4px 8px;
                             padding-left: 24px;
@@ -467,6 +492,10 @@ main .section.highlight {
     }
 
     .top-article-wrap {
+        .articleCards-container {
+            width: 100%;
+        }
+
         .article-count{
             .article-count-num{
                 display: inline-flex;
@@ -603,6 +632,12 @@ main .section.highlight {
                     background: url("../../icons/arrow-black-down.svg") no-repeat center / contain;
                     position: relative;
                     top: 2px;
+                    transition: all .2s ease-out;
+                }
+                &:hover{
+                    &::after{
+                        top: 4px;
+                    }
                 }
             }
         }

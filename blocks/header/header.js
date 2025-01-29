@@ -22,9 +22,9 @@ function toggleAllNavSections(sections, expanded = false) {
 function toggleMenu(nav, navSections, forceExpanded = null) {
   const expanded = forceExpanded !== null ? forceExpanded : nav.getAttribute('aria-expanded') === 'true';
   const isSP = !isDesktop.matches;
-  
+
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  
+
   if (isSP) {
     // SP表示時は全体のトグルのみ
     navSections.style.display = expanded ? 'none' : 'block';
@@ -63,16 +63,16 @@ export default async function decorate(block) {
       navSection.addEventListener('click', (e) => {
         if (navSection.classList.contains('nav-drop')) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          
+
           // PCの場合、他のトグルメニューを閉じる
           if (isDesktop.matches) {
-            navSections.querySelectorAll('.nav-drop').forEach(drop => {
+            navSections.querySelectorAll('.nav-drop').forEach((drop) => {
               if (drop !== navSection) {
                 drop.setAttribute('aria-expanded', 'false');
               }
             });
           }
-  
+
           navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
           e.stopPropagation(); // イベントの伝播を止める
         }
@@ -112,15 +112,15 @@ export default async function decorate(block) {
 
   // ローカルナビゲーションの追従
   function navSticky() {
-    const navWrapper = document.querySelector('.nav-wrapper');
-    const navTop = navWrapper.getBoundingClientRect().top + window.scrollY;
-  
+    const navWrapperContent = document.querySelector('.nav-wrapper');
+    const navTop = navWrapperContent.getBoundingClientRect().top + window.scrollY;
+
     window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
+      const { scrollY } = window;
       if (scrollY > navTop) {
-        navWrapper.classList.add('is-fixed');
+        navWrapperContent.classList.add('is-fixed');
       } else {
-        navWrapper.classList.remove('is-fixed');
+        navWrapperContent.classList.remove('is-fixed');
       }
     });
   }
