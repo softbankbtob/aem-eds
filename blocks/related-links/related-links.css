@@ -4,6 +4,8 @@
     .related-links{
         ul{
             width: 100%;
+            list-style-type: none;
+            padding-left: 0;
 
             > .related-links-items{
                 margin-top: 16px;

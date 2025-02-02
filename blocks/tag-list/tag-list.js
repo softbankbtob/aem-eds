@@ -1,24 +1,29 @@
 export default function decorate(block) {
-  // 対象の要素を取得
-  const tagListContainer = document.querySelector('.tag-list-container');
+  // ulを取得
+  const ul = block.querySelector('ul');
 
-  // クラスのないdiv要素を削除し、中身を保持
-  tagListContainer.querySelectorAll('div:not([class])').forEach((div) => {
-    // 中身を取得
-    const content = div.innerHTML;
-    // divを削除
-    div.remove();
-    tagListContainer.querySelectorAll('div:not([class]) > ul').forEach((ul) => {
-      ul.remove();
-    });
-    // 中身をblockに追加
-    block.insertAdjacentHTML('beforeend', content);
-  });
-  // 元のブロックの中身を空にして新しい要素を追加
-  block.tagListContainer = '';
-  // 中身のないdivを削除
-  tagListContainer.querySelectorAll('div:not([class])').forEach((emptyDiv) => {
-    emptyDiv.remove();
-  });
-  block.appendChild(tagListContainer);
+  if (ul) {
+    // 既存のタグリストコンテナを取得
+    const existingContainer = block.closest('.tag-list-container');
+
+    if (existingContainer) {
+      // タグリストラッパーを作成
+      const tagListWrapper = document.createElement('div');
+      tagListWrapper.className = 'tag-list-wrapper';
+
+      // タグリストブロックを作成
+      const tagList = document.createElement('div');
+      tagList.className = 'tag-list block';
+      tagList.setAttribute('data-block-name', 'tag-list');
+      tagList.setAttribute('data-block-status', 'loaded');
+
+      // 要素を階層構造に組み立て
+      tagList.appendChild(ul);
+      tagListWrapper.appendChild(tagList);
+
+      // 既存のコンテナの中身を空にして新しい要素を追加
+      existingContainer.textContent = '';
+      existingContainer.appendChild(tagListWrapper);
+    }
+  }
 }

@@ -1,36 +1,10 @@
-<svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="9" height="14" fill="#1E1E1E"/>
-<g id="&#227;&#131;&#136;&#227;&#131;&#131;&#227;&#131;&#151; - &#231;&#181;&#158;&#227;&#130;&#138;&#232;&#190;&#188;&#227;&#129;&#191;&#230;&#156;&#137;&#227;&#130;&#138;" clip-path="url(#clip0_1_7)">
-<rect width="1440" height="3375" transform="translate(-1326 -124)" fill="white"/>
-<g id="/ header">
-<g id="header">
-<g id="Rectangle 2" filter="url(#filter0_d_1_7)">
-<rect x="-1326" y="-124" width="1440" height="161" fill="white"/>
-</g>
-</g>
-<g id="btn_blue">
-<rect x="-162" y="-11" width="186.467" height="36" rx="4" fill="#3D5DDC"/>
-<g id="icon-arrow-white 1" clip-path="url(#clip1_1_7)">
-<path id="icon-arrow-01" fill-rule="evenodd" clip-rule="evenodd" d="M1.848 13.6195L0.001 11.7735L4.774 6.9995L0 2.2265L1.848 0.380501L8.467 6.9995L1.848 13.6195Z" fill="white"/>
-</g>
-</g>
-</g>
+<svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon-arrow-white 1" clip-path="url(#clip0_249_2744)">
+<path id="icon-arrow-01" fill-rule="evenodd" clip-rule="evenodd" d="M1.848 14.1195L0.001 12.2735L4.774 7.4995L0 2.7265L1.848 0.880501L8.467 7.4995L1.848 14.1195Z" fill="white"/>
 </g>
 <defs>
-<filter id="filter0_d_1_7" x="-1326" y="-124" width="1440" height="162" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="1"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_7"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_7" result="shape"/>
-</filter>
-<clipPath id="clip0_1_7">
-<rect width="1440" height="3375" fill="white" transform="translate(-1326 -124)"/>
-</clipPath>
-<clipPath id="clip1_1_7">
-<rect width="8.467" height="13.239" fill="white" transform="translate(0 0.380501)"/>
+<clipPath id="clip0_249_2744">
+<rect width="8.467" height="13.239" fill="white" transform="translate(0 0.880501)"/>
 </clipPath>
 </defs>
 </svg>
