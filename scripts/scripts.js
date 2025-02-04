@@ -257,7 +257,13 @@ class ArticleDisplay {
         <a href="${data.path}" class="articleCards-card-link">
           <div class="articleCards-card-image">
             <picture>
-              <img loading="lazy" alt="" src="${data.imagePath}">
+              <img
+                loading="lazy"
+                alt=""
+                src="${data.imagePath}"
+                width="288"
+                height="162"
+              >
             </picture>
           </div>
           <div class="articleCards-card-body">

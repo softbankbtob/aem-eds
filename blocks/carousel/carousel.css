@@ -228,6 +228,7 @@ main > .section > div.carousel-wrapper {
 
   .carousel .carousel-slide .carousel-slide-image {
     width: 100%;
+    min-height: 210px;
   }
 
   .carousel .carousel-slide .carousel-slide-content {
