@@ -127,6 +127,9 @@ function createSlide(row, slideIndex, carouselId, href) {
   newLink.href = href; // hrefを設定
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
+    // if column contains an a tag, skip it
+    if (column.querySelector('a')) return;
+
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
     newLink.append(column); // aタグにcolumnを追加
     // slide.append(column);
@@ -143,6 +146,7 @@ function createSlide(row, slideIndex, carouselId, href) {
 
 let carouselId = 0;
 export default async function decorate(block) {
+  removeButtonContainer(block);
   carouselId += 1;
   block.setAttribute('id', `carousel-${carouselId}`);
   const rows = block.querySelectorAll(':scope > div');
@@ -180,8 +184,8 @@ export default async function decorate(block) {
   }
 
   rows.forEach((row, idx) => {
-    const buttonContainer = row.querySelector('.button-container'); // button-containerを取得
-    const href = buttonContainer?.querySelector('a')?.getAttribute('href'); // hrefを取得
+    const a = row.querySelector('a'); // aタグを取得
+    const href = a?.getAttribute('href'); // hrefを取得
     const slide = createSlide(row, idx, carouselId, href);
     slidesWrapper.append(slide);
 
@@ -195,7 +199,6 @@ export default async function decorate(block) {
     row.remove();
   });
 
-  removeButtonContainer(block);
   container.append(slidesWrapper);
   block.prepend(container);
 
