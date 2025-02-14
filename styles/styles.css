@@ -777,6 +777,15 @@ main .section.highlight {
             }
         }
 
+        p > picture{
+            display: block;
+            margin-top: 32px;
+
+            @media (width <= 768px) {
+                margin-top: 24px;
+            }
+        }
+
         /* テキストマージン */
         h2 + h3{
             margin-top: 32px;
