@@ -15,6 +15,7 @@ import {
 
 import ArticleDataHandler from './classes/ArticleDataHandler.js';
 import AccordionBuilder from './classes/AccordionBuilder.js';
+import { createOptimizedPicture } from './aem.js';
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -256,15 +257,7 @@ class ArticleDisplay {
       <li class="articleCards-card-item">
         <a href="${data.path}" class="articleCards-card-link">
           <div class="articleCards-card-image">
-            <picture>
-              <img
-                loading="lazy"
-                alt=""
-                src="${data.imagePath}"
-                width="288"
-                height="162"
-              >
-            </picture>
+            ${createOptimizedPicture(data.imagePath, data.title, false, [{ width: '600' }]).outerHTML}
           </div>
           <div class="articleCards-card-body">
             <div class="articleCards-card-date">

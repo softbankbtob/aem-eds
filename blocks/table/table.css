@@ -30,37 +30,63 @@
             font-size: 12px;
         }
 
-        tbody{
+        tr{
+            th, td{
+                padding: 16px;
+                border: 1px solid var(--border-black-02);
+
+                @media (width <= 768px) {
+                    padding: 8px;
+                }
+            }
+
+            th{
+                width: 240px;
+                text-align: center;
+                background-color: var(--background-gray-01);
+
+                @media (width <= 768px) {
+                    width: 120px;
+                }
+
+                > p:first-child{
+                    margin-top: 0;
+                }
+            }
+
+            td{
+                text-align: left;
+
+                > p:first-child{
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    &.gray01{
+        table{
             tr{
-                th, td{
-                    padding: 16px;
-                    border: 1px solid var(--border-black-02);
-
-                    @media (width <= 768px) {
-                        padding: 8px;
-                    }
-                }
-
                 th{
-                    width: 240px;
-                    text-align: center;
-                    background-color: var(--background-gray-01);
-
-                    @media (width <= 768px) {
-                        width: 120px;
-                    }
-
-                    > p:first-child{
-                        margin-top: 0;
-                    }
+                    background-color: #f0f0f0;
                 }
-
-                td{
-                    text-align: left;
-
-                    > p:first-child{
-                        margin-top: 0;
-                    }
+            }
+        }
+    }
+    &.gray02{
+        table{
+            tr{
+                th{
+                    background-color: #d9d9d9;
+                }
+            }
+        }
+    }
+    &.gray03{
+        table{
+            tr{
+                th{
+                    background-color: #bfbfbf;
                 }
             }
         }
