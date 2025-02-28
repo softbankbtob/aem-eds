@@ -10,7 +10,7 @@ export default function decorate(block) {
           && mutation.attributeName === 'data-section-status'
           && mutation.target.dataset.sectionStatus === 'loaded') {
         // article-container内のh2要素を取得
-        const articleContainer = document.querySelector('.article-container');
+        const articleContainer = document.querySelector('.article-container') || document.querySelector('.contents-container');
         if (!articleContainer) return;
 
         const headings = articleContainer.querySelectorAll('h2');

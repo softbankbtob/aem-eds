@@ -351,18 +351,22 @@ header nav .nav-tools {
         background: #3D5DDC;
         margin: 0;
 
-        &::after{
-            content: '';
-            display: block;
-            background: url("../../icons/arrow-white.svg") no-repeat center / contain;
-            width: 8.467px;
-            height: 13.239px;
-            position: absolute;
-            top: 50%;
-            right: 16px;
-            transform: translateY(-50%);
-            transition: all .2s ease;
+        &[target="_blank"]{
+            &::after{
+                content: '';
+                display: block;
+                background: url("../../icons/arrow-white.svg") no-repeat center / contain !important;
+                width: 8.467px;
+                height: 13.239px;
+                position: absolute;
+                top: 50%;
+                right: 16px;
+                transform: translateY(-50%);
+                transition: all .2s ease;
+            }
         }
+
+        
 
         &:hover {
             &::after {

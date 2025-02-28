@@ -109,7 +109,10 @@ h3{
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
+h2 { 
+    margin-top: 60px;
+    font-size: var(--heading-font-size-xl);
+ }
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
@@ -140,25 +143,44 @@ a:any-link {
 /* buttons */
 a.button:any-link,
 button {
-  box-sizing: border-box;
-  display: block;
-  width: fit-content;
-  margin: 12px 0 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font-family: var(--body-font-family);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.25;
-  text-align: center;
-  text-decoration: none;
-  background-color: var(--link-blue);
+  display: inline-flex;
+  padding: 8px 16px;
+  padding-right: 34px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  background: var(--link-blue);
   color: var(--background-color);
+  text-align: center;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration: none !important;
   cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  position: relative;
+
+  &::after{
+    content: '';
+    display: block;
+    width: 1em;
+    height: 1em;
+    background: url("../icons/arrow-white.svg") no-repeat center / contain !important;
+    margin: 0 !important;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translate(0, -50%);
+    transition: all .2s ease;
+  }
+
+  &[target="_blank"]{
+    &::after{
+      background-image: url("../icons/target-blank-white.svg") !important;
+    }
+  }
 }
 
 a.button:hover,
@@ -166,6 +188,10 @@ a.button:focus,
 button:hover,
 button:focus {
   cursor: pointer;
+
+  &::after {
+    transform: translate(3px, -50%);
+  }
 }
 
 button:disabled,
@@ -174,11 +200,47 @@ button:disabled:hover {
   cursor: unset;
 }
 
+a.button.primary,
+button.primary {
+  background-color: #FF5700;
+}
+
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
+  background-color: transparent;
+  border: 1px solid var(--border-black-02);
   color: var(--text-black);
+
+  &::after {
+    background-image: url("../icons/arrow.svg") !important;
+    transform: translate(0, -50%) rotate(180deg);
+  }
+
+  &:hover,
+  &:focus{
+    &::after{
+        transform: translate(3px, -50%) rotate(180deg);
+    }
+  }
+
+  &[target="_blank"]{
+    &::after {
+      background-image: url("../icons/target-blank-black.svg") !important;
+      transform: translate(0, -50%) rotate(0);
+    }
+
+    &:hover,
+    &:focus{
+      &::after{
+        transform: translate(3px, -50%) rotate(0);
+      }
+    }
+  }
+}
+
+a.button.tertiary,
+button.tertiary {
+    background-color: var(--background-black);
 }
 
 /* images */
@@ -216,7 +278,6 @@ p sub {
 
 /* sections */
 main{
-    background-color: var(--background-blue-02);
     padding-bottom: 80px;
 
     @media (width <= 768px) {
@@ -311,6 +372,9 @@ main .section.highlight {
 }
 
 /* p-index-content */
+.p-index {
+    background-color: var(--background-blue-02);
+}
 .p-index-content {
     .accordion-container {
         background: var(--background-color);
@@ -697,81 +761,106 @@ main .section.highlight {
 /* article-container */
 .page-article{
     .article-container{
-        h2 {
-            position: relative;
-            padding-left: 12px;
-            font-size: var(--heading-font-size-xl);
-            font-style: normal;
-            font-weight: 700;
-            line-height: 1.25;
-            margin-top: 60px;
-            scroll-margin-top: 84px; /* ヘッダーの高さ調整用 仮 */
-
-            @media (width <= 768px) {
-                line-height: 1.33;
-                margin-top: 40px;
+        .default-content-wrapper {
+            h2 {
+                position: relative;
+                padding-left: 12px;
+                font-size: var(--heading-font-size-xl);
+                font-style: normal;
+                font-weight: 700;
+                line-height: 1.25;
+                margin-top: 60px;
+                scroll-margin-top: 84px; /* ヘッダーの高さ調整用 仮 */
+    
+                @media (width <= 768px) {
+                    line-height: 1.33;
+                    margin-top: 40px;
+                }
+    
+                &::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 4px;
+                    height: 100%;
+                    background-color: var(--link-blue);
+                }
             }
-
-            &::before {
-                content: "";
-                display: block;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                width: 4px;
-                height: 100%;
-                background-color: var(--link-blue);
+    
+            h3 {
+                position: relative;
+                padding-bottom: 12px;
+                border-bottom: 1px solid var(--border-gray);
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 1.27;
+                margin-top: 32px;
+    
+                @media (width <= 768px) {
+                    padding-bottom: 4px;
+                    font-size: var(--heading-font-size-l);
+                    line-height: 1.53;
+                    margin-top: 24px;
+                }
+            }
+    
+            ul,
+            ol{
+                font-size: var(--body-font-size-default);
+                font-style: normal;
+                font-weight: 400;
+                line-height: 1.75;
+                padding-left: 1em;
+                margin-top: 16px;
+    
+                @media (width <= 768px) {
+                    margin-top: 12px;
+                }
+            }
+            
+            ul{
+                list-style-type: disc;
+            }
+    
+            ol{
+                list-style-type: decimal;
+            }
+    
+            /* テキストマージン */
+            h2 + h3{
+                margin-top: 32px;
+            }
+    
+            p{
+                margin-top: 16px;
+    
+                @media (width <= 768px) {
+                    margin-top: 12px;
+                }
+    
+                &:first-child{
+                    margin-top: 0;
+                }
             }
         }
 
-        h3 {
-            position: relative;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-gray);
-            font-size: 22px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 1.27;
-            margin-top: 32px;
-
-            @media (width <= 768px) {
-                padding-bottom: 4px;
-                font-size: var(--heading-font-size-l);
-                line-height: 1.53;
-                margin-top: 24px;
+        p {
+            a{
+                text-decoration: underline;
             }
         }
-
-        ul,
-        ol{
-            font-size: var(--body-font-size-default);
-            font-style: normal;
-            font-weight: 400;
-            line-height: 1.75;
-            padding-left: 1em;
-            margin-top: 16px;
-
-            @media (width <= 768px) {
-                margin-top: 12px;
-            }
-        }
-        
-        ul{
-            list-style-type: disc;
-        }
-
-        ol{
-            list-style-type: decimal;
-        }
-
+    
         a[target="_blank"] {
             &::after{
                 content: '';
                 display: inline-block;
                 width: 1em;
                 height: 1em;
-                background: url("../icons/icon-target-blank.svg") no-repeat center / contain;
+                background: url("../icons/target-blank.svg") no-repeat center / contain;
                 vertical-align: middle;
                 margin: 0 0.5em;
             }
@@ -796,10 +885,6 @@ main .section.highlight {
 
             @media (width <= 768px) {
                 margin-top: 12px;
-            }
-
-            &:first-child{
-                margin-top: 0;
             }
 
             a{
