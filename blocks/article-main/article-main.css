@@ -95,6 +95,7 @@
 /* 記事ページ全体のレイアウト */
 .page-article{
     position: relative;
+    background-color: var(--background-blue-02);
 
     &::before{
         content: '';

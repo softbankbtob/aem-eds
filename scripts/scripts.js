@@ -57,6 +57,29 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Teriaryボタン
+ * @param {Element} element container element
+ */
+function decorateTertiaryButtons(element) {
+  element.querySelectorAll('p > strong > em > a').forEach((a) => {
+    const p = a.parentElement.parentElement.parentElement;
+    if (
+      // 親要素の構造を確認
+      a.parentElement.tagName === 'EM'
+      && a.parentElement.parentElement.tagName === 'STRONG'
+      && p.tagName === 'P'
+      // 各要素が単一の子要素のみを持つことを確認
+      && a.parentElement.childNodes.length === 1
+      && a.parentElement.parentElement.childNodes.length === 1
+      && p.childNodes.length === 1
+    ) {
+      a.className = 'button tertiary';
+      p.classList.add('button-container');
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -64,6 +87,8 @@ function buildAutoBlocks(main) {
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
+  // tertiary buttonの装飾を追加
+  decorateTertiaryButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
