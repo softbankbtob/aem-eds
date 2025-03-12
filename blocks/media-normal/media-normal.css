@@ -1,0 +1,210 @@
+.media-normal{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 60px;
+
+    @media only screen and (width <= 768px){
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 32px;
+    }
+}
+
+.media-normal-items{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--border-gray);
+
+    @media only screen and (width <= 768px){
+        flex-direction: column;
+    }
+}
+
+.media-normal-img{
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.media-normal-content{
+
+    /* タグ */
+    ul{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        li{
+            display: inline-flex;
+            font-size: 12px;
+            line-height: 125%;
+            padding: 4px 8px;
+            align-items: center;
+            border-radius: 4px;
+            background: var(--background-blue-02);
+        }
+
+        + h3{
+            margin-top: 24px;
+
+            @media only screen and (width <= 768px){
+                margin-top: 16px;
+            }
+        }
+    }
+
+    /* 見出し */
+    h3{
+        font-size: var(--heading-font-size-m);
+        font-weight: 700;
+        line-height: 125%;
+    }
+
+    /* テキスト */
+    p:not([class]){
+        font-size: 14px;
+        line-height: 150%;
+        margin-top: 16px;
+
+        @media only screen and (width <= 768px){
+            margin-top: 10px;
+        }
+    }
+
+    /* ボタンラップ */
+    .media-normal-button-wrap{
+        margin-top: 32px;
+
+        @media only screen and (width <= 768px){
+            margin-top: 24px;
+        }
+
+        p.button-container{
+
+            a{
+                display: flex;
+                width: 100%;
+            }
+
+            & + &{
+                margin-top: 8px;
+            }
+        }
+    }
+}
+
+/* クラスのパターン */
+.media-normal{
+    /* カラム数 */
+    &.col1{
+        flex-direction: column;
+        .media-normal-items{
+            gap: 32px;
+
+            @media only screen and (width <= 768px) {
+                gap: 24px;
+            }
+        }
+    }
+
+    &.col2{
+        .media-normal-items{
+            width: calc(50% - 12px);
+            gap: 24px;
+
+            @media only screen and (width <= 768px) {
+                width: 100%;
+                gap: 16px;
+            }
+        }
+    }
+
+    /* 画像とテキストの比率 */
+    &.img-text-1to1{
+        .media-normal-items{
+            .media-normal-img,
+            .media-normal-content {
+                width: 50%;
+                flex: 1 1 50%;
+
+                @media only screen and (width <= 768px) {
+                    width: 100%;
+                    flex: 1 1 100%;
+                }
+            }
+        }
+    }
+    &.img-text-3to2{
+        .media-normal-items{
+            .media-normal-img {
+                width: 60%;
+                flex: 1 1 60%;
+            }
+            .media-normal-content {
+                width: 40%;
+                flex: 1 1 40%;
+            }
+            .media-normal-img,
+            .media-normal-content {
+                @media only screen and (width <= 768px) {
+                    width: 100%;
+                    flex: 1 1 100%;
+                }
+            }
+        }
+    }
+
+    /* 背景色パターン */
+    &.bg-primary .media-normal-items {
+            background-color: var(--background-blue-02);
+            .media-normal-content ul li {
+            background-color: var(--background-color);
+        }
+    }
+    &.bg-secondary .media-normal-items {
+        background-color: var(--background-blue-01);
+    }
+    &.bg-tertiary .media-normal-items {
+        background-color: var(--background-gray-01);
+    }
+    &.bg-strong .media-normal-items {
+        background-color: var(--background-blueblack);
+        /* font系の設定 */
+        p, h3, li {
+            color: var(--text-white);
+        }
+        .media-normal-content ul li {
+            color: var(--text-black);
+        }
+        a.button.secondary, button.secondary{
+            color: var(--text-white);
+            border-color: var(--text-white);
+
+            &::after {
+                background-image: url("../../icons/arrow-white.svg") !important;
+            }
+            &[target="_blank"]{
+                &::after{
+                  background-image: url("../../icons/target-blank-white.svg") !important;
+                }
+            }
+        }
+    }
+
+    /* ボーダーなし */
+    &.no-border .media-normal-items{
+        border: none;
+    }
+
+    /* 小さいサイズ 幅1000px */
+    &.small{
+        max-width: 1000px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}

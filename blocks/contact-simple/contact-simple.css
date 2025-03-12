@@ -1,0 +1,152 @@
+.contact-simple{
+    width: 100vw;
+    margin-inline: calc(50% - 50.5vw);
+    padding: 64px 0;
+    margin-top: 60px;
+
+    @media only screen and (width <= 768px){
+        padding: 24px 0;
+        margin-top: 32px;
+    }
+}
+
+.contact-simple-header{
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 120px;
+    text-align: center;
+    margin: 0 auto;
+
+    @media only screen and (width <= 768px){
+        padding: 0 24px;
+        text-align: left;
+    }
+
+    h2{
+        font-size: var(--heading-font-size-xl);
+        font-weight: 700;
+        line-height: 125%;
+        margin-top: 0;
+    }
+    p{
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 150%;
+        margin-top: 16px;
+
+        @media only screen and (width <= 768px){
+            margin-top: 12px;
+        }
+    }
+}
+
+.contact-simple-inner{
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 120px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    @media only screen and (width <= 768px){
+        display: block;
+        padding: 0 24px;
+    }
+
+    > div{
+        width: 100%;
+
+        > div{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px 20px 0;
+
+            @media only screen and (width <= 768px){
+                padding-top: 24px;
+            }
+
+            h3{
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 125%; /* 22.5px */
+
+                @media only screen and (width <= 768px){
+                    font-size: 16px;
+                }
+            }
+ 
+            /* テキスト+ボタンの場合 */
+            h3 + p.button-container{
+                margin-top: 16px;
+
+                @media only screen and (width <= 768px){
+                    margin-top: 10px;
+                }
+            }
+
+            /* Secondaryボタンの場合 */
+            a.button.secondary{
+                border: 1px solid var(--border-gray);
+                background-color: var(--background-color);
+            }
+        }
+    }
+}
+
+/* クラスのパターン */
+.contact-simple{
+    /* テキスト色 */
+    &.text-black{
+        color: var(--text-black) !important;
+    }
+    &.text-white{
+        color: var(--text-white) !important;
+
+        a.button.tertiary{
+            color: var(--text-black);
+            background-color: var(--background-white);
+
+            &::after {
+                background-image: url("../icons/arrow.svg") !important;
+                transform: translate(0, -50%);
+            }
+            &[target="_blank"]{
+                &::after {
+                  background-image: url("../icons/target-blank-black.svg") !important;
+                }
+            }
+        }
+    }
+    
+    /* ボタン数 */
+    &.button2,
+    &.button3,
+    &.button4,
+    &.button5 {
+        .contact-simple-inner{
+            > div{
+                width: calc(100% / 3);
+            }
+        }
+    }
+}
+
+@media only screen and (width <= 768px){
+    .contact-simple{
+        /* ボタン数 */
+        &.button2,
+        &.button3,
+        &.button4,
+        &.button5 {
+            .contact-simple-inner{
+                > div{
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
