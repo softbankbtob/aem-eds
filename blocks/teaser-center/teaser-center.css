@@ -1,0 +1,104 @@
+.teaser-center {
+    position: relative;
+    margin: 35px calc(50% - 50vw) 0;
+    padding: 102px calc(50vw - 50%);
+    text-align: center;
+}
+.teaser-center-inner {
+    padding-inline: 40px;
+}
+.teaser-center .teaser-center-img picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.teaser-center .teaser-center-img picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.teaser-center-title .pretitle,
+.teaser-center-title h1 {
+    font-weight: 700;
+    line-height: 1.25;
+}
+.teaser-center-title .pretitle {
+    font-size: 20px;
+    padding-bottom: 8px;
+    margin-top: 0;
+}
+.teaser-center-title .pretitle picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 16px;
+}
+.teaser-center-title h1 {
+    font-size: 28px;
+    margin-top: 0;
+}
+.teaser-center-text {
+    margin-top: 16px;
+}
+.teaser-center-text p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+.teaser-center-text .buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+}
+.teaser-center a.button.secondary {
+    background-color: #fff;
+}
+
+/* 見出しの大きさ */
+.teaser-center.heading-l .teaser-center-title h1 {
+    font-size: 28px;
+}
+.teaser-center.heading-ll .teaser-center-title h1 {
+    font-size: 32px;
+}
+.teaser-center.heading-lll .teaser-center-title h1 {
+    font-size: 36px;
+}
+
+/* 文字色 */
+.teaser-center.text-white {
+    color: #fff;
+}
+
+@media only screen and (width <= 768px){
+    .teaser-center {
+        margin-top: 24px;
+        padding-block: 40px;
+    }
+    .teaser-center-inner {
+        padding-inline: 0;
+    }
+    .teaser-center-title .pretitle {
+        font-size: 16px;
+    }
+    .teaser-center-title .pretitle picture {
+        padding-bottom: 8px;
+    }
+    .teaser-center .teaser-center-title h1 {
+        font-size: 24px;
+    }
+
+    /* 見出しの大きさ */
+    .teaser-center.heading-l .teaser-center-title h1 {
+        font-size: 24px;
+    }
+    .teaser-center.heading-ll .teaser-center-title h1 {
+        font-size: 26px;
+    }
+    .teaser-center.heading-lll .teaser-center-title h1 {
+        font-size: 28px;
+    }
+}
