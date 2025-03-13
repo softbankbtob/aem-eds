@@ -1,0 +1,108 @@
+.teaser-left-wrapper {
+    width: 100vw;
+    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
+}
+.teaser-left {
+    padding-left: 24px;
+    margin-top: 35px;
+}
+.teaser-left-body {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 32px;
+}
+.teaser-left-img {
+   width: 50%;
+}
+.teaser-left-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+ }
+.teaser-left-text {
+    width: 608px;
+    padding-block: 24px;
+}
+.teaser-left-text .pretitle {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+.teaser-left-text .pretitle,
+.teaser-left-text p,
+.teaser-left-text h1 {
+    font-weight: 700;
+    line-height: 1.25;
+}
+.teaser-left-text h1 {
+    font-size: 28px;
+    margin-top: 0;
+}
+.teaser-left-text > .txt {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 16px;
+    font-weight: 400;
+}
+.teaser-left-text .buttons-wrapper {
+    display: flex;
+    gap: 8px;
+    margin-top: 32px;
+}
+.teaser-left a.button.secondary {
+    background-color: #fff;
+}
+
+/* 見出しの大きさ */
+.teaser-left.heading-l .teaser-left-text h1 {
+    font-size: 28px;
+}
+.teaser-left.heading-ll .teaser-left-text h1 {
+    font-size: 32px;
+}
+.teaser-left.heading-lll .teaser-left-text h1 {
+    font-size: 36px;
+}
+
+/* 文字色 */
+.teaser-left.text-white {
+    color: #fff;
+}
+
+@media only screen and (width <= 768px){
+    .teaser-left {
+        padding-inline: 0;
+        margin-top: 24px;
+    }
+    .teaser-left-body {
+        flex-direction: column-reverse;
+        gap: 16px;
+        padding-bottom: 40px;
+    }
+    .teaser-left-text,
+    .teaser-left-img {
+        width: 100%;
+    }
+    .teaser-left-text {
+        padding: 0 24px;
+    }
+    .teaser-left-text .pretitle {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .teaser-left-text h1 {
+        font-size: 24px;
+    }
+
+    /* 見出しの大きさ */
+    .teaser-left.heading-l .teaser-left-text h1 {
+        font-size: 24px;
+    }
+    .teaser-left.heading-ll .teaser-left-text h1 {
+        font-size: 26px;
+    }
+    .teaser-left.heading-lll .teaser-left-text h1 {
+        font-size: 28px;
+    }
+}
