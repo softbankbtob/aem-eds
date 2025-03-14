@@ -4,7 +4,7 @@ export default async function decorate() {
   const tagListRes = await fetch(`${orign}/tag-list.json`);
   const queryIndex = await queryIndexRes.json();
   const tagList = await tagListRes.json();
-
+  
   let format, tags, display;  
   document.querySelectorAll('.pagelist p').forEach((p, i) => {
     if (i === 1) format = p.textContent;
@@ -12,7 +12,10 @@ export default async function decorate() {
     if (i === 5) display = p.textContent;
   });
 
-  console.log(queryIndex);
-  console.log(tagList);
-  console.log(format, tags, display);
+  let queryIndexData = queryIndex.data;
+  let tagListData = tagList.data;
+
+  queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/') > 0);
+  console.log(queryIndexData);
+
 };
