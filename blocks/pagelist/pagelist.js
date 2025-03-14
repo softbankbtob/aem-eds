@@ -2,10 +2,8 @@ export default async function decorate() {
   const orign = location.origin;
   const queryIndexRes = await fetch(`${orign}/query-index.json`);
   const tagListRes = await fetch(`${orign}/tag-list.json`);
-  let queryIndex = await queryIndexRes.json();
-  let tagList = await tagListRes.json();
-  queryIndex = JSON.parse(queryIndex);
-  tagList = JSON.parse(tagList);
+  const queryIndex = await queryIndexRes.json();
+  const tagList = await tagListRes.json();
 
   let format, tags, display;  
   document.querySelectorAll('.pagelist p').forEach((p, i) => {
@@ -16,4 +14,5 @@ export default async function decorate() {
 
   console.log(queryIndex);
   console.log(tagList);
+  console.log(format, tags, display);
 };
