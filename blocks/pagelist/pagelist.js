@@ -15,7 +15,7 @@ export default async function decorate() {
   let queryIndexData = queryIndex.data;
   let tagListData = tagList.data;
 
-  queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/') > 0);
+  queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/') > -1);
   console.log(queryIndexData);
 
 };
