@@ -14,8 +14,35 @@ export default async function decorate() {
 
   let queryIndexData = queryIndex.data;
   let tagListData = tagList.data;
+  queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/business/articles/') > -1);
 
-  queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/') > -1);
-  console.log(queryIndexData);
+  // タグとtypeの辞書を作成
+  const tagTypeMap = {};
+  tagListData.forEach(item => {
+      tagTypeMap[item.tag] = item.type;
+  });
 
+  // typeごとにタグを分類
+  const typeTagMap = {};
+  tags.forEach(tag => {
+      const tagType = tagTypeMap[tag];
+      if (tagType) {
+          if (!typeTagMap[tagType]) {
+              typeTagMap[tagType] = [];
+          }
+          typeTagMap[tagType].push(tag);
+      };
+  });
+
+  function findBlogPosts(posts, typeTagMap) {
+      return posts.filter(post => {
+          const postTags = JSON.parse(post.tags.replace(/'/g, "\""));
+          return Object.keys(typeTagMap).some(type => 
+              typeTagMap[type].every(tag => postTags.includes(tag))
+          );
+      });
+  }
+
+  const filteredPosts = findBlogPosts(queryIndexData, typeTagMap);
+  console.log(filteredPosts);
 };
