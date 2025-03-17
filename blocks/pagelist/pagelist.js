@@ -31,13 +31,12 @@ export default async function decorate() {
     if (type) tagTypeMap.has(type) ? tagTypeMap.get(type).push(tag) : tagTypeMap.set(type, [tag]);
   });
   
-  const result = tagTypeMap.forEach((tagValArray) => {
-    if (queryIndexData.length) {
-      return queryIndexData.filter((page) => getIsDuplicate(page.tags, tagValArray));
-    } else {
-      return queryIndexData;
-    };
-  });
+  let result;
+  if (queryIndexData.length) {
+    tagTypeMap.forEach( tagValArray => result = queryIndexData.filter((page) => getIsDuplicate(page.tags, tagValArray)));
+  } else {
+    result = [];
+  }
 
   console.log(result);
 };
