@@ -16,32 +16,11 @@ export default async function decorate() {
   let tagListData = tagList.data;
   queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/business/articles/') > -1);
 
-  const tagToType = tagListData.reduce((acc, { tag, type }) => {
-    acc[tag] = type;
-    return acc;
-  }, {});
-
-  const typeToTags = tags.reduce((acc, tag) => {
-    const tagType = tagToType[tag];
-    if (!acc[tagType]) {
-      acc[tagType] = [];
-    }
-    acc[tagType].push(tag);
-    return acc;
-  }, {});
-
-  const filteredBlogs = queryIndexData.filter((blog) => {
-    const tags = blog.tags;
-    return Object.entries(typeToTags).every(([type, tagsList]) => {
-      if (type === "キーワード" || type === "カテゴリー") {
-        // OR条件
-        return tagsList.some((tag) => tags.includes(tag));
-      } else {
-        // AND条件
-        return tagsList.every((tag) => tags.includes(tag));
-      }
-    });
+  const tagTypeMap = new Map();
+  tags.forEach((tag) => {
+    const type = tagListData.find((data) => data.tag === tag)?.type;
+    if (!type) tagTypeMap.has(type) ? tagTypeMap.get(type).push(tag) : tagTypeMap.set(type, [tag]);
   });
 
-  console.log(filteredBlogs);
+  console.log(tagTypeMap);
 };
