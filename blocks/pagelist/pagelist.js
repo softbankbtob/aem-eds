@@ -20,7 +20,10 @@ export default async function decorate() {
   let tagListData = tagList.data;
   queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/business/articles/') > -1);
 
-  queryIndexData.forEach(page => page.tags = JSON.parse(page.tags)[0]?.split(', '));
+  queryIndexData.forEach((page) => {
+    page.tags = JSON.parse(page.tags);
+    if(page.tags.length) page.tags = page.tags[0]?.split(', ');
+  });
 
   const tagTypeMap = new Map();
   tags.forEach((tag) => {
