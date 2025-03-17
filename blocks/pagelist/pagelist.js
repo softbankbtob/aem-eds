@@ -20,21 +20,17 @@ export default async function decorate() {
   let tagListData = tagList.data;
   queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/business/articles/') > -1);
 
+  queryIndexData.forEach(page => page.tags = JSON.parse(page.tags)[0]?.split(', '));
+
   const tagTypeMap = new Map();
   tags.forEach((tag) => {
     const type = tagListData.find((data) => data.tag === tag)?.type;
     if (type) tagTypeMap.has(type) ? tagTypeMap.get(type).push(tag) : tagTypeMap.set(type, [tag]);
   });
-
   
   const result = tagTypeMap.forEach((tagValArray) => {
     if (queryIndexData.length) {
-      let result = queryIndexData.filter((page) => {
-        page.tags = JSON.parse(page.tags);
-        if (page.tags.length) page.tags = page.tags[0].split(', ');
-        getIsDuplicate(page.tags, tagValArray);
-      });
-      return result;
+      return result = queryIndexData.filter((page) => getIsDuplicate(page.tags, tagValArray));
     } else {
       return queryIndexData;
     };
