@@ -19,7 +19,7 @@ export default async function decorate() {
   const tagTypeMap = new Map();
   tags.forEach((tag) => {
     const type = tagListData.find((data) => data.tag === tag)?.type;
-    if (!type) tagTypeMap.has(type) ? tagTypeMap.get(type).push(tag) : tagTypeMap.set(type, [tag]);
+    if (type) tagTypeMap.has(type) ? tagTypeMap.get(type).push(tag) : tagTypeMap.set(type, [tag]);
   });
 
   console.log(tagTypeMap);
