@@ -1,4 +1,8 @@
 export default async function decorate() {
+  function getIsDuplicate(arr1, arr2) {
+    return [...arr1, ...arr2].filter(item => arr1.includes(item) && arr2.includes(item)).length > 0;
+  };
+
   const orign = location.origin;
   const queryIndexRes = await fetch(`${orign}/query-index.json`);
   const tagListRes = await fetch(`${orign}/tag-list.json`);
@@ -22,5 +26,15 @@ export default async function decorate() {
     if (type) tagTypeMap.has(type) ? tagTypeMap.get(type).push(tag) : tagTypeMap.set(type, [tag]);
   });
 
-  console.log(tagTypeMap);
+  
+  const result = tagTypeMap.forEach((tagValArray) => {
+    if (queryIndexData.length) {
+      let result = queryIndexData.filter((page) => getIsDuplicate(page.tag, tagValArray));
+      return result;
+    } else {
+      return queryIndexData
+    };
+  });
+
+  console.log(result);
 };
