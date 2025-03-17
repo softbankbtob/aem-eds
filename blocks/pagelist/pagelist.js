@@ -33,7 +33,7 @@ export default async function decorate() {
   
   const result = tagTypeMap.forEach((tagValArray) => {
     if (queryIndexData.length) {
-      return result = queryIndexData.filter((page) => getIsDuplicate(page.tags, tagValArray));
+      return queryIndexData.filter((page) => getIsDuplicate(page.tags, tagValArray));
     } else {
       return queryIndexData;
     };
