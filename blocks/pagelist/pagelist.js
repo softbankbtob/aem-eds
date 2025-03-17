@@ -16,33 +16,32 @@ export default async function decorate() {
   let tagListData = tagList.data;
   queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/business/articles/') > -1);
 
-  // タグとtypeの辞書を作成
-  const tagTypeMap = {};
-  tagListData.forEach(item => {
-      tagTypeMap[item.tag] = item.type;
+  const tagToType = tagListData.reduce((acc, { tag, type }) => {
+    acc[tag] = type;
+    return acc;
+  }, {});
+
+  const typeToTags = tags.reduce((acc, tag) => {
+    const tagType = tagToType[tag];
+    if (!acc[tagType]) {
+      acc[tagType] = [];
+    }
+    acc[tagType].push(tag);
+    return acc;
+  }, {});
+
+  const filteredBlogs = queryIndexData.filter((blog) => {
+    const tags = blog.tags;
+    return Object.entries(typeToTags).every(([type, tagsList]) => {
+      if (type === "キーワード" || type === "カテゴリー") {
+        // OR条件
+        return tagsList.some((tag) => tags.includes(tag));
+      } else {
+        // AND条件
+        return tagsList.every((tag) => tags.includes(tag));
+      }
+    });
   });
 
-  // typeごとにタグを分類
-  const typeTagMap = {};
-  tags.forEach(tag => {
-      const tagType = tagTypeMap[tag];
-      if (tagType) {
-          if (!typeTagMap[tagType]) {
-              typeTagMap[tagType] = [];
-          }
-          typeTagMap[tagType].push(tag);
-      };
-  });
-
-  function findBlogPosts(posts, typeTagMap) {
-      return posts.filter(post => {
-          const postTags = JSON.parse(post.tags.replace(/'/g, "\""));
-          return Object.keys(typeTagMap).some(type => 
-              typeTagMap[type].every(tag => postTags.includes(tag))
-          );
-      });
-  }
-
-  const filteredPosts = findBlogPosts(queryIndexData, typeTagMap);
-  console.log(filteredPosts);
+  console.log(filteredBlogs);
 };
