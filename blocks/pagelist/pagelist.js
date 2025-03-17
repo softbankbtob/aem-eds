@@ -31,7 +31,7 @@ export default async function decorate() {
     if (queryIndexData.length) {
       let result = queryIndexData.filter((page) => {
         page.tags = JSON.parse(page.tags);
-        if (page.tags.length) page.tags[0].split(', ');
+        if (page.tags.length) page.tags = page.tags[0].split(', ');
         getIsDuplicate(page.tags, tagValArray);
       });
       return result;
