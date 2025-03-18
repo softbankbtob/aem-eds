@@ -41,15 +41,17 @@ export default async function decorate() {
   
   const iframe = document.createElement('iframe');
   iframe.src = '/tools/sidekick/blocks/card';
+  iframe.style.display = 'none';
   iframe.onload = function() {
     try {
       const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
       const iframeContent = iframeDoc.documentElement.innerHTML;
-      console.log(iframeContent);
+      console.log(result);
       iframe.remove();
     } catch(error) {
       console.error('Error accessing iframe content:', error);
     }
   };
+
   document.querySelector('.pagelist.block').append(iframe);
 };
