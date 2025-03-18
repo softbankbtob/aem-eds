@@ -50,6 +50,10 @@ export default async function decorate() {
         result.forEach((page, i) => {
           if (i < 3) {
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
+            item.querySelector('a').href = page.path;
+            let sourcePath = item.querySelector('picture > source').srcset;
+            const itemImgPath = page.image;
+            sourcePath = sourcePath.replace(sourcePath.split('?')[0], itemImgPath.split('?')[0]);
             console.log(item);
           } else {
             
