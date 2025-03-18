@@ -98,9 +98,9 @@ export default async function decorate() {
         });
 
         const pagelistWrapper = document.querySelector('.pagelist-wrapper');
-        pagelistWrapper.remove();
+        pagelistWrapper.innerHTML = '';
         pagelistWrapper.append(cardsBlock);
-        
+
       } catch(error) {
         console.error('Error accessing iframe content:', error);
       };
