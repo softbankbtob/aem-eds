@@ -53,7 +53,7 @@ export default async function decorate() {
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
 
             //一覧表示させるページ情報の取得
-            const pageNavigationTitle = page.navigation-title;
+            const pageNavigationTitle = page["navigation-title"];
             const pageImage = page.image;
             const pagePath = page.path;
             const pageTags = page.tags;
