@@ -66,7 +66,7 @@ export default async function decorate() {
             sourcePath = sourcePath.replace(sourcePath.split('?')[0], pageImage.split('?')[0]);
             item.querySelector('picture > source').srcset = sourcePath;
             let imgSrc = item.querySelector('img').src;
-            imgSrc = imgSrc.repeat(imgSrc.split('?')[0], pageImage.split('?')[0]);
+            imgSrc = imgSrc.replace(imgSrc.split('?')[0], pageImage.split('?')[0]);
             item.querySelector('img').src = imgSrc;
             console.log(item);
           } else {
