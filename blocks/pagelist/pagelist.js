@@ -93,7 +93,8 @@ export default async function decorate() {
             const liEls = cardBody.querySelectorAll('ul > li');
             liEls.forEach((li, i) => li.textContent = pageTags[i]);
           } else {
-            
+            const item = cardsBlock.querySelectorAll('ul')[0].children[0].cloneNode(true);
+            console.log(item);
           };
         });
 
