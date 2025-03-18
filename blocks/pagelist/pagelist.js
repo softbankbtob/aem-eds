@@ -49,11 +49,25 @@ export default async function decorate() {
         const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
         result.forEach((page, i) => {
           if (i < 3) {
+            //書き換え対象の取得
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
-            item.querySelector('a').href = page.path;
+
+            //一覧表示させるページ情報の取得
+            const pageNavigationTitle = page.navigation-title;
+            const pageImage = page.image;
+            const pagePath = page.path;
+            const pageTags = page.tags;
+            
+            //pathの書き換え
+            item.querySelector('a').href = pagePath;
+            
+            //画像pathの書き換え
             let sourcePath = item.querySelector('picture > source').srcset;
-            const itemImgPath = page.image;
-            sourcePath = sourcePath.replace(sourcePath.split('?')[0], itemImgPath.split('?')[0]);
+            sourcePath = sourcePath.replace(sourcePath.split('?')[0], pageImage.split('?')[0]);
+            item.querySelector('picture > source').srcset = sourcePath;
+            let imgSrc = item.querySelector('img').src;
+            imgSrc = imgSrc.repeat(imgSrc.split('?')[0], pageImage.split('?')[0]);
+            item.querySelector('img').src = imgSrc;
             console.log(item);
           } else {
             
