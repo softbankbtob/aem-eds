@@ -51,7 +51,7 @@ export default async function decorate() {
       } catch(error) {
         console.error('Error accessing iframe content:', error);
       };
-    }, 1000);
+    }, 500);
   };
 
   document.querySelector('.pagelist.block').append(iframe);
