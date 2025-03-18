@@ -46,8 +46,7 @@ export default async function decorate() {
     try {
       const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
       const iframeContent = iframeDoc.documentElement.innerHTML;
-      console.log(result);
-      iframe.remove();
+      console.log(iframeContent);
     } catch(error) {
       console.error('Error accessing iframe content:', error);
     }
