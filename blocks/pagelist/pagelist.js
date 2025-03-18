@@ -47,6 +47,7 @@ export default async function decorate() {
       try {
         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
         const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
+
         result.forEach((page, i) => {
           if (i < 3) {
             //書き換え対象の取得
@@ -91,12 +92,15 @@ export default async function decorate() {
             //タグの書き換え
             const liEls = cardBody.querySelectorAll('ul > li');
             liEls.forEach((li, i) => li.textContent = pageTags[i]);
-
-            console.log(item);
           } else {
-            console.log('hogehoge');
+            
           };
         });
+
+        const pagelistWrapper = document.querySelector('.pagelist-wrapper');
+        pagelistWrapper.remove();
+        pagelistWrapper.append(cardsBlock);
+        
       } catch(error) {
         console.error('Error accessing iframe content:', error);
       };
