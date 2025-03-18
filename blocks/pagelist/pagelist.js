@@ -48,7 +48,7 @@ export default async function decorate() {
         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
         const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
 
-        function cardBlockUpdate(item) {
+        function cardBlockUpdate(item, page) {
           //ページ情報の取得
           const pageNavigationTitle = page["navigation-title"];
           const pageImage = page.image;
@@ -93,10 +93,10 @@ export default async function decorate() {
         result.forEach((page, i) => {
           if (i < 3) {
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
-            cardBlockUpdate(item);
+            cardBlockUpdate(item, page);
           } else {
             const item = cardsBlock.querySelectorAll('ul')[0].children[0].cloneNode(true);
-            cardsBlock.querySelectorAll('ul')[0].appendChild(cardBlockUpdate(item));
+            cardsBlock.querySelectorAll('ul')[0].appendChild(cardBlockUpdate(item, page));
           };
         });
 
