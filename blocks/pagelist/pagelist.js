@@ -46,12 +46,19 @@ export default async function decorate() {
     setTimeout(() => {
       try {
         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-        const iframeContent = iframeDoc.documentElement.innerHTML;
-        console.log(iframeContent);
+        const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
+        result.foreach((page, i) => {
+          if (i < 3) {
+            const item = cardsBlock.querySelectorAll(`ul > li`)[i];
+            console.log(item);
+          } else {
+            
+          };
+        });
       } catch(error) {
         console.error('Error accessing iframe content:', error);
       };
-    }, 500);
+    }, 1000);
   };
 
   document.querySelector('.pagelist.block').append(iframe);
