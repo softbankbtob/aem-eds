@@ -73,7 +73,7 @@ export default async function decorate() {
             item.querySelector('img').src = imgSrc;
             
             // テキスト部分
-            const cardBody = cardsBlock.querySelector('.cards-card-body');
+            const cardBody = item.querySelector('.cards-card-body');
 
             // 日付の書き換え
             const p = cardBody.querySelector('p');
