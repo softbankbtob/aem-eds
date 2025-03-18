@@ -348,7 +348,7 @@ header nav .nav-tools {
         align-items: baseline;
         gap: 10px;
         border-radius: 4px;
-        background: #3D5DDC;
+        background: var(--link-blue-02);
         margin: 0;
 
         &[target="_blank"]{

@@ -14,7 +14,7 @@
                     display: flex;
                     align-items: center;
                     gap: 8px;
-                    color: var(--link-blue);
+                    color: var(--link-blue-02);
                     font-size: 16px;
                     font-weight: 700;
                     line-height: normal;

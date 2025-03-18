@@ -23,7 +23,7 @@
 
             .download-banner-text{
                 p:has(strong){
-                    color: var(--link-blue);
+                    color: var(--link-blue-02);
                 }
             }
         }

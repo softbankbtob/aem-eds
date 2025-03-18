@@ -78,11 +78,33 @@ const loadEmbed = (block, link, autoplay) => {
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
   if (config) {
+    // 既存のクラスを保持しながら新しいクラスを追加
+    const existingClasses = [...block.classList];
     block.innerHTML = config.embed(url, autoplay);
-    block.classList = `block embed embed-${config.match[0]}`;
+
+    // 基本クラスを設定
+    block.classList.add('block', 'embed', `embed-${config.match[0]}`);
+
+    // 既存のクラスを復元（block、embed、embed-XXX以外）
+    existingClasses.forEach(cls => {
+      if (cls !== 'block' && !cls.startsWith('embed')) {
+        block.classList.add(cls);
+      }
+    });
   } else {
+    // 既存のクラスを保持
+    const existingClasses = [...block.classList];
     block.innerHTML = getDefaultEmbed(url);
-    block.classList = 'block embed';
+
+    // 基本クラスを設定
+    block.classList.add('block', 'embed');
+
+    // 既存のクラスを復元（block、embed以外）
+    existingClasses.forEach(cls => {
+      if (cls !== 'block' && cls !== 'embed') {
+        block.classList.add(cls);
+      }
+    });
   }
   block.classList.add('embed-is-loaded');
 };

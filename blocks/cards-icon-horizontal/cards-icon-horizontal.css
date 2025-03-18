@@ -1,55 +1,60 @@
-.cards-normal {
+.cards-icon-horizontal {
   margin-top: 32px;
 }
 
-.cards-normal-item {
+.cards-icon-horizontal-listItem {
+    display: flex;
+}
+
+.cards-icon-horizontal-item {
+  display: flex;
   width: 100%;
 }
 
 
-.cards-normal-item-image {
+.cards-icon-horizontal-item-image {
+  flex: 0 0 auto;
+  margin-top: 24px;
+  margin-left: 24px;
   width: 100%;
+  max-width: 120px;
+  height: fit-content;
+  border-radius: 4px;
+  overflow: hidden;
   picture {
     width: 100%;
     img {
       width: 100%;
+      height: auto;
     }
   }
 }
 
-.cards-normal > ul {
+.cards-icon-horizontal-item-contents {
+  flex: 1 1 auto;
+  padding-bottom: 32px;
+}
+
+.cards-icon-horizontal > ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px 24px;
 }
 
-.cards-normal-listItem {
-  display: grid;
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 3;
-  gap: 0;
+.cards-icon-horizontal-listItem {
 }
-.cards-normal-item {
+.cards-icon-horizontal-item {
   transition: box-shadow 300ms ease-out;
-  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   overflow: hidden;
-  display: inherit;
-  grid-template-rows: inherit;
-  grid-row: inherit;
+  border: 1px solid var(--border-gray);
 }
 
-.cards-normal-item-inner {
-  height: 100%;
-  display: inherit;
-  grid-template-rows: inherit;
-  grid-row: inherit;
+.cards-icon-horizontal-item-inner {
+  display: contents;
 }
 
-.cards-normal .cards-normal-listItem > .cards-normal-item.-link {
-  text-decoration: none;
-  
+.cards-icon-horizontal .cards-icon-horizontal-listItem > .cards-icon-horizontal-item.-link {
   &:hover{
     text-decoration: none;
     transition: box-shadow 300ms ease-out, color 300ms ease-out;
@@ -62,24 +67,21 @@
 }
 
 /* クラスのパターン */
-.cards-normal {
+.cards-icon-horizontal {
   /* 線なし */
-  &.no-border .cards-normal-item {
-    box-shadow: none;
-    img {
-      border-radius: 8px;
-    }
-  }
-  /* シャドウの枠 */
-  &.border .cards-normal-item {
-    box-shadow: none;
-    border: 1px solid var(--border-gray);
+  &.no-border .cards-icon-horizontal-item {
+    border: none;
   }
 
-  /* 四角 */
-  &.no-radius .cards-normal-item {
-    border-radius: 0;
+  /* 画像サイズ */
+  &.img-small .cards-icon-horizontal-item-image {
+    max-width: 64px;
   }
+
+  /* 四角
+  &.no-radius .cards-icon-horizontal-item {
+    border-radius: 0;
+  } */
 
   /* カラム */
   &.col1 > ul {
@@ -110,77 +112,72 @@
   }
 
   /* 背景色パターン */
-  &.bg-primary .cards-normal-item {
+  &.bg-primary .cards-icon-horizontal-item {
     background-color: var(--background-blue-02);
-    .cards-normal-item-tags li {
+    .cards-icon-horizontal-item-tags li {
       background-color: var(--background-color);
     }
   }
-  &.bg-secondary .cards-normal-item {
+  &.bg-secondary .cards-icon-horizontal-item {
     background-color: var(--background-blue-01);
   }
-  &.bg-tertiary .cards-normal-item {
+  &.bg-tertiary .cards-icon-horizontal-item {
     background-color: var(--background-gray-01);
   }
-  &.bg-strong .cards-normal-item {
+  &.bg-strong .cards-icon-horizontal-item {
     background-color: var(--background-blueblack);
     /* font系の設定 */
     p, h3, li, .a-container a {
       color: var(--text-white);
     }
-    .cards-normal-item-tags li {
+    .cards-icon-horizontal-item-tags li {
       color: var(--text-black);
     }
   }
 
   /* ボタン縦並び */
-  /* &.button-vertical .cards-normal-item {
+  /* &.button-vertical .cards-icon-horizontal-item {
     .buttons-wrapper {
       flex-direction: column;
     }
   } */
 
   /* 見出しが上 */
-  &.above-heading .cards-normal-item {
-    .cards-normal-item-image {
+  &.above-heading .cards-icon-horizontal-item {
+    .cards-icon-horizontal-item-image {
       order: 2;
-      padding: 0 24px;
+      /* padding: 0 24px; */
       img {
-        border-radius: 8px;
+        /* border-radius: 8px; */
       }
     }
-    .cards-normal-item-body1 {
+    .cards-icon-horizontal-item-body1 {
       order: 1;
-      padding: 24px;
     }
-    .cards-normal-item-body2 {
+    .cards-icon-horizontal-item-body2 {
       order: 3;
-    }
-  }
-
-  /* 画像にパディング */
-  &.img-padding .cards-normal-item {
-    .cards-normal-item-image {
-      padding: 24px 24px 0;
-      img {
-        border-radius: 8px;
-      }
     }
   }
 }
 
-.cards-normal {
-  .cards-normal-item-body1 {
+.cards-icon-horizontal.col2 .buttons-wrapper,
+.cards-icon-horizontal.col3 .buttons-wrapper,
+.cards-icon-horizontal.col4 .buttons-wrapper {
+  flex-direction: column;
+}
+
+.cards-icon-horizontal {
+  .cards-icon-horizontal-item-body1 {
     padding: 24px 24px 0;
     > *:first-child {
       margin-top: 0;
     }
   }
-  .cards-normal-item-body2 {
-    padding: 0 24px 32px;
+  .cards-icon-horizontal-item-body2 {
+    padding: 0 24px;
   }
-  .cards-normal-item-body1,
-  .cards-normal-item-body2 {
+  .cards-icon-horizontal-item-body1,
+  .cards-icon-horizontal-item-body2 {
   }
   /* font系の設定 */
   p, li {
@@ -190,8 +187,8 @@
     line-height: 1.5;
   }
 
-  a {
-    font-size: 14px;
+  a:not(:has(div)) {
+    font-size: 16px;
     text-decoration: underline;
   }
 
@@ -205,7 +202,7 @@
     color: #323232;
     font-size: 18px;
     font-weight: 700;
-    line-height: 24px;
+    line-height: 1.25;
     margin-top: 16px;
   }
 
@@ -223,7 +220,7 @@
     }
   }
 
-  .cards-normal-item-lists{
+  .cards-icon-horizontal-item-lists{
     margin-top: 16px;
     li {
       position: relative;
@@ -232,7 +229,7 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 8px;
+        top: 10px;
         width: 5px;
         height: 5px;
         border-radius: 50%;
@@ -241,7 +238,7 @@
     }
   }
 
-  .cards-normal-item-tags{
+  .cards-icon-horizontal-item-tags{
     margin-top: 32px;
     display: flex;
     width: 100%;
@@ -264,22 +261,27 @@
   }
 }
 
-.cards-normal .cards-normal-card-image-section {
+.cards-icon-horizontal .cards-icon-horizontal-card-image-section {
   line-height: 0;
 }
 
-.cards-normal1-listItem > a img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+.cards-icon-horizontal1-listItem > a img {
+  width: 120px;
+  height: auto;
 }
 
 @media only screen and (width <= 768px){
-  .cards-normal > ul { 
+  .cards-icon-horizontal-item {
+      flex-direction: column;
+  }
+  .cards-icon-horizontal-item-image {
+    margin-inline: auto;
+  }
+  .cards-icon-horizontal > ul { 
     grid-template-columns: 1fr;
   }
 
-  .cards-normal .cards-normal-listItem{
+  .cards-icon-horizontal .cards-icon-horizontal-listItem{
     width: 100%;
   }
 

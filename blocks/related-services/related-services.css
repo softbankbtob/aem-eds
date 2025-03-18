@@ -62,7 +62,7 @@
                             }
 
                             &:has(strong){
-                                color: var(--link-blue);
+                                color: var(--link-blue-02);
                                 margin: 8px 0;
 
                                 @media (width <= 768px) {
