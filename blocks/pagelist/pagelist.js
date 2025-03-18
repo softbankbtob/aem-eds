@@ -89,7 +89,7 @@ export default async function decorate() {
             h3.textContent = pageNavigationTitle;
 
             //タグの書き換え
-            const liEls = cardsBlock.querySelectorAll('ul > li');
+            const liEls = cardBody.querySelectorAll('ul > li');
             liEls.forEach((li, i) => li.textContent = pageTags[i]);
 
             console.log(item);
