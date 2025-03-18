@@ -88,6 +88,8 @@ export default async function decorate() {
           //タグの書き換え
           const liEls = cardBody.querySelectorAll('ul > li');
           liEls.forEach((li, i) => li.textContent = pageTags[i]);
+
+          return item;
         };
 
         result.forEach((page, i) => {
