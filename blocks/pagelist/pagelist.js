@@ -40,7 +40,7 @@ export default async function decorate() {
   };
   
   const iframe = document.createElement('iframe');
-  iframe.src = 'https://main--aem-eds--softbankbtob.aem.live/tools/sidekick/blocks/card';
+  iframe.src = '/tools/sidekick/blocks/card';
   iframe.onload = function() {
     try {
       const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
