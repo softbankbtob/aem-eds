@@ -48,53 +48,55 @@ export default async function decorate() {
         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
         const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
 
+        function cardBlockUpdate(item) {
+          //ページ情報の取得
+          const pageNavigationTitle = page["navigation-title"];
+          const pageImage = page.image;
+          const pagePath = page.path;
+          const pageTags = page.tags;
+          const pageLastModified = Number(page.lastModified);
+
+          //pathの書き換え
+          item.querySelector('a').href = pagePath;
+
+          //画像pathの書き換え
+          const source = item.querySelector('picture > source');
+          let sourcePath = source.srcset;
+          sourcePath = sourcePath.replace(sourcePath.split('?')[0], pageImage.split('?')[0]);
+          source.srcset = sourcePath;
+          const img = item.querySelector('img');
+          let imgSrc = img.src;
+          imgSrc = imgSrc.replace(imgSrc.split('?')[0], pageImage.split('?')[0]);
+          item.querySelector('img').src = imgSrc;
+
+          // テキスト部分
+          const cardBody = item.querySelector('.cards-card-body');
+
+          // 日付の書き換え
+          const p = cardBody.querySelector('p');
+          const date = new Date(pageLastModified * 1000);
+          const year = date.getFullYear();
+          const month = ('0' + (date.getMonth() + 1)).slice(-2);
+          const day = ('0' + date.getDate()).slice(-2);
+          p.textContent = `${year}/${month}/${day}`;
+
+          //タイトルの書き換え
+          const h3 = cardBody.querySelector('h3');
+          h3.id = '';
+          h3.textContent = pageNavigationTitle;
+
+          //タグの書き換え
+          const liEls = cardBody.querySelectorAll('ul > li');
+          liEls.forEach((li, i) => li.textContent = pageTags[i]);
+        };
+
         result.forEach((page, i) => {
           if (i < 3) {
-            //書き換え対象の取得
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
-
-            //一覧表示させるページ情報の取得
-            const pageNavigationTitle = page["navigation-title"];
-            const pageImage = page.image;
-            const pagePath = page.path;
-            const pageTags = page.tags;
-            const pageLastModified = Number(page.lastModified);
-            
-            //pathの書き換え
-            item.querySelector('a').href = pagePath;
-            
-            //画像pathの書き換え
-            const source = item.querySelector('picture > source');
-            let sourcePath = source.srcset;
-            sourcePath = sourcePath.replace(sourcePath.split('?')[0], pageImage.split('?')[0]);
-            source.srcset = sourcePath;
-            const img = item.querySelector('img');
-            let imgSrc = img.src;
-            imgSrc = imgSrc.replace(imgSrc.split('?')[0], pageImage.split('?')[0]);
-            item.querySelector('img').src = imgSrc;
-            
-            // テキスト部分
-            const cardBody = item.querySelector('.cards-card-body');
-
-            // 日付の書き換え
-            const p = cardBody.querySelector('p');
-            const date = new Date(pageLastModified * 1000);
-            const year = date.getFullYear();
-            const month = ('0' + (date.getMonth() + 1)).slice(-2);
-            const day = ('0' + date.getDate()).slice(-2);
-            p.textContent = `${year}/${month}/${day}`;
-
-            //タイトルの書き換え
-            const h3 = cardBody.querySelector('h3');
-            h3.id = '';
-            h3.textContent = pageNavigationTitle;
-
-            //タグの書き換え
-            const liEls = cardBody.querySelectorAll('ul > li');
-            liEls.forEach((li, i) => li.textContent = pageTags[i]);
+            cardBlockUpdate(item);
           } else {
             const item = cardsBlock.querySelectorAll('ul')[0].children[0].cloneNode(true);
-            console.log(item);
+            cardsBlock.querySelectorAll('ul')[0].appendChild(cardBlockUpdate(item));
           };
         });
 
