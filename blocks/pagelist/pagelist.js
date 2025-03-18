@@ -37,7 +37,18 @@ export default async function decorate() {
     tagTypeMap.forEach( tagValArray => result = result.filter((page) => getIsDuplicate(page.tags, tagValArray)));
   } else {
     result = [];
-  }
+  };
+  
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://main--aem-eds--softbankbtob.aem.live/tools/sidekick/blocks/card';
 
-  console.log(result);
+  iframe.onload = function() {
+    try {
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+      const iframeContent = iframeDoc.documentElement.innerHTML;
+      console.log(iframeContent);
+    } catch(error) {
+      console.error('Error accessing iframe content:', error);
+    }
+  }
 };
