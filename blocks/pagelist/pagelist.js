@@ -49,7 +49,7 @@ export default async function decorate() {
         const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
         result.forEach((page, i) => {
           if (i < 3) {
-            const item = cardsBlock.querySelectorAll('ul').children[i];
+            const item = cardsBlock.querySelectorAll('ul')[0].children[i];
             console.log(item);
           } else {
             
