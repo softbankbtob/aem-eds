@@ -94,7 +94,7 @@ export default async function decorate() {
 
             console.log(item);
           } else {
-            
+            console.log('hogehoge');
           };
         });
       } catch(error) {
