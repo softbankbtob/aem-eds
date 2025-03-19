@@ -112,6 +112,7 @@ export default async function decorate() {
 
         let loadMoreButtonContainer;
         if (display === 'all') {
+          //全て表示する場合
           Array.from(cardsItems).forEach((child, i) => {
             if (i > 8) child.style.display = 'none';
           });
@@ -129,10 +130,11 @@ export default async function decorate() {
                   hiddenItems.splice(i, 1);
                 };
               });
-              if (hiddenItems.length === 0) e.target.remove();
+              if (hiddenItems.length === 0) e.target.style.display = 'none';
             });
           };
         } else {
+          //1部のみ表示する場合
           Array.from(cardsItems).forEach((child, i) => {
             if (i > 2) child.style.display = 'none';
           });
