@@ -40,86 +40,83 @@ export default async function decorate() {
   };
   
   const iframe = document.createElement('iframe');
-  iframe.src = '/tools/sidekick/blocks/card';
+  iframe.src = '/tools/sidekick/blocks/cards-borderradius';
   iframe.style.display = 'none';
   iframe.onload = function() {
-    setTimeout(() => {
-      try {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-        const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
+    try {
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+      const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
+      function cardBlockUpdate(item, page) {
+        //ページ情報の取得
+        const pageNavigationTitle = page["navigation-title"];
+        const pageImage = page.image;
+        const pagePath = page.path;
+        const pageTags = page.tags;
+        const pageLastModified = Number(page.lastModified);
 
-        function cardBlockUpdate(item, page) {
-          //ページ情報の取得
-          const pageNavigationTitle = page["navigation-title"];
-          const pageImage = page.image;
-          const pagePath = page.path;
-          const pageTags = page.tags;
-          const pageLastModified = Number(page.lastModified);
+        //pathの書き換え
+        item.querySelector('a').href = pagePath;
 
-          //pathの書き換え
-          item.querySelector('a').href = pagePath;
+        //画像pathの書き換え
+        const source = item.querySelector('picture > source');
+        let sourcePath = source.srcset;
+        sourcePath = sourcePath.replace(sourcePath.split('?')[0], pageImage.split('?')[0]);
+        source.srcset = sourcePath;
+        const img = item.querySelector('img');
+        let imgSrc = img.src;
+        imgSrc = imgSrc.replace(imgSrc.split('?')[0], pageImage.split('?')[0]);
+        item.querySelector('img').src = imgSrc;
 
-          //画像pathの書き換え
-          const source = item.querySelector('picture > source');
-          let sourcePath = source.srcset;
-          sourcePath = sourcePath.replace(sourcePath.split('?')[0], pageImage.split('?')[0]);
-          source.srcset = sourcePath;
-          const img = item.querySelector('img');
-          let imgSrc = img.src;
-          imgSrc = imgSrc.replace(imgSrc.split('?')[0], pageImage.split('?')[0]);
-          item.querySelector('img').src = imgSrc;
+        // テキスト部分
+        const cardBody = item.querySelector('.cards-card-body');
 
-          // テキスト部分
-          const cardBody = item.querySelector('.cards-card-body');
+        // 日付の書き換え
+        const p = cardBody.querySelector('p');
+        const date = new Date(pageLastModified * 1000);
+        const year = date.getFullYear();
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        p.textContent = `${year}/${month}/${day}`;
 
-          // 日付の書き換え
-          const p = cardBody.querySelector('p');
-          const date = new Date(pageLastModified * 1000);
-          const year = date.getFullYear();
-          const month = ('0' + (date.getMonth() + 1)).slice(-2);
-          const day = ('0' + date.getDate()).slice(-2);
-          p.textContent = `${year}/${month}/${day}`;
+        //タイトルの書き換え
+        const h3 = cardBody.querySelector('h3');
+        h3.id = '';
+        h3.textContent = pageNavigationTitle;
 
-          //タイトルの書き換え
-          const h3 = cardBody.querySelector('h3');
-          h3.id = '';
-          h3.textContent = pageNavigationTitle;
+        //タグの書き換え
+        const liEls = cardBody.querySelectorAll('ul > li');
+        liEls.forEach((li, i) => li.textContent = pageTags[i]);
 
-          //タグの書き換え
-          const liEls = cardBody.querySelectorAll('ul > li');
-          liEls.forEach((li, i) => li.textContent = pageTags[i]);
-
-          return item;
-        };
-
-        //自動で表示するカードを作成する
-        result.forEach((page, i) => {
-          if (i < 3) {
-            const item = cardsBlock.querySelectorAll('ul')[0].children[i];
-            cardBlockUpdate(item, page);
-          } else {
-            const item = cardsBlock.querySelectorAll('ul')[0].children[0].cloneNode(true);
-            cardsBlock.querySelectorAll('ul')[0].appendChild(cardBlockUpdate(item, page));
-          };
-        });
-
-        //作成したカードをHTMLに挿入
-        const pagelistWrapper = document.querySelector('.pagelist-wrapper');
-        pagelistWrapper.innerHTML = '';
-        pagelistWrapper.append(cardsBlock);
-
-        //card.cssがない場合は追加
-        const isExistCardCss = Array.from(document.querySelectorAll('link')).find(link => link.getAttribute('href').indexOf('cards.css') !== -1);
-        if (!isExistCardCss) {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = '/blocks/cards/cards.css';
-          document.querySelector('head').appendChild(link);
-        };
-      } catch(error) {
-        console.error('Error accessing iframe content:', error);
+        return item;
       };
-    }, 1000);
+
+      //自動で表示するカードを作成する
+      result.forEach((page, i) => {
+        if (i < 3) {
+          const item = cardsBlock.querySelectorAll('ul')[0].children[i];
+          cardBlockUpdate(item, page);
+        } else {
+          const item = cardsBlock.querySelectorAll('ul')[0].children[0].cloneNode(true);
+          cardsBlock.querySelectorAll('ul')[0].appendChild(cardBlockUpdate(item, page));
+        };
+      });
+
+      //作成したカードをHTMLに挿入
+      const pagelistWrapper = document.querySelector('.pagelist-wrapper');
+      pagelistWrapper.innerHTML = '';
+      pagelistWrapper.append(cardsBlock);
+
+      //card.cssがない場合は追加
+      const isExistCardCss = Array.from(document.querySelectorAll('link')).find(link => link.getAttribute('href').indexOf('cards.css') !== -1);
+      if (!isExistCardCss) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '/blocks/cards/cards.css';
+        document.querySelector('head').appendChild(link);
+      };
+    } catch(error) {
+      console.error('Error accessing iframe content:', error);
+    };
   };
 
   document.querySelector('.pagelist.block').append(iframe);
