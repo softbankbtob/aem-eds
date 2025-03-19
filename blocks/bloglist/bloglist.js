@@ -119,7 +119,7 @@ export default async function decorate() {
                 hiddenItems.splice(i, 1);
               };
             });
-            hiddenItems.length === 0 && this.remove();
+            if (hiddenItems.length === 0) this.remove();
           });
         };
 
