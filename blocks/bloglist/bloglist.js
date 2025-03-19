@@ -118,8 +118,7 @@ export default async function decorate() {
           });
           const hiddenItems = Array.from(cardsItems).filter(child => child.style.display === 'none');
 
-          if (hiddenItems.length) {
-            loadMoreButtonContainer = document.createElement('div');
+          loadMoreButtonContainer = document.createElement('div');
             loadMoreButtonContainer.classList.add('load-more-container');
             loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
             loadMoreButtonContainer.querySelector('button').addEventListener('click', (e) => {
@@ -130,8 +129,11 @@ export default async function decorate() {
                   hiddenItems.splice(i, 1);
                 };
               });
-              // if (hiddenItems.length === 0) e.target.style.display = 'none';
+              if (hiddenItems.length === 0) e.target.remove();
             });
+
+          if (hiddenItems.length) {
+            
           };
         } else {
           //1部のみ表示する場合
