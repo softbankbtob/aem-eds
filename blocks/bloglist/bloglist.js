@@ -111,7 +111,7 @@ export default async function decorate() {
           loadMoreButtonContainer = document.createElement('div');
           loadMoreButtonContainer.classList.add('load-more-container');
           loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
-          loadMoreButtonContainer.querySelector('button').addEventListener('click', () => {
+          loadMoreButtonContainer.querySelector('button').addEventListener('click', (e) => {
             const hiddenItems = Array.from(cardsBlock.querySelectorAll('ul')[0].children).filter(child => child.style.display === 'none');
             hiddenItems.forEach((item, i) => {
               if (i < 9) {
@@ -119,7 +119,7 @@ export default async function decorate() {
                 hiddenItems.splice(i, 1);
               };
             });
-            if (hiddenItems.length === 0) this.remove();
+            if (hiddenItems.length === 0) e.target.remove();
           });
         };
 
