@@ -113,7 +113,7 @@ export default async function decorate() {
             const hiddenItems = Array.from(cardsBlock.querySelectorAll('ul')[0].children).filter(child => child.style.display === 'none');
             hiddenItems.forEach((item, i) => {
               if (i < 9) {
-                item.style.display = 'block';
+                item.style.display === 'block';
                 hiddenItems.splice(i, 1);
               };
             });
