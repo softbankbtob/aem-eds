@@ -116,20 +116,22 @@ export default async function decorate() {
             if (i > 8) child.style.display = 'none';
           });
           const hiddenItems = Array.from(cardsItems).filter(child => child.style.display === 'none');
-          if (hiddenItems.length)
-          loadMoreButtonContainer = document.createElement('div');
-          loadMoreButtonContainer.classList.add('load-more-container');
-          loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
-          loadMoreButtonContainer.querySelector('button').addEventListener('click', (e) => {
-            const hiddenItems = Array.from(cardsItems).filter(child => child.style.display === 'none');
-            hiddenItems.forEach((item, i) => {
-              if (i < 9) {
-                item.style.display = 'block';
-                hiddenItems.splice(i, 1);
-              };
+
+          if (hiddenItems.length) {
+            loadMoreButtonContainer = document.createElement('div');
+            loadMoreButtonContainer.classList.add('load-more-container');
+            loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
+            loadMoreButtonContainer.querySelector('button').addEventListener('click', (e) => {
+              const hiddenItems = Array.from(cardsItems).filter(child => child.style.display === 'none');
+              hiddenItems.forEach((item, i) => {
+                if (i < 9) {
+                  item.style.display = 'block';
+                  hiddenItems.splice(i, 1);
+                };
+              });
+              if (hiddenItems.length === 0) e.target.remove();
             });
-            if (hiddenItems.length === 0) e.target.remove();
-          });
+          };
         } else {
           Array.from(cardsItems).forEach((child, i) => {
             if (i > 2) child.style.display = 'none';
