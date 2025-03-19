@@ -130,7 +130,7 @@ export default async function decorate() {
           });
         } else {
           Array.from(cardsBlock.querySelectorAll('ul')[0].children).forEach((child, i) => {
-            if (i < 2) child.style.display = 'none';
+            if (i < 3) child.style.display = 'none';
           });
         }
 
