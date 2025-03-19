@@ -92,6 +92,7 @@ export default async function decorate() {
           return item;
         };
 
+        //自動で表示するカードを作成する
         result.forEach((page, i) => {
           if (i < 3) {
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
@@ -102,10 +103,19 @@ export default async function decorate() {
           };
         });
 
+        //作成したカードをHTMLに挿入
         const pagelistWrapper = document.querySelector('.pagelist-wrapper');
         pagelistWrapper.innerHTML = '';
         pagelistWrapper.append(cardsBlock);
 
+        //card.cssがない場合は追加
+        const isExistCardCss = Array.from(document.querySelectorAll('link')).find(link => link.getAttribute('href').indexOf('cards.css') !== -1);
+        if (!isExistCardCss) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = '/blocks/cards/cards.css';
+          document.querySelector('head').appendChild(link);
+        };
       } catch(error) {
         console.error('Error accessing iframe content:', error);
       };
