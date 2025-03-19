@@ -98,6 +98,7 @@ export default async function decorate() {
         };
 
         //自動で表示するカードを作成する
+        const items = cardsBlock.querySelectorAll('ul')[0].children;
         result.forEach((page, i) => {
           if (i < 3) {
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
