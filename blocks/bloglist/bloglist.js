@@ -105,7 +105,7 @@ export default async function decorate() {
 
         let loadMoreButtonContainer;
         if (display === 'all') {
-          cardsBlock.querySelectorAll('ul')[0].children[0].forEach((chidl, i) => i > 2 && i.style.display === 'none');
+          cardsBlock.querySelectorAll('ul')[0].children.forEach((chidl, i) => i > 2 && i.style.display === 'none');
           loadMoreButtonContainer = document.createElement('div');
           loadMoreButtonContainer.classList.add('load-more-container');
           loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
