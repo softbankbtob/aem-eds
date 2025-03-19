@@ -106,7 +106,7 @@ export default async function decorate() {
         let loadMoreButtonContainer;
         if (display === 'all') {
           Array.from(cardsBlock.querySelectorAll('ul')[0].children).forEach((child, i) => {
-            if (i > 2) child.style.display = 'none';
+            if (i > 8) child.style.display = 'none';
           });
           loadMoreButtonContainer = document.createElement('div');
           loadMoreButtonContainer.classList.add('load-more-container');
