@@ -17,6 +17,8 @@
 
   /* colors link */
   --link-blue: #007BFF;
+  --link-blue-02: #2979FF;
+  --link-orange: #FF751A;
 
   /* colors border */
   --border-gray: #C1C6CC;
@@ -140,7 +142,7 @@ button {
 
 /* links */
 a:any-link {
-  color: var(--link-blue);
+  color: var(--link-blue-02);
   text-decoration: none;
   word-break: break-word;
 }
@@ -149,13 +151,12 @@ a:any-link {
 a.button:any-link,
 button {
   display: inline-flex;
-  padding: 8px 16px;
-  padding-right: 34px;
+  padding: 8px 34px 8px 16px;
   justify-content: center;
   align-items: center;
   gap: 8px;
   border-radius: 4px;
-  background: var(--link-blue);
+  background: var(--link-blue-02);
   color: var(--background-color);
   text-align: center;
   font-family: var(--body-font-family);
@@ -207,12 +208,12 @@ button:disabled:hover {
 
 a.button.primary,
 button.primary {
-  background-color: #FF5700;
+  background-color: var(--link-orange);
 }
 
 a.button.secondary,
 button.secondary {
-  background-color: transparent;
+  background-color: var(--background-color);
   border: 1px solid var(--border-black-02);
   color: var(--text-black);
 
@@ -279,8 +280,24 @@ main > .section{
     max-width: 1248px;
     margin: 0 auto;
     padding: 0 24px;
-}
 
+    &.bg-section-container{
+        max-width: 100%;
+        padding: 0 0;
+        &.color-primary{
+            background-color: var(--background-blue-01);
+        }
+        &.color-secondary{
+            background-color: var(--background-blue-02);
+        }
+
+        .bg-section-wrapper{
+            padding: 36px 24px;
+            max-width: 1248px;
+            margin: 0 auto;
+        }
+    }
+}
 /* section metadata */
 main .section.light,
 main .section.highlight {
@@ -288,6 +305,8 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+
 
 /* パンくずリスト */
 .breadcrumbs{
@@ -366,6 +385,10 @@ main .section.highlight {
     display: flex;
     gap: 8px;
     margin-top: 32px;
+
+    .button{
+        height: 100%;
+    }
 }
 @media (width <= 768px) {
     .buttons-wrapper {
@@ -378,6 +401,7 @@ main .section.highlight {
         }
         .button-container .button {
             text-align: left;
+            justify-content: flex-start;
         }
     }
 }

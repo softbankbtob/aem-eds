@@ -1,55 +1,60 @@
-.cards-normal {
+.cards-icon {
   margin-top: 32px;
 }
 
-.cards-normal-item {
+.cards-icon-item {
   width: 100%;
 }
 
 
-.cards-normal-item-image {
+.cards-icon-item-image {
+  margin-inline: auto;
+  margin-top: 24px;
   width: 100%;
+  max-width: 120px;
+  border-radius: 4px;
+  overflow: hidden;
   picture {
     width: 100%;
     img {
       width: 100%;
+      height: auto;
     }
   }
 }
 
-.cards-normal > ul {
+.cards-icon > ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px 24px;
 }
 
-.cards-normal-listItem {
+.cards-icon-listItem {
   display: grid;
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 3;
   gap: 0;
 }
-.cards-normal-item {
+.cards-icon-item {
   transition: box-shadow 300ms ease-out;
-  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   overflow: hidden;
   display: inherit;
   grid-template-rows: inherit;
   grid-row: inherit;
+  border: 1px solid var(--border-gray);
+  background-color: var(--background-color);
 }
 
-.cards-normal-item-inner {
+.cards-icon-item-inner {
   height: 100%;
   display: inherit;
   grid-template-rows: inherit;
   grid-row: inherit;
 }
 
-.cards-normal .cards-normal-listItem > .cards-normal-item.-link {
-  text-decoration: none;
-  
+.cards-icon .cards-icon-listItem > .cards-icon-item.-link {
   &:hover{
     text-decoration: none;
     transition: box-shadow 300ms ease-out, color 300ms ease-out;
@@ -62,22 +67,22 @@
 }
 
 /* クラスのパターン */
-.cards-normal {
+.cards-icon {
   /* 線なし */
-  &.no-border .cards-normal-item {
-    box-shadow: none;
-    img {
-      border-radius: 8px;
-    }
+  &.no-border .cards-icon-item {
+    border: none;
   }
-  /* シャドウの枠 */
-  &.border .cards-normal-item {
-    box-shadow: none;
-    border: 1px solid var(--border-gray);
+
+  /* 画像サイズ */
+  &.img-small .cards-icon-item-image {
+    max-width: 64px;
+  }
+  &.img-large .cards-icon-item-image {
+    max-width: 200px;
   }
 
   /* 四角 */
-  &.no-radius .cards-normal-item {
+  &.no-radius .cards-icon-item {
     border-radius: 0;
   }
 
@@ -100,97 +105,131 @@
       flex-direction: column;
     }
   }
+  &.col5 > ul {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  &.col6 > ul {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  &.col5 > ul,
+  &.col6 > ul {
+    column-gap: 16px;
+    .cards-icon-item-body1 {
+      padding: 16px 16px 0;
+      &:last-child {
+        padding-bottom: 24px;
+      }
+    }
+    .cards-icon-item-body2 {
+      padding: 0 16px 24px;
+    }
+    .buttons-wrapper {
+      flex-direction: column;
+    }
+    p {
+      margin-top: 12px;
+      &:has(a){
+        margin-top: 24px;
+      }
+    }
+  }
+
   @media only screen and (width <= 768px){
     &.col1 > ul,
     &.col2 > ul,
     &.col3 > ul,
-    &.col4 > ul {
+    &.col4 > ul,
+    &.col5 > ul,
+    &.col6 > ul {
       grid-template-columns: 1fr;
     }
   }
 
+
+  /* マージンなし */
+  &.no-margin ul {
+    gap: 0;
+  }
+
+
   /* 背景色パターン */
-  &.bg-primary .cards-normal-item {
+  &.bg-primary .cards-icon-item {
     background-color: var(--background-blue-02);
-    .cards-normal-item-tags li {
+    .cards-icon-item-tags li {
       background-color: var(--background-color);
     }
   }
-  &.bg-secondary .cards-normal-item {
+  &.bg-secondary .cards-icon-item {
     background-color: var(--background-blue-01);
   }
-  &.bg-tertiary .cards-normal-item {
+  &.bg-tertiary .cards-icon-item {
     background-color: var(--background-gray-01);
   }
-  &.bg-strong .cards-normal-item {
+  &.bg-strong .cards-icon-item {
     background-color: var(--background-blueblack);
     /* font系の設定 */
     p, h3, li, .a-container a {
       color: var(--text-white);
     }
-    .cards-normal-item-tags li {
+    .cards-icon-item-tags li {
       color: var(--text-black);
     }
   }
 
   /* ボタン縦並び */
-  /* &.button-vertical .cards-normal-item {
+  /* &.button-vertical .cards-icon-item {
     .buttons-wrapper {
       flex-direction: column;
     }
   } */
 
   /* 見出しが上 */
-  &.above-heading .cards-normal-item {
-    .cards-normal-item-image {
+  &.above-heading .cards-icon-item {
+    .cards-icon-item-image {
       order: 2;
-      padding: 0 24px;
+      /* padding: 0 24px; */
       img {
-        border-radius: 8px;
+        /* border-radius: 8px; */
       }
     }
-    .cards-normal-item-body1 {
+    .cards-icon-item-body1 {
       order: 1;
-      padding: 24px;
     }
-    .cards-normal-item-body2 {
+    .cards-icon-item-body2 {
       order: 3;
-    }
-  }
-
-  /* 画像にパディング */
-  &.img-padding .cards-normal-item {
-    .cards-normal-item-image {
-      padding: 24px 24px 0;
-      img {
-        border-radius: 8px;
-      }
     }
   }
 }
 
-.cards-normal {
-  .cards-normal-item-body1 {
+.cards-icon {
+  .cards-icon-item-body1 {
     padding: 24px 24px 0;
+    
     > *:first-child {
       margin-top: 0;
     }
+
+    &:last-child {
+      padding-bottom: 32px;
+    }
+
   }
-  .cards-normal-item-body2 {
+  .cards-icon-item-body2 {
     padding: 0 24px 32px;
   }
-  .cards-normal-item-body1,
-  .cards-normal-item-body2 {
+  .cards-icon-item-body1,
+  .cards-icon-item-body2 {
   }
   /* font系の設定 */
   p, li {
     color: #323232;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
   }
 
-  a {
+  a:not(:has(div)) {
     font-size: 14px;
     text-decoration: underline;
   }
@@ -198,6 +237,9 @@
   p{
     margin: 0;
     margin-top: 16px;
+    &:has(a){
+      margin-top: 32px;
+    }
   }
 
   h3{
@@ -205,7 +247,7 @@
     color: #323232;
     font-size: 18px;
     font-weight: 700;
-    line-height: 24px;
+    line-height: 1.25;
     margin-top: 16px;
   }
 
@@ -223,7 +265,7 @@
     }
   }
 
-  .cards-normal-item-lists{
+  .cards-icon-item-lists{
     margin-top: 16px;
     li {
       position: relative;
@@ -241,7 +283,7 @@
     }
   }
 
-  .cards-normal-item-tags{
+  .cards-icon-item-tags{
     margin-top: 32px;
     display: flex;
     width: 100%;
@@ -264,22 +306,21 @@
   }
 }
 
-.cards-normal .cards-normal-card-image-section {
+.cards-icon .cards-icon-card-image-section {
   line-height: 0;
 }
 
-.cards-normal1-listItem > a img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+.cards-icon1-listItem > a img {
+  width: 120px;
+  height: auto;
 }
 
 @media only screen and (width <= 768px){
-  .cards-normal > ul { 
+  .cards-icon > ul { 
     grid-template-columns: 1fr;
   }
 
-  .cards-normal .cards-normal-listItem{
+  .cards-icon .cards-icon-listItem{
     width: 100%;
   }
 

@@ -1,8 +1,11 @@
 .table-container {
-    margin-top: 32px;
 
-    @media (width <= 768px) {
-        margin-top: 20px;
+    .table-wrapper{
+        margin-top: 32px;
+
+        @media (width <= 768px) {
+            margin-top: 20px;
+        }
     }
 
     /* 表組みのタイトル */
@@ -14,6 +17,45 @@
         h5{
             @media (width <= 768px) {
                 font-size: 14px;
+            }
+        }
+    }
+
+    /* テーブル上のテキスト */
+    &.table-top-text-right{
+        .default-content-wrapper:has(p){
+            p{
+                text-align: right;
+            }
+        }
+    }
+    &.table-top-text-center{
+        .default-content-wrapper:has(p){
+            p{
+                text-align: center;
+            }
+        }
+    }
+    &.table-top-text-left{
+        .default-content-wrapper:has(p){
+            p{
+                text-align: left;
+            }
+        }
+    }
+
+    &.table-top-text-right,
+    &.table-top-text-center,
+    &.table-top-text-left{
+        .default-content-wrapper:has(p){
+            + .table-wrapper{
+                margin-top: 8px;
+            }
+
+            margin-top: 32px;
+
+            @media (width <= 768px) {
+                margin-top: 20px;
             }
         }
     }

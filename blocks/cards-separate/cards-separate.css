@@ -1,36 +1,25 @@
-.cards-normal {
+.cards-separate {
   margin-top: 32px;
 }
 
-.cards-normal-item {
+.cards-separate-item {
   width: 100%;
 }
 
-
-.cards-normal-item-image {
-  width: 100%;
-  picture {
-    width: 100%;
-    img {
-      width: 100%;
-    }
-  }
-}
-
-.cards-normal > ul {
+.cards-separate > ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px 24px;
 }
 
-.cards-normal-listItem {
+.cards-separate-listItem {
   display: grid;
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 3;
   gap: 0;
 }
-.cards-normal-item {
+.cards-separate-item {
   transition: box-shadow 300ms ease-out;
   box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
@@ -40,14 +29,19 @@
   grid-row: inherit;
 }
 
-.cards-normal-item-inner {
+.cards-separate-item-inner {
   height: 100%;
   display: inherit;
   grid-template-rows: inherit;
   grid-row: inherit;
+  padding-bottom: 32px;
 }
 
-.cards-normal .cards-normal-listItem > .cards-normal-item.-link {
+.cards-separate-item-inner .buttons-wrapper .button-container .button.secondary{
+  background-color: var(--text-white);
+}
+
+.cards-separate .cards-separate-listItem > .cards-separate-item.-link {
   text-decoration: none;
   
   &:hover{
@@ -62,23 +56,25 @@
 }
 
 /* クラスのパターン */
-.cards-normal {
+.cards-separate {
   /* 線なし */
-  &.no-border .cards-normal-item {
+  &.no-border .cards-separate-item {
     box-shadow: none;
-    img {
-      border-radius: 8px;
-    }
   }
   /* シャドウの枠 */
-  &.border .cards-normal-item {
+  &.border .cards-separate-item {
     box-shadow: none;
     border: 1px solid var(--border-gray);
   }
 
   /* 四角 */
-  &.no-radius .cards-normal-item {
+  &.no-radius .cards-separate-item {
     border-radius: 0;
+  }
+
+  /* マージンなし */
+  &.no-margin > ul {
+    column-gap: 0;
   }
 
   /* カラム */
@@ -110,78 +106,62 @@
   }
 
   /* 背景色パターン */
-  &.bg-primary .cards-normal-item {
+  &.bg-primary .cards-separate-item {
     background-color: var(--background-blue-02);
-    .cards-normal-item-tags li {
+    .cards-separate-item-tags li {
       background-color: var(--background-color);
     }
   }
-  &.bg-secondary .cards-normal-item {
+  &.bg-secondary .cards-separate-item {
     background-color: var(--background-blue-01);
   }
-  &.bg-tertiary .cards-normal-item {
+  &.bg-tertiary .cards-separate-item {
     background-color: var(--background-gray-01);
   }
-  &.bg-strong .cards-normal-item {
+  &.bg-strong .cards-separate-item {
     background-color: var(--background-blueblack);
     /* font系の設定 */
     p, h3, li, .a-container a {
       color: var(--text-white);
     }
-    .cards-normal-item-tags li {
+    .cards-separate-item-tags li {
       color: var(--text-black);
     }
   }
 
   /* ボタン縦並び */
-  /* &.button-vertical .cards-normal-item {
+  /* &.button-vertical .cards-separate-item {
     .buttons-wrapper {
       flex-direction: column;
     }
   } */
 
-  /* 見出しが上 */
-  &.above-heading .cards-normal-item {
-    .cards-normal-item-image {
-      order: 2;
-      padding: 0 24px;
-      img {
-        border-radius: 8px;
-      }
-    }
-    .cards-normal-item-body1 {
-      order: 1;
-      padding: 24px;
-    }
-    .cards-normal-item-body2 {
-      order: 3;
-    }
-  }
-
-  /* 画像にパディング */
-  &.img-padding .cards-normal-item {
-    .cards-normal-item-image {
-      padding: 24px 24px 0;
-      img {
-        border-radius: 8px;
-      }
-    }
-  }
 }
 
-.cards-normal {
-  .cards-normal-item-body1 {
-    padding: 24px 24px 0;
+.cards-separate {
+  .cards-separate-item-heading {
+    margin-inline: auto;
+    padding: 24px 0;
+    width: calc(100% - 48px);
+    border-bottom: 1px solid var(--border-gray);
+
     > *:first-child {
       margin-top: 0;
     }
   }
-  .cards-normal-item-body2 {
-    padding: 0 24px 32px;
+
+  .cards-separate-item-body1 {
+    padding: 24px 24px 0;
+
+    > *:first-child {
+      margin-top: 0;
+    }
   }
-  .cards-normal-item-body1,
-  .cards-normal-item-body2 {
+
+  .cards-separate-item-body2 {
+    padding: 0 24px;
   }
+
   /* font系の設定 */
   p, li {
     color: #323232;
@@ -205,7 +185,7 @@
     color: #323232;
     font-size: 18px;
     font-weight: 700;
-    line-height: 24px;
+    line-height: 1.25;
     margin-top: 16px;
   }
 
@@ -223,7 +203,7 @@
     }
   }
 
-  .cards-normal-item-lists{
+  .cards-separate-item-lists{
     margin-top: 16px;
     li {
       position: relative;
@@ -241,7 +221,7 @@
     }
   }
 
-  .cards-normal-item-tags{
+  .cards-separate-item-tags{
     margin-top: 32px;
     display: flex;
     width: 100%;
@@ -264,22 +244,12 @@
   }
 }
 
-.cards-normal .cards-normal-card-image-section {
-  line-height: 0;
-}
-
-.cards-normal1-listItem > a img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
 @media only screen and (width <= 768px){
-  .cards-normal > ul { 
+  .cards-separate > ul { 
     grid-template-columns: 1fr;
   }
 
-  .cards-normal .cards-normal-listItem{
+  .cards-separate .cards-separate-listItem{
     width: 100%;
   }
 

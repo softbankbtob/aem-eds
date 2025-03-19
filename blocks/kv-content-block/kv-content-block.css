@@ -1,0 +1,73 @@
+.kv-content-block-wrapper {
+    width: 100vw;
+    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
+    background-color: var(--background-blueblack);
+}
+.kv-content-block {
+    max-width: 1248px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.kv-content-block-inner {
+    display: flex;
+    gap: 12px;
+    padding-block: 32px;
+    color: var(--text-white);
+}
+.kv-content-block-inner p:not(.heading) {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 16px;
+}
+.kv-content-block-inner .heading {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+.kv-content-block-title {
+    width: min(300px, 30%);
+}
+.kv-content-block-title h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+.kv-content-block-text {
+    flex: 1;
+}
+.kv-content-block-inner .buttons-wrapper {
+    width: min(300px, 30%);
+    justify-content: center;
+    margin-top: 0;
+}
+.kv-content-block-inner .buttons-wrapper .button-container p {
+    margin-top: 0;
+}
+
+/* btn-white */
+.kv-content-block.btn-white .kv-content-block-inner .buttons-wrapper .button-container .button {
+    background-color: var(--background-color);
+    color: var(--text-black);
+    border: 1px solid #828282
+}
+.kv-content-block.btn-white .kv-content-block-inner .buttons-wrapper .button-container .button::after {
+    background-image: url(/icons/arrow-right.svg) !important;
+}
+
+/* btn-border */
+.kv-content-block.btn-border .kv-content-block-inner .buttons-wrapper .button-container .button {
+    background-color: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--border-gray)
+}
+
+@media (width <= 768px) {
+    .kv-content-block-inner {
+        flex-direction: column;
+    }
+    .kv-content-block-title,
+    .kv-content-block-inner .buttons-wrapper {
+        width: 100%;
+    }
+}

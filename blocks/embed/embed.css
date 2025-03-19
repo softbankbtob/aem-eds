@@ -59,3 +59,21 @@
   top: 4px;
   left: 7px;
 }
+
+/* large (1000px) */
+.embed.large {
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* small (588px) */
+.embed.small {
+    max-width: 588px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/* left */
+.embed.left {
+    margin-right: auto;
+    margin-left: 0;
+}

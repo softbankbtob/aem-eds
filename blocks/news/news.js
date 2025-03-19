@@ -40,4 +40,26 @@ export default function decorate() {
       wrapper.appendChild(newsItem);
     }
   });
+
+  // スクロールバーが表示されている場合のみpadding-rightを追加
+  const newsBlocks = document.querySelectorAll('.news.block');
+  newsBlocks.forEach((newsBlock) => {
+    // ResizeObserverを使用して要素のサイズ変更を監視
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { target } = entry;
+        // スクロールバーが表示されているかチェック
+        if (target.scrollHeight > target.clientHeight) {
+          // スクロールバーが表示されている場合、padding-rightを追加
+          target.style.paddingRight = '8px';
+        } else {
+          // スクロールバーが表示されていない場合、padding-rightを削除
+          target.style.paddingRight = '0';
+        }
+      }
+    });
+
+    // 監視開始
+    resizeObserver.observe(newsBlock);
+  });
 };
