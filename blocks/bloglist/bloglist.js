@@ -98,29 +98,30 @@ export default async function decorate() {
         };
 
         //自動で表示するカードを作成する
-        const items = cardsBlock.querySelectorAll('ul')[0].children;
+        const cardsOuter =  cardsBlock.querySelectorAll('ul')[0];
+        const cardsItems = cardsOuter.children;
         result.forEach((page, i) => {
           if (i < 3) {
-            const item = cardsBlock.querySelectorAll('ul')[0].children[i];
+            const item = cardsItems[i];
             cardBlockUpdate(item, page);
           } else {
-            const item = cardsBlock.querySelectorAll('ul')[0].children[0].cloneNode(true);
-            cardsBlock.querySelectorAll('ul')[0].appendChild(cardBlockUpdate(item, page));
+            const item = cardsItems[0].cloneNode(true);
+            cardsOuter.appendChild(cardBlockUpdate(item, page));
           };
         });
 
         let loadMoreButtonContainer;
         if (display === 'all') {
-          Array.from(cardsBlock.querySelectorAll('ul')[0].children).forEach((child, i) => {
+          Array.from(cardsItems).forEach((child, i) => {
             if (i > 8) child.style.display = 'none';
           });
-          const hiddenItems = Array.from(cardsBlock.querySelectorAll('ul')[0].children).filter(child => child.style.display === 'none');
+          const hiddenItems = Array.from(cardsItems).filter(child => child.style.display === 'none');
           if (hiddenItems.length)
           loadMoreButtonContainer = document.createElement('div');
           loadMoreButtonContainer.classList.add('load-more-container');
           loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
           loadMoreButtonContainer.querySelector('button').addEventListener('click', (e) => {
-            const hiddenItems = Array.from(cardsBlock.querySelectorAll('ul')[0].children).filter(child => child.style.display === 'none');
+            const hiddenItems = Array.from(cardsItems).filter(child => child.style.display === 'none');
             hiddenItems.forEach((item, i) => {
               if (i < 9) {
                 item.style.display = 'block';
@@ -130,8 +131,8 @@ export default async function decorate() {
             if (hiddenItems.length === 0) e.target.remove();
           });
         } else {
-          Array.from(cardsBlock.querySelectorAll('ul')[0].children).forEach((child, i) => {
-            if (i < 3) child.style.display = 'none';
+          Array.from(cardsItems).forEach((child, i) => {
+            if (i > 2) child.style.display = 'none';
           });
         }
 
