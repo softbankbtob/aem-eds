@@ -103,9 +103,9 @@ export default async function decorate() {
         });
 
         //作成したカードをHTMLに挿入
-        const pagelistWrapper = document.querySelector('.pagelist-wrapper');
-        pagelistWrapper.innerHTML = '';
-        pagelistWrapper.append(cardsBlock);
+        const bloglistWrapper = document.querySelector('.bloglist-wrapper');
+        bloglistWrapper.innerHTML = '';
+        bloglistWrapper.append(cardsBlock);
 
         //card.cssがない場合は追加
         const isExistCardCss = Array.from(document.querySelectorAll('link')).find(link => link.getAttribute('href').indexOf('cards.css') !== -1);
@@ -121,5 +121,5 @@ export default async function decorate() {
     }, 500);
   };
 
-  document.querySelector('.pagelist.block').append(iframe);
+  document.querySelector('.bloglist.block').append(iframe);
 };
