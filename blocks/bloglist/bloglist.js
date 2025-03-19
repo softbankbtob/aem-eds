@@ -118,7 +118,9 @@ export default async function decorate() {
           });
           const hiddenItems = Array.from(cardsItems).filter(child => child.style.display === 'none');
 
-          loadMoreButtonContainer = document.createElement('div');
+          //隠れているカードがある場合はもっと見るボタンを表示する
+          if (hiddenItems.length) {
+            loadMoreButtonContainer = document.createElement('div');
             loadMoreButtonContainer.classList.add('load-more-container');
             loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
             loadMoreButtonContainer.querySelector('button').addEventListener('click', (e) => {
@@ -131,9 +133,6 @@ export default async function decorate() {
               });
               if (hiddenItems.length === 0) e.target.remove();
             });
-
-          if (hiddenItems.length) {
-            
           };
         } else {
           //1部のみ表示する場合
