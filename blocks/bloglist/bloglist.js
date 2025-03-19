@@ -93,6 +93,7 @@ export default async function decorate() {
 
         //自動で表示するカードを作成する
         result.forEach((page, i) => {
+          if (display === 'part' && i === 2) return;
           if (i < 3) {
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
             cardBlockUpdate(item, page);
@@ -101,6 +102,22 @@ export default async function decorate() {
             cardsBlock.querySelectorAll('ul')[0].appendChild(cardBlockUpdate(item, page));
           };
         });
+
+        if (display === 'all') {
+          const loadMoreButtonContainer = document.createElement('div');
+          loadMoreButtonContainer.classList.add('load-more-container');
+          loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
+          loadMoreButtonContainer.querySelector('button').addEventListener('click', () => {
+            const hiddenItems = Array.from(cardsBlock.querySelectorAll('ul')[0].children).filter(child => child.style.display === 'none');
+            hiddenItems.forEach((item, i) => {
+              if (i < 9) {
+                item.style.display === 'block';
+                hiddenItems.splice(i, 1);
+              };
+            });
+            hiddenItems.length === 0 && this.remove();
+          });
+        };
 
         //作成したカードをHTMLに挿入
         const bloglistWrapper = document.querySelector('.bloglist-wrapper');
