@@ -1,31 +1,35 @@
 export default async function decorate() {
+  // ブログページ一覧とタグ一覧の取得
   const orign = location.origin;
   const queryIndexRes = await fetch(`${orign}/query-index.json`);
   const tagListRes = await fetch(`${orign}/tag-list.json`);
   const queryIndex = await queryIndexRes.json();
   const tagList = await tagListRes.json();
+  let queryIndexData = queryIndex.data;
+  let tagListData = tagList.data;
   
+  // タグと表示形式の取得
   let tags, display;  
   document.querySelectorAll('.bloglist p').forEach((p, i) => {
     if (i === 1) tags = p.textContent.split(',');
     if (i === 3) display = p.textContent;
   });
 
-  let queryIndexData = queryIndex.data;
-  let tagListData = tagList.data;
+  //ブログ記事以外のデータは削除
   queryIndexData = queryIndexData.filter(item => item.path.indexOf('/blog/business/articles/') > -1);
-
+  //各記事のタグ部分を配列に変換
   queryIndexData.forEach((page) => {
     page.tags = JSON.parse(page.tags);
     if(page.tags.length) page.tags = page.tags[0]?.split(', ');
   });
 
+  //タグの辞書を作成
   const tagTypeMap = new Map();
   tags.forEach((tag) => {
     const type = tagListData.find((data) => data.tag === tag)?.type;
     if (type) tagTypeMap.has(type) ? tagTypeMap.get(type).push(tag) : tagTypeMap.set(type, [tag]);
   });
-  
+  //blockに設定されているタグが含まれているページのデータのみ抽出
   let result;
   if (queryIndexData.length) {
     result = [...queryIndexData];
@@ -39,6 +43,7 @@ export default async function decorate() {
     result = [];
   };
   
+  //テンプレートのiframeを定義
   const iframe = document.createElement('iframe');
   iframe.src = '/tools/sidekick/blocks/cards-borderradius';
   iframe.style.display = 'none';
@@ -47,6 +52,7 @@ export default async function decorate() {
       try {
         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
         const cardsBlock = iframeDoc.querySelector('.cards.block.borderradius');
+
         function cardBlockUpdate(item, page) {
           //ページ情報の取得
           const pageNavigationTitle = page["navigation-title"];
@@ -93,7 +99,6 @@ export default async function decorate() {
 
         //自動で表示するカードを作成する
         result.forEach((page, i) => {
-          if (display === 'part' && i === 2) return;
           if (i < 3) {
             const item = cardsBlock.querySelectorAll('ul')[0].children[i];
             cardBlockUpdate(item, page);
@@ -108,6 +113,8 @@ export default async function decorate() {
           Array.from(cardsBlock.querySelectorAll('ul')[0].children).forEach((child, i) => {
             if (i > 8) child.style.display = 'none';
           });
+          const hiddenItems = Array.from(cardsBlock.querySelectorAll('ul')[0].children).filter(child => child.style.display === 'none');
+          if (hiddenItems.length)
           loadMoreButtonContainer = document.createElement('div');
           loadMoreButtonContainer.classList.add('load-more-container');
           loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
@@ -121,7 +128,11 @@ export default async function decorate() {
             });
             if (hiddenItems.length === 0) e.target.remove();
           });
-        };
+        } else {
+          Array.from(cardsBlock.querySelectorAll('ul')[0].children).forEach((child, i) => {
+            if (i < 2) child.style.display = 'none';
+          });
+        }
 
         //作成したカードをHTMLに挿入
         const bloglistWrapper = document.querySelector('.bloglist-wrapper');
@@ -143,5 +154,6 @@ export default async function decorate() {
     }, 1000);
   };
 
+  //iframを読み込むためにHTMLに挿入
   document.querySelector('.bloglist.block').append(iframe);
 };
