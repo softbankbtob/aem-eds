@@ -5,11 +5,10 @@ export default async function decorate() {
   const queryIndex = await queryIndexRes.json();
   const tagList = await tagListRes.json();
   
-  let format, tags, display;  
-  document.querySelectorAll('.pagelist p').forEach((p, i) => {
-    if (i === 1) format = p.textContent;
-    if (i === 3) tags = p.textContent.split(',');
-    if (i === 5) display = p.textContent;
+  let tags, display;  
+  document.querySelectorAll('.bloglist p').forEach((p, i) => {
+    if (i === 1) tags = p.textContent.split(',');
+    if (i === 3) display = p.textContent;
   });
 
   let queryIndexData = queryIndex.data;
@@ -35,7 +34,7 @@ export default async function decorate() {
     function getIsDuplicate(arr1, arr2) {
       return [...arr1, ...arr2].filter(item => arr1.includes(item) && arr2.includes(item)).length > 0;
     };
-    
+
   } else {
     result = [];
   };
