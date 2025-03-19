@@ -103,8 +103,9 @@ export default async function decorate() {
           };
         });
 
+        let loadMoreButtonContainer;
         if (display === 'all') {
-          const loadMoreButtonContainer = document.createElement('div');
+          loadMoreButtonContainer = document.createElement('div');
           loadMoreButtonContainer.classList.add('load-more-container');
           loadMoreButtonContainer.innerHTML = '<button class="load-more-button" style="display: flex;">もっと見る</button>';
           loadMoreButtonContainer.querySelector('button').addEventListener('click', () => {
@@ -123,6 +124,7 @@ export default async function decorate() {
         const bloglistWrapper = document.querySelector('.bloglist-wrapper');
         bloglistWrapper.innerHTML = '';
         bloglistWrapper.append(cardsBlock);
+        loadMoreButtonContainer && bloglistWrapper.append(loadMoreButtonContainer);
 
         //card.cssがない場合は追加
         const isExistCardCss = Array.from(document.querySelectorAll('link')).find(link => link.getAttribute('href').indexOf('cards.css') !== -1);
