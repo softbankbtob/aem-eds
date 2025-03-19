@@ -5,8 +5,12 @@
         margin-top: 50px;
 
         .load-more-button {
+            color: #323232;
+            border-color: #616161;
+            background-color: transparent;
             &::after {
                 transform: rotate(45deg);
+                top: 35%;
             }
         }
     }
