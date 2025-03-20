@@ -140,11 +140,11 @@ export default async function decorate() {
             hiddenItems.splice(i, 1);
             };
         });
-        if (hiddenItems.length === 0) e.target.style.display = 'none';
+        if (hiddenItems.length === 0) e.target.remove();
         });
     };
     } else {
-        //1部のみ表示する場合
+        //一部のみ表示する場合
         Array.from(cardsItems).forEach((child, i) => {
             if (i > 2) child.style.display = 'none';
         });
