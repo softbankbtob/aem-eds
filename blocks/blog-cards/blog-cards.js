@@ -74,7 +74,7 @@ export default async function decorate() {
         const pageLastModified = Number(page.lastModified);
 
         //要素の取得もしくは複製
-        const item = i === 0 ? blogCardsWrapper.querySelector('cards_item') : blogCardsWrapper.querySelector('cards_item').cloneNode(true);
+        const item = i === 0 ? blogCardsWrapper.querySelector('.cards_item') : blogCardsWrapper.querySelector('.cards_item').cloneNode(true);
 
         //pathの書き換え
         item.querySelector('a').href = pagePath;
