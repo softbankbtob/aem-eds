@@ -140,7 +140,7 @@ export default async function decorate() {
             hiddenItems.splice(i, 1);
             };
         });
-        if (hiddenItems.length === 0) e.target.remove();
+        if (hiddenItems.length === 0) e.target.style.display = 'none';
         });
     };
     } else {
