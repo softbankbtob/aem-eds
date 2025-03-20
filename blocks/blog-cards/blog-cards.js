@@ -54,9 +54,9 @@ export default async function decorate() {
           </picture>
          </div>
          <div class="cards-card-body">
-          <p id="article-lastmodified"></p>
-          <h3 id="article-title"></h3>
-          <ul id="article-tags"></ul>
+          <p></p>
+          <h3></h3>
+          <ul></ul>
          </div>
         </a>
        </li>
@@ -106,8 +106,8 @@ export default async function decorate() {
         h3.textContent = pageNavigationTitle;
 
         //タグの書き換え
-        const articleTags = cardBody.querySelector('ul#article-tags');
-        pageTags.forEach(tag => {
+        pageTags.forEach((tag) => {
+            const articleTags = cardBody.querySelector('ul');
             const li = document.createElement('li');
             li.textContent = tag;
             articleTags.appendChild(li);
