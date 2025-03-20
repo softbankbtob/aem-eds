@@ -109,10 +109,10 @@ export default async function decorate() {
         const articleTags = cardBody.querySelector('ul');
         articleTags.innerHTML = '';
         for(let i = 0; i < pageTags.length; i++) {
+            if (i === 3) break;
             const li = document.createElement('li');
             li.textContent = pageTags[i];
             articleTags.appendChild(li);
-            if (i === 3) break;
         };
 
         if (i > 0) blogCardsWrapper.querySelector('.cards_list').appendChild(item);
