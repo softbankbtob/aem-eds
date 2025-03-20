@@ -75,7 +75,7 @@ export function decorateMain(main) {
   // tertiary buttonの装飾を追加
   decorateTertiaryButtons(main);
   decorateIcons(main);
-  buildAutoBlocks(main);
+  // buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
 }
