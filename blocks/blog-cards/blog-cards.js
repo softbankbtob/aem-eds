@@ -110,7 +110,7 @@ export default async function decorate() {
         articleTags.innerHTML = '';
         for(let i = 0; i < pageTags.length; i++) {
             const li = document.createElement('li');
-            li.textContent = tag;
+            li.textContent = pageTags[i];
             articleTags.appendChild(li);
             if (i === 3) break;
         };
