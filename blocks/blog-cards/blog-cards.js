@@ -43,7 +43,7 @@ export default async function decorate() {
     };
 
     const blogCardhtmlText = `
-    <div class="cards borderradius block" data-block-name="cards" data-block-status="loaded">
+    <div class="blog-cards borderradius block" data-block-name="cards" data-block-status="loaded">
      <ul class="cards_list">
       <li class="cards_item">
        <a href="" target="_blank">
