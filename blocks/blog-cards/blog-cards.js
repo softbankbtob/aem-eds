@@ -106,8 +106,12 @@ export default async function decorate() {
         h3.textContent = pageNavigationTitle;
 
         //タグの書き換え
-        const liEls = cardBody.querySelectorAll('ul > li');
-        liEls.forEach((li, i) => li.textContent = pageTags[i]);
+        const articleTags = cardBody.querySelector('ul#article-tags');
+        pageTags.forEach(tag => {
+            const li = document.createElement('li');
+            li.textContent = tag;
+            articleTags.appendChild(li);
+        });
 
         if (i > 0) blogCardsWrapper.querySelector('.cards_list').appendChild(item);
     });
