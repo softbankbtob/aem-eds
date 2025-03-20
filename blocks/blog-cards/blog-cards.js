@@ -108,12 +108,12 @@ export default async function decorate() {
         //タグの書き換え
         const articleTags = cardBody.querySelector('ul');
         articleTags.innerHTML = '';
-        pageTags.forEach((tag, i) => {
-            if (i === 3) return;
+        for(let i = 0; i > pageTags.length; i++) {
             const li = document.createElement('li');
             li.textContent = tag;
             articleTags.appendChild(li);
-        });
+            if (i === 3) break;
+        };
 
         if (i > 0) blogCardsWrapper.querySelector('.cards_list').appendChild(item);
     });
