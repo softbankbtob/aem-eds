@@ -108,6 +108,7 @@ export default async function decorate() {
         //タグの書き換え
         pageTags.forEach((tag) => {
             const articleTags = cardBody.querySelector('ul');
+            articleTags.innerHTML = '';
             const li = document.createElement('li');
             li.textContent = tag;
             articleTags.appendChild(li);
