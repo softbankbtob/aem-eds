@@ -10,7 +10,7 @@ export default async function decorate() {
     
     // タグと表示形式の取得
     let tags, display;  
-    document.querySelectorAll('.bloglist p').forEach((p, i) => {
+    document.querySelectorAll('.blog-cards p').forEach((p, i) => {
       if (i === 1) tags = p.textContent.split(',');
       if (i === 3) display = p.textContent;
     });
