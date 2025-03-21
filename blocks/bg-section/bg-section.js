@@ -33,4 +33,17 @@ export default function decorate(block) {
   wrapperSiblings.forEach(sibling => {
     bgSectionWrapper.appendChild(sibling);
   });
+
+  // `bg-section-container` の兄弟要素を取得
+  let sibling = bgSectionBlock.nextElementSibling;
+  while (sibling) {
+    const next = sibling.nextElementSibling; // 次の要素を取得しておく
+
+    // `div.section` かつ中身が空なら削除
+    if (sibling.matches('.section') && sibling.innerHTML.trim() === '') {
+      sibling.remove();
+    }
+
+    sibling = next; // 次の要素に進む
+  }
 }

@@ -9,6 +9,14 @@
         padding: 24px;
         transition: background-color 300ms ease-out;
         margin-top: 32px;
+        transition: box-shadow 300ms ease-out, opacity 300ms ease-out;
+        opacity: 1;
+
+        /* .download-banner-text{
+            p:has(strong){
+                transition: color 300ms ease-out;
+            }
+        } */
 
         @media (width <= 768px) {
             flex-direction: column;
@@ -17,15 +25,18 @@
 
         &:hover{
             @media (width >= 769px) {
-                background-color: var(--background-blue-hover);
+                /* background-color: var(--background-blue-hover); */
                 text-decoration: none;
+                box-shadow: 0 6px 20px 0 rgb(0 0 0 / 30%);
+                opacity: 0.5;
+                transition: box-shadow 300ms ease-out, opacity 300ms ease-out, color 300ms ease-out;
             }
 
-            .download-banner-text{
+            /* .download-banner-text{
                 p:has(strong){
                     color: var(--link-blue-02);
                 }
-            }
+            } */
         }
 
         .download-banner-img{

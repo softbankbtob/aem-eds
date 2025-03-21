@@ -90,6 +90,23 @@ export default function decorate(block) {
         }
       }
     });
+
+    // Tertiaryボタンの処理
+    element.querySelectorAll('p > strong > em > a').forEach((a) => {
+      const em = a.parentElement;
+      const strong = em.parentElement;
+      const p = strong.parentElement;
+
+      if (
+        // 各要素が単一の子要素のみを持つことを確認
+        em.childNodes.length === 1
+        && strong.childNodes.length === 1
+        && p.childNodes.length === 1
+      ) {
+        a.className = 'button tertiary';
+        p.classList.add('button-container');
+      }
+    });
   };
 
   // 各処理を実行
