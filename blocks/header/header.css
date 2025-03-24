@@ -365,14 +365,6 @@ header nav .nav-tools {
                 transition: all .2s ease;
             }
         }
-
-        
-
-        &:hover {
-            &::after {
-                transform: translate(3px, -50%);
-            }
-        }
     }
 }
 

@@ -167,6 +167,7 @@ button {
   text-decoration: none !important;
   cursor: pointer;
   position: relative;
+  transition: opacity .2s ease-in-out;
 
   &::after{
     content: '';
@@ -179,7 +180,7 @@ button {
     top: 50%;
     right: 12px;
     transform: translate(0, -50%);
-    transition: all .2s ease;
+    /* transition: all .2s ease; */
   }
 
   &[target="_blank"]{
@@ -194,10 +195,11 @@ a.button:focus,
 button:hover,
 button:focus {
   cursor: pointer;
+  opacity: .5;
 
-  &::after {
+  /* &::after {
     transform: translate(3px, -50%);
-  }
+  } */
 }
 
 button:disabled,
@@ -274,6 +276,11 @@ main{
     @media (width <= 768px) {
         padding-bottom: 40px;
     }
+}
+main:has(.section > .contact-multi-wrapper:last-child),
+main:has(.section > .contact-simple-wrapper:last-child),
+main:has(.bg-section-container:last-child) {
+    padding-bottom: 0;
 }
 
 main > .section{
