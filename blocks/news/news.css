@@ -1,7 +1,9 @@
 .news.block {
+    margin-top: 24px;
+}
+.news.scroll.block {
     max-height: 300px;
     overflow: auto;
-    margin-top: 24px;
 }
 .news .news-inner {
     display: flex;
@@ -22,9 +24,6 @@
     padding-block: 12px;
     border-bottom: 1px solid #C1C6CC;
     transition: color 0.3s ease-out;
-}
-.news .news-item-link:last-child {
-    border-bottom: none;
 }
 .news .news-item-link:hover {
     color: #787878;

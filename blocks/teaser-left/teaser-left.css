@@ -4,7 +4,7 @@
     margin-left: calc(50% - 50vw);
 }
 .teaser-left {
-    padding-left: 24px;
+    padding-left: 4%;
     margin-top: 35px;
 }
 .teaser-left-body {
@@ -14,7 +14,7 @@
     gap: 32px;
 }
 .teaser-left-img {
-   width: 50%;
+   width: 44%;
 }
 .teaser-left-img img {
     width: 100%;
@@ -22,8 +22,7 @@
     object-fit: cover;
  }
 .teaser-left-text {
-    width: 608px;
-    padding-block: 24px;
+    width: 52%;
 }
 .teaser-left-text .pretitle {
     font-size: 20px;
@@ -40,10 +39,10 @@
     margin-top: 0;
 }
 .teaser-left-text > .txt {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
     margin-top: 16px;
-    font-weight: 400;
+    font-weight: 500;
 }
 .teaser-left-text .buttons-wrapper {
     display: flex;
@@ -54,15 +53,28 @@
     background-color: #fff;
 }
 
+/* ボタンのデザイン PCのみ */
+@media (width >= 769px) {
+    .teaser-left-text .buttons-wrapper .button-container a.button {
+        padding: 16px 55px 16px 32px;
+    }
+    .teaser-left-text .buttons-wrapper .button-container a.button::after {
+        right: 32px;
+    }
+}
+
 /* 見出しの大きさ */
 .teaser-left.heading-l .teaser-left-text h1 {
-    font-size: 28px;
+    font-size: 36px;
 }
 .teaser-left.heading-ll .teaser-left-text h1 {
-    font-size: 32px;
+    font-size: 44px;
 }
 .teaser-left.heading-lll .teaser-left-text h1 {
-    font-size: 36px;
+    font-size: 48px;
+}
+.teaser-left.heading-llll .teaser-left-text h1 {
+    font-size: 54px;
 }
 
 /* 文字色 */
@@ -104,5 +116,8 @@
     }
     .teaser-left.heading-lll .teaser-left-text h1 {
         font-size: 28px;
+    }
+    .teaser-left.heading-llll .teaser-left-text h1 {
+        font-size: 30px;
     }
 }

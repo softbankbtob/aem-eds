@@ -51,7 +51,7 @@
         > li{
             border-right: 1px solid var(--border-gray);
 
-            @media (768px < width <= 1200px) {
+            @media (768px < width) {
                 &:last-of-type{
                     border-right: none;
                 }
@@ -75,7 +75,7 @@
             a{
                 display: inline-flex;
                 color: var(--text-black);
-                font-size: 16px;
+                font-size: 12px;
                 font-weight: 700;
                 line-height: 150%; /* 21px */
                 align-items: center;
@@ -86,7 +86,6 @@
                 @media (width <= 768px) {
                     width: 100%;
                     height: 34px;
-                    font-size: 14px;
                     align-items: center;
                     padding: 0 12px;
                     line-height: 120%; /* 16.8px */

@@ -32,6 +32,10 @@ footer{
     }
 
     .footer-gnav-title{
+        .footer-gnav-title-text{
+            margin-top: 0;
+        }
+
         a{
             font-size: 16px;
             font-weight: 700;
@@ -53,6 +57,12 @@ footer{
         }
 
         .default-content-wrapper{
+            ul{
+                list-style-type: none;
+                line-height: calc(24/14);
+                margin-top: 0;
+                padding-left: 0;
+            }
              > ul{
                 display: flex;
                 width: 100%;
@@ -78,6 +88,10 @@ footer{
                         @media (width <= 768px) {
                             margin-top: 0;
                         }
+                    }
+                    
+                    > ul{
+                        line-height: calc(24/14);
                     }
                 }
             }
@@ -146,6 +160,7 @@ footer{
             display: flex;
             justify-content: center;
             margin-top: 16px;
+            padding-left: 0;
 
             @media (width <= 768px) {
                 max-width: 375px;

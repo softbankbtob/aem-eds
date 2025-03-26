@@ -14,7 +14,7 @@
 
 .cards-icon-horizontal-item-image {
   flex: 0 0 auto;
-  margin-top: 24px;
+  margin-block: 24px;
   margin-left: 24px;
   width: 100%;
   max-width: 120px;
@@ -276,6 +276,7 @@
   }
   .cards-icon-horizontal-item-image {
     margin-inline: auto;
+    margin-bottom: 0;
   }
   .cards-icon-horizontal > ul { 
     grid-template-columns: 1fr;
