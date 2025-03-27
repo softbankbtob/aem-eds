@@ -15,10 +15,10 @@
 .media-normal-items{
     display: flex;
     width: 100%;
-    align-items: flex-start;
+    align-items: stretch;
     padding: 24px;
     border-radius: 8px;
-    border: 1px solid var(--border-gray);
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.08);
 
     @media only screen and (width <= 768px){
         flex-direction: column;
@@ -28,6 +28,10 @@
 .media-normal-img{
     border-radius: 4px;
     overflow: hidden;
+
+    img{
+        width: 100%;
+    }
 }
 
 .media-normal-content{
@@ -104,6 +108,7 @@
     &.col1{
         flex-direction: column;
         .media-normal-items{
+            align-items: center;
             gap: 32px;
 
             @media only screen and (width <= 768px) {
@@ -181,24 +186,11 @@
         .media-normal-content ul li {
             color: var(--text-black);
         }
-        a.button.secondary, button.secondary{
-            color: var(--text-white);
-            border-color: var(--text-white);
-
-            &::after {
-                background-image: url("../../icons/arrow-white.svg") !important;
-            }
-            &[target="_blank"]{
-                &::after{
-                  background-image: url("../../icons/target-blank-white.svg") !important;
-                }
-            }
-        }
     }
 
     /* ボーダーなし */
     &.no-border .media-normal-items{
-        border: none;
+        box-shadow: none;
     }
 
     /* 小さいサイズ 幅1000px */
@@ -207,4 +199,39 @@
         margin-right: auto;
         margin-left: auto;
     }
+
+    /* ボーダー */
+    &.border .media-normal-items{
+        box-shadow: none;
+        border: 1px solid var(--border-gray);
+    }
+
+    /* 全体リンク */
+    &.link-all .media-normal-items.-link{
+        text-decoration: none;
+        color: var(--text-black);
+        transition: box-shadow 300ms ease-out;
+
+        h3{
+            transition: color 300ms ease-out;
+        }
+
+        &:hover{
+            text-decoration: none;
+            transition: box-shadow 300ms ease-out, color 300ms ease-out;
+            box-shadow: 0 6px 20px 0 rgb(0 0 0 / 30%);
+
+            h3{
+              color: var(--link-blue-02);
+            }
+          }
+    }
+
+    /* 画像右 */
+    &.img-right .media-normal-items{
+        @media only screen and (width <= 768px) {
+            flex-direction: column-reverse;
+        }
+    }
+
 }

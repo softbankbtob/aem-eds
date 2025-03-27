@@ -44,7 +44,8 @@
     margin-top: 16px;
 }
 .teaser-center-text p {
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 1.5;
 }
 .teaser-center-text .buttons-wrapper {
@@ -57,15 +58,36 @@
     background-color: #fff;
 }
 
+/* ボタンのデザイン PCのみ */
+@media (width >= 769px) {
+    .teaser-center-text .buttons-wrapper .button-container a.button {
+        padding: 16px 55px 16px 32px;
+    }
+    .teaser-center-text .buttons-wrapper .button-container a.button::after {
+        right: 32px;
+    }
+}
+
+.teaser-center-title .pre-img,
+.teaser-center-text .pre-img {
+    margin-block: 8px;
+}
+.teaser-center-title .pre-img picture,
+.teaser-center-text .pre-img picture {
+    line-height: 1;
+}
 /* 見出しの大きさ */
 .teaser-center.heading-l .teaser-center-title h1 {
-    font-size: 28px;
+    font-size: 36px;
 }
 .teaser-center.heading-ll .teaser-center-title h1 {
-    font-size: 32px;
+    font-size: 44px;
 }
 .teaser-center.heading-lll .teaser-center-title h1 {
-    font-size: 36px;
+    font-size: 48px;
+}
+.teaser-center.heading-llll .teaser-center-title h1 {
+    font-size: 54px;
 }
 
 /* 文字色 */
@@ -100,5 +122,8 @@
     }
     .teaser-center.heading-lll .teaser-center-title h1 {
         font-size: 28px;
+    }
+    .teaser-center.heading-llll .teaser-center-title h1 {
+        font-size: 30px;
     }
 }

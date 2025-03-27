@@ -21,14 +21,63 @@ export default function decorate(block) {
   // innerDivをblockに追加
   block.appendChild(innerDiv);
 
-  // teaser-center-titleクラスの中にあるpタグにpretitleクラスを追加
+  // teaser-center-titleクラスの中にあるpタグにpretitleクラスを追加（画像を含むpタグは除外）
   const teaserCenterTitle = innerDiv.querySelector('.teaser-center-title');
   if (teaserCenterTitle) {
     const paragraphs = teaserCenterTitle.querySelectorAll('p');
     paragraphs.forEach(paragraph => {
-      paragraph.classList.add('pretitle');
+      // pタグ内にpictureタグがある場合は処理
+      const pictureElement = paragraph.querySelector('picture');
+      if (pictureElement) {
+        // pictureの前後にテキストノードがあるか確認
+        const childNodes = Array.from(paragraph.childNodes);
+        const textNodes = childNodes.filter(node => 
+          node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '');
+        if (textNodes.length > 0) {
+          // テキストがある場合、pictureを新しいpタグに移動
+          const newParagraph = document.createElement('p');
+          newParagraph.classList.add('pre-img');
+          newParagraph.appendChild(pictureElement);
+          paragraph.parentNode.insertBefore(newParagraph, paragraph.nextSibling);
+        }
+      } else if (!paragraph.querySelector('img')) {
+        // 画像要素がない場合はpretitleクラスを追加
+        paragraph.classList.add('pretitle');
+      }
     });
   }
+
+  // teaser-center-titleとteaser-center-text内の画像を含むpタグにpre-imgクラスを追加
+  const containers = innerDiv.querySelectorAll('.teaser-center-title, .teaser-center-text');
+  containers.forEach(container => {
+    const paragraphsWithImages = container.querySelectorAll('p > img, p > picture > img');
+    paragraphsWithImages.forEach(img => {
+      const parentParagraph = img.closest('p');
+      if (parentParagraph) {
+        // pre-imgクラスを追加する前に、テキストノードがあるか確認
+        const childNodes = Array.from(parentParagraph.childNodes);
+        const textNodes = childNodes.filter(node => 
+          node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '');
+        
+        if (textNodes.length > 0) {
+          // テキストがある場合、画像だけを新しいpタグに移動
+          const newParagraph = document.createElement('p');
+          newParagraph.classList.add('pre-img');
+          const pictureElement = parentParagraph.querySelector('picture');
+          if (pictureElement) {
+            newParagraph.appendChild(pictureElement);
+            parentParagraph.parentNode.insertBefore(newParagraph, parentParagraph.nextSibling);
+          } else if (img) {
+            newParagraph.appendChild(img);
+            parentParagraph.parentNode.insertBefore(newParagraph, parentParagraph.nextSibling);
+          }
+        } else {
+          // テキストがない場合はそのままpre-imgクラスを追加
+          parentParagraph.classList.add('pre-img');
+        }
+      }
+    });
+  });
 
   // ボタンコンテナの処理
   const buttonLinks = innerDiv.querySelectorAll('.button-container');

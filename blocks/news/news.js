@@ -42,7 +42,7 @@ export default function decorate() {
   });
 
   // スクロールバーが表示されている場合のみpadding-rightを追加
-  const newsBlocks = document.querySelectorAll('.news.block');
+  const newsBlocks = document.querySelectorAll('.news.scroll.block');
   newsBlocks.forEach((newsBlock) => {
     // ResizeObserverを使用して要素のサイズ変更を監視
     const resizeObserver = new ResizeObserver((entries) => {

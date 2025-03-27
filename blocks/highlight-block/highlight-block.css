@@ -17,5 +17,9 @@
                 margin-top: 8px;
             }
         }
+
+        > div > div > p:first-child{
+            margin-top: 0;
+        }
     }
 }

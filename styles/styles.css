@@ -313,6 +313,40 @@ main .section.highlight {
   padding: 40px 0;
 }
 
+/* ブログ・サービスページ共通 */
+/* ul, ol */
+.default-content-wrapper{
+    ul,
+    ol{
+        font-size: var(--body-font-size-default);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.75;
+        padding-left: 2em;
+        margin-top: 16px;
+
+        @media (width <= 768px) {
+            margin-top: 12px;
+        }
+    }
+    
+    ul{
+        list-style-type: disc;
+    }
+
+    ol{
+        list-style-type: decimal;
+    }
+
+    p{
+        margin-top: 16px;
+
+        @media (width <= 768px) {
+            margin-top: 12px;
+        }
+    }
+}
+
 
 
 /* パンくずリスト */
@@ -884,10 +918,6 @@ main .section.highlight {
                 @media (width <= 768px) {
                     margin-top: 12px;
                 }
-    
-                &:first-child{
-                    margin-top: 0;
-                }
             }
         }
 
@@ -943,6 +973,27 @@ main .section.highlight {
                 @media (width <= 768px) {
                     margin-top: 24px;
                 }
+            }
+        }
+    }
+    & .article-container {
+        /* 最初のセクション */
+        & .section:first-child {
+            /* セクション内の最初の子要素 */
+            & > *:first-child {
+                /* 最初の子要素内の.default-content-wrappeの最初のpと.blockのマージンを削除 */
+                & .default-content-wrapper p:first-child,
+                & .block:first-child {
+                    margin-top: 0;
+                }
+            }
+            /* セクション直下の最初の.default-content-wrapper内の最初のpのマージンを削除 */
+            & > .default-content-wrapper:first-child p:first-child {
+                margin-top: 0;
+            }
+            /* セクション直下の最初の.blockのマージンを削除 */
+            & > .block:first-child {
+                margin-top: 0;
             }
         }
     }

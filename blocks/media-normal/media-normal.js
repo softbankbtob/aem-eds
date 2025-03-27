@@ -26,9 +26,22 @@ export default function decorate(block) {
     // 画像部分と内容部分を取得
     const [imgDiv, contentDiv] = [...row.children];
 
+    // img-rightクラスの場合、クラス名を入れ替え
+    if (block.classList.contains('img-right')) {
+      imgDiv.className = contentClass;
+      contentDiv.className = imgClass;
+    } else {
+      // 通常の処理
+      if (imgDiv) {
+        imgDiv.className = imgClass;
+      }
+      if (contentDiv) {
+        contentDiv.className = contentClass;
+      }
+    }
+
     // 画像部分の処理
     if (imgDiv) {
-      imgDiv.className = imgClass;
       // 画像の最適化
       const img = imgDiv.querySelector('img');
       if (img) {
@@ -41,11 +54,11 @@ export default function decorate(block) {
       }
     }
 
-    // 内容部分の処理
-    if (contentDiv) {
-      contentDiv.className = contentClass;
+    // 内容部分の処理（img-rightの場合もcontentDivで処理）
+    const contentElement = block.classList.contains('img-right') ? imgDiv : contentDiv;
+    if (contentElement) {
       // ボタンコンテナを処理
-      const buttonContainers = contentDiv.querySelectorAll('p.button-container');
+      const buttonContainers = contentElement.querySelectorAll('p.button-container');
       if (buttonContainers.length > 0) {
         // ボタンラップ要素を作成
         const buttonWrap = document.createElement('div');
@@ -61,6 +74,27 @@ export default function decorate(block) {
         // 元の位置にボタンラップを挿入
         parentElement.insertBefore(buttonWrap, parentElement.children[firstButtonIndex] || null);
       }
+    }
+
+    // link-all判定を追加
+    const isLinkAll = block.classList.contains('link-all') && row.querySelector('a');
+
+    // link-allの場合は行全体をリンクに変換
+    if (isLinkAll) {
+      const innerLink = row.querySelector('a');
+
+      // ボタンラップを削除
+      const buttonWrap = row.querySelector(`.${buttonWrapClass}`);
+      if (buttonWrap) {
+        buttonWrap.remove();
+      }
+
+      const linkWrapper = document.createElement('a');
+      linkWrapper.href = innerLink.href;
+      linkWrapper.className = itemsClass;
+      linkWrapper.classList.add('-link');
+      linkWrapper.append(...row.childNodes);
+      row.replaceWith(linkWrapper);
     }
   });
 }

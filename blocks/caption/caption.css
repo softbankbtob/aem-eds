@@ -1,15 +1,14 @@
-.caption-container {
+.caption {
   margin-top: 16px;
-  
+
   @media (width <= 768px) {
     margin-top: 8px;
   }
-}
 
-.caption {
   p{
     font-size: 12px;
     line-height: 1.25;
+    margin-top: 0;
 
     a{
       img{
