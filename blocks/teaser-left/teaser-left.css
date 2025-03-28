@@ -5,20 +5,19 @@
 }
 .teaser-left {
     padding-left: 4%;
-    margin-top: 35px;
 }
 .teaser-left-body {
     display: flex;
-    align-items: center;
-    /* align-items: stretch; */
+    /* align-items: center; */
+    align-items: stretch;
     justify-content: right;
     gap: 32px;
 }
 .teaser-left-img {
-   width: 50%;
-   /* flex-grow: 1;
+   /* width: 50%; */
+   flex-grow: 1;
     width: auto;
-    overflow: hidden; */
+    overflow: hidden;
 }
 .teaser-left-img img {
     width: 100%;
