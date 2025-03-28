@@ -71,7 +71,7 @@
 
     /* テキスト */
     p:not([class]){
-        font-size: 14px;
+        font-size: 16px;
         line-height: 150%;
         margin-top: 16px;
 

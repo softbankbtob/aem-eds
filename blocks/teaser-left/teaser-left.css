@@ -10,11 +10,15 @@
 .teaser-left-body {
     display: flex;
     align-items: center;
+    /* align-items: stretch; */
     justify-content: right;
     gap: 32px;
 }
 .teaser-left-img {
-   width: 44%;
+   width: 50%;
+   /* flex-grow: 1;
+    width: auto;
+    overflow: hidden; */
 }
 .teaser-left-img img {
     width: 100%;
@@ -22,7 +26,11 @@
     object-fit: cover;
  }
 .teaser-left-text {
-    width: 52%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 40px;
+    width: 50%;
 }
 .teaser-left-text .pretitle {
     font-size: 20px;

@@ -111,11 +111,11 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 11px;
+        top: 10px;
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background-color: #323232;
+        background-color: currentColor;
     }
   }
 }
