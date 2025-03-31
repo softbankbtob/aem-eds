@@ -54,7 +54,6 @@
         }
 
         + h3{
-            font-size: var(--heading-font-size-xl);
             margin-top: 24px;
 
             @media only screen and (width <= 768px){
@@ -65,7 +64,7 @@
 
     /* 見出し */
     h3{
-        font-size: var(--heading-font-size-m);
+        font-size: var(--heading-font-size-xl);
         font-weight: 700;
         line-height: 125%;
         margin-top: 0;
