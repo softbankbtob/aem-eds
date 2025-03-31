@@ -54,6 +54,7 @@
         }
 
         + h3{
+            font-size: var(--heading-font-size-xl);
             margin-top: 24px;
 
             @media only screen and (width <= 768px){
@@ -67,6 +68,7 @@
         font-size: var(--heading-font-size-m);
         font-weight: 700;
         line-height: 125%;
+        margin-top: 0;
     }
 
     /* テキスト */
@@ -108,7 +110,6 @@
     &.col1{
         flex-direction: column;
         .media-normal-items{
-            align-items: center;
             gap: 32px;
 
             @media only screen and (width <= 768px) {
@@ -228,10 +229,20 @@
     }
 
     /* 画像右 */
-    &.img-right .media-normal-items{
+    .media-normal-items:has(> .media-normal-content:first-child) {
         @media only screen and (width <= 768px) {
             flex-direction: column-reverse;
         }
     }
 
+    /* テキスト寄せ */
+    .media-normal-items:has(.media-normal-content[data-valign="middle"]) {
+        align-items: center;
+      }
+      .media-normal-items:has(.media-normal-content[data-valign="bottom"]) {
+        align-items: flex-end;
+      }
+      .media-normal-items:has(.media-normal-content[data-valign="top"]) {
+        align-items: flex-start;
+      }
 }
