@@ -23,24 +23,29 @@ export default function decorate(block) {
     // 親divにクラスを追加
     row.className = itemsClass;
 
-    // 画像部分と内容部分を取得
-    const [imgDiv, contentDiv] = [...row.children];
+    // 子要素を処理
+    [...row.children].forEach((div) => {
+      // imgタグの有無でクラスを決定
+      if (div.querySelector('img')) {
+        div.className = imgClass;
+      } else {
+        div.className = contentClass;
+      }
 
-    // img-rightクラスの場合、クラス名を入れ替え
-    if (block.classList.contains('img-right')) {
-      imgDiv.className = contentClass;
-      contentDiv.className = imgClass;
-    } else {
-      // 通常の処理
-      if (imgDiv) {
-        imgDiv.className = imgClass;
+      // data-alignとdata-valignの処理
+      if (div.hasAttribute('data-align')) {
+        const alignValue = div.getAttribute('data-align');
+        div.style.textAlign = alignValue;
       }
-      if (contentDiv) {
-        contentDiv.className = contentClass;
+
+      if (div.hasAttribute('data-valign')) {
+        const valignValue = div.getAttribute('data-valign');
+        div.style.verticalAlign = valignValue;
       }
-    }
+    });
 
     // 画像部分の処理
+    const imgDiv = row.querySelector(`.${imgClass}`);
     if (imgDiv) {
       // 画像の最適化
       const img = imgDiv.querySelector('img');
@@ -54,11 +59,11 @@ export default function decorate(block) {
       }
     }
 
-    // 内容部分の処理（img-rightの場合もcontentDivで処理）
-    const contentElement = block.classList.contains('img-right') ? imgDiv : contentDiv;
-    if (contentElement) {
+    // 内容部分の処理
+    const contentDiv = row.querySelector(`.${contentClass}`);
+    if (contentDiv) {
       // ボタンコンテナを処理
-      const buttonContainers = contentElement.querySelectorAll('p.button-container');
+      const buttonContainers = contentDiv.querySelectorAll('p.button-container');
       if (buttonContainers.length > 0) {
         // ボタンラップ要素を作成
         const buttonWrap = document.createElement('div');
@@ -82,19 +87,25 @@ export default function decorate(block) {
     // link-allの場合は行全体をリンクに変換
     if (isLinkAll) {
       const innerLink = row.querySelector('a');
+      if (innerLink) {
+        // ボタンラップを削除
+        const buttonWrap = row.querySelector(`.${buttonWrapClass}`);
+        if (buttonWrap) {
+          buttonWrap.remove();
+        }
 
-      // ボタンラップを削除
-      const buttonWrap = row.querySelector(`.${buttonWrapClass}`);
-      if (buttonWrap) {
-        buttonWrap.remove();
+        // ボタンコンテナを削除
+        row.querySelectorAll('.button-container').forEach((container) => {
+          container.remove();
+        });
+
+        const linkWrapper = document.createElement('a');
+        linkWrapper.href = innerLink.href;
+        linkWrapper.className = itemsClass;
+        linkWrapper.classList.add('-link');
+        linkWrapper.append(...row.childNodes);
+        row.replaceWith(linkWrapper);
       }
-
-      const linkWrapper = document.createElement('a');
-      linkWrapper.href = innerLink.href;
-      linkWrapper.className = itemsClass;
-      linkWrapper.classList.add('-link');
-      linkWrapper.append(...row.childNodes);
-      row.replaceWith(linkWrapper);
     }
   });
 }
