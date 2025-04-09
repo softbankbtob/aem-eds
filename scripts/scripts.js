@@ -331,8 +331,8 @@ async function loadEager(doc) {
 
     const firstChild = main.firstElementChild;
 
-    if (firstChild && firstChild.classList.contains('carousel-container')) {
-      const carouselContainer = firstChild;
+    if (firstChild && firstChild.classList.contains('carousel-blog-container')) {
+      const carouselBlogContainer = firstChild;
       const articleCardsContainer = document.createElement('div');
       articleCardsContainer.className = 'articleCards-container';
       const fragmentContainer = main.querySelector('.fragment-container');
@@ -340,7 +340,7 @@ async function loadEager(doc) {
       // mainタグにクラス付与
       main.classList.add('p-index');
 
-      if (carouselContainer.nextElementSibling === fragmentContainer) {
+      if (carouselBlogContainer.nextElementSibling === fragmentContainer) {
         // DOM構築を順番に実行
         try {
           // 1. top-article-wrapの作成と配置

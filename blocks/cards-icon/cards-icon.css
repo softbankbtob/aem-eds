@@ -74,16 +74,23 @@
   }
 
   /* 画像サイズ */
-  &.img-small .cards-icon-item-image {
+  &.icon-s .cards-icon-item-image {
     max-width: 64px;
   }
-  &.img-large .cards-icon-item-image {
+  &.icon-l .cards-icon-item-image {
     max-width: 200px;
   }
 
   /* 四角 */
   &.no-radius .cards-icon-item {
     border-radius: 0;
+  }
+
+  /* 枠線が影 */
+  &.border-shadow .cards-icon-item {
+    transition: box-shadow 300ms ease-out;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.08);
+    border: none;
   }
 
   /* カラム */
@@ -154,19 +161,19 @@
 
 
   /* 背景色パターン */
-  &.bg-primary .cards-icon-item {
+  &.bg-gray01 .cards-icon-item {
     background-color: var(--background-blue-02);
     .cards-icon-item-tags li {
       background-color: var(--background-color);
     }
   }
-  &.bg-secondary .cards-icon-item {
+  &.bg-gray02 .cards-icon-item {
     background-color: var(--background-blue-01);
   }
-  &.bg-tertiary .cards-icon-item {
+  &.bg-gray03 .cards-icon-item {
     background-color: var(--background-gray-01);
   }
-  &.bg-strong .cards-icon-item {
+  &.bg-navy .cards-icon-item {
     background-color: var(--background-blueblack);
     /* font系の設定 */
     p, h3, li, .a-container a {

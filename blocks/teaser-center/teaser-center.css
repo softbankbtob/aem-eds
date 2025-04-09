@@ -80,13 +80,13 @@
 .teaser-center.heading-l .teaser-center-title h1 {
     font-size: 36px;
 }
-.teaser-center.heading-ll .teaser-center-title h1 {
+.teaser-center.heading-xl .teaser-center-title h1 {
     font-size: 44px;
 }
-.teaser-center.heading-lll .teaser-center-title h1 {
+.teaser-center.heading-xxl .teaser-center-title h1 {
     font-size: 48px;
 }
-.teaser-center.heading-llll .teaser-center-title h1 {
+.teaser-center.heading-xxxl .teaser-center-title h1 {
     font-size: 54px;
 }
 
@@ -117,13 +117,13 @@
     .teaser-center.heading-l .teaser-center-title h1 {
         font-size: 24px;
     }
-    .teaser-center.heading-ll .teaser-center-title h1 {
+    .teaser-center.heading-xl .teaser-center-title h1 {
         font-size: 26px;
     }
-    .teaser-center.heading-lll .teaser-center-title h1 {
+    .teaser-center.heading-xxl .teaser-center-title h1 {
         font-size: 28px;
     }
-    .teaser-center.heading-llll .teaser-center-title h1 {
+    .teaser-center.heading-xxxl .teaser-center-title h1 {
         font-size: 30px;
     }
 }
