@@ -25,6 +25,19 @@
     }
 }
 
+.media-normal-items{
+    .media-normal-img,
+    .media-normal-content {
+        width: 50%;
+        flex: 1 1 50%;
+
+        @media only screen and (width <= 768px) {
+            width: 100%;
+            flex: 1 1 100%;
+        }
+    }
+}
+
 .media-normal-img{
     border-radius: 4px;
     overflow: hidden;
@@ -125,41 +138,6 @@
             @media only screen and (width <= 768px) {
                 width: 100%;
                 gap: 16px;
-            }
-        }
-    }
-
-    /* 画像とテキストの比率 */
-    &.img-text-1to1{
-        .media-normal-items{
-            .media-normal-img,
-            .media-normal-content {
-                width: 50%;
-                flex: 1 1 50%;
-
-                @media only screen and (width <= 768px) {
-                    width: 100%;
-                    flex: 1 1 100%;
-                }
-            }
-        }
-    }
-    &.img-text-3to2{
-        .media-normal-items{
-            .media-normal-img {
-                width: 60%;
-                flex: 1 1 60%;
-            }
-            .media-normal-content {
-                width: 40%;
-                flex: 1 1 40%;
-            }
-            .media-normal-img,
-            .media-normal-content {
-                @media only screen and (width <= 768px) {
-                    width: 100%;
-                    flex: 1 1 100%;
-                }
             }
         }
     }

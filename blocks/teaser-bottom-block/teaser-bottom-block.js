@@ -1,16 +1,16 @@
 export default function decorate(block) {
-  // kv-content-blockクラス直下のdivにkv-content-block-innerクラスを付与
+  // teaser-bottom-blockクラス直下のdivにteaser-bottom-block-innerクラスを付与
   const innerDiv = block.querySelector(':scope > div');
   if (innerDiv) {
-    innerDiv.classList.add('kv-content-block-inner');
+    innerDiv.classList.add('teaser-bottom-block-inner');
 
-    // kv-content-block-inner直下のdivにクラスを付与
+    // teaser-bottom-block-inner直下のdivにクラスを付与
     const childDivs = innerDiv.querySelectorAll(':scope > div');
     if (childDivs.length >= 1) {
-      childDivs[0].classList.add('kv-content-block-title');
+      childDivs[0].classList.add('teaser-bottom-block-title');
     }
     if (childDivs.length >= 2) {
-      childDivs[1].classList.add('kv-content-block-text');
+      childDivs[1].classList.add('teaser-bottom-block-text');
     }
   }
 

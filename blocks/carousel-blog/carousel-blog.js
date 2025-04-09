@@ -14,11 +14,11 @@ function removeButtonContainer(block) {
 }
 
 function updateActiveSlide(slide) {
-  const block = slide.closest('.carousel');
+  const block = slide.closest('.carousel-blog');
   const slideIndex = parseInt(slide.dataset.slideIndex, 10);
   block.dataset.activeSlide = slideIndex;
 
-  const slides = block.querySelectorAll('.carousel-slide');
+  const slides = block.querySelectorAll('.carousel-blog-slide');
 
   slides.forEach((aSlide, idx) => {
     aSlide.setAttribute('aria-hidden', idx !== slideIndex);
@@ -31,7 +31,7 @@ function updateActiveSlide(slide) {
     });
   });
 
-  const indicators = block.querySelectorAll('.carousel-slide-indicator');
+  const indicators = block.querySelectorAll('.carousel-blog-slide-indicator');
   indicators.forEach((indicator, idx) => {
     if (idx !== slideIndex) {
       indicator.querySelector('button').removeAttribute('disabled');
@@ -42,8 +42,8 @@ function updateActiveSlide(slide) {
 }
 
 function showSlide(block, slideIndex = 0) {
-  const slides = block.querySelectorAll('.carousel-slide');
-  const slidesWrapper = block.querySelector('.carousel-slides');
+  const slides = block.querySelectorAll('.carousel-blog-slide');
+  const slidesWrapper = block.querySelector('.carousel-blog-slides');
   const totalSlides = slides.length;
 
   let realSlideIndex = slideIndex;
@@ -52,7 +52,7 @@ function showSlide(block, slideIndex = 0) {
   }
 
   // インジケーターの更新
-  const indicators = block.querySelectorAll('.carousel-slide-indicator');
+  const indicators = block.querySelectorAll('.carousel-blog-slide-indicator');
   indicators.forEach((indicator, idx) => {
     if (idx === realSlideIndex) {
       indicator.querySelector('button').setAttribute('disabled', 'true');
@@ -89,7 +89,7 @@ function showSlide(block, slideIndex = 0) {
 }
 
 function bindEvents(block) {
-  const slideIndicators = block.querySelector('.carousel-slide-indicators');
+  const slideIndicators = block.querySelector('.carousel-blog-slide-indicators');
   if (!slideIndicators) return;
 
   slideIndicators.querySelectorAll('button').forEach((button) => {
@@ -111,16 +111,16 @@ function bindEvents(block) {
       if (entry.isIntersecting) updateActiveSlide(entry.target);
     });
   }, { threshold: 0.5 });
-  block.querySelectorAll('.carousel-slide').forEach((slide) => {
+  block.querySelectorAll('.carousel-blog-slide').forEach((slide) => {
     slideObserver.observe(slide);
   });
 }
 
-function createSlide(row, slideIndex, carouselId, href) {
+function createSlide(row, slideIndex, carouselBlogId, href) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
-  slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
-  slide.classList.add('carousel-slide');
+  slide.setAttribute('id', `carousel-blog-${carouselBlogId}-slide-${slideIndex}`);
+  slide.classList.add('carousel-blog-slide');
 
   // 新しいaタグを作成し、hrefを設定
   const newLink = document.createElement('a');
@@ -130,7 +130,7 @@ function createSlide(row, slideIndex, carouselId, href) {
     // if column contains an a tag, skip it
     if (column.querySelector('a')) return;
 
-    column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    column.classList.add(`carousel-blog-slide-${colIdx === 0 ? 'image' : 'content'}`);
     newLink.append(column); // aタグにcolumnを追加
     // slide.append(column);
   });
@@ -144,37 +144,37 @@ function createSlide(row, slideIndex, carouselId, href) {
   return slide;
 }
 
-let carouselId = 0;
+let carouselBlogId = 0;
 export default async function decorate(block) {
   removeButtonContainer(block);
-  carouselId += 1;
-  block.setAttribute('id', `carousel-${carouselId}`);
+  carouselBlogId += 1;
+  block.setAttribute('id', `carousel-blog-${carouselBlogId}`);
   const rows = block.querySelectorAll(':scope > div');
   const isSingleSlide = rows.length < 2;
 
   const placeholders = await fetchPlaceholders();
 
   block.setAttribute('role', 'region');
-  block.setAttribute('aria-roledescription', placeholders.carousel || 'Carousel');
+  block.setAttribute('aria-roledescription', placeholders.carouselBlog || 'carouselBlog');
 
   const container = document.createElement('div');
-  container.classList.add('carousel-slides-container');
+  container.classList.add('carousel-blog-slides-container');
 
   const slidesWrapper = document.createElement('ul');
-  slidesWrapper.classList.add('carousel-slides');
+  slidesWrapper.classList.add('carousel-blog-slides');
   block.prepend(slidesWrapper);
 
   let slideIndicators;
   if (!isSingleSlide) {
     const slideIndicatorsNav = document.createElement('nav');
-    slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel Slide Controls');
+    slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselBlogSlideControls || 'carouselBlog Slide Controls');
     slideIndicators = document.createElement('ol');
-    slideIndicators.classList.add('carousel-slide-indicators');
+    slideIndicators.classList.add('carousel-blog-slide-indicators');
     slideIndicatorsNav.append(slideIndicators);
     block.append(slideIndicatorsNav);
 
     const slideNavButtons = document.createElement('div');
-    slideNavButtons.classList.add('carousel-navigation-buttons');
+    slideNavButtons.classList.add('carousel-blog-navigation-buttons');
     slideNavButtons.innerHTML = `
       <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
       <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
@@ -186,12 +186,12 @@ export default async function decorate(block) {
   rows.forEach((row, idx) => {
     const a = row.querySelector('a'); // aタグを取得
     const href = a?.getAttribute('href'); // hrefを取得
-    const slide = createSlide(row, idx, carouselId, href);
+    const slide = createSlide(row, idx, carouselBlogId, href);
     slidesWrapper.append(slide);
 
     if (slideIndicators) {
       const indicator = document.createElement('li');
-      indicator.classList.add('carousel-slide-indicator');
+      indicator.classList.add('carousel-blog-slide-indicator');
       indicator.dataset.targetSlide = idx;
       indicator.innerHTML = `<button type="button" aria-label="${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${rows.length}"></button>`;
       slideIndicators.append(indicator);

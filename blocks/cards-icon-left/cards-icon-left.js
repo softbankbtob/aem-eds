@@ -2,7 +2,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   // 各要素のクラス名を定義
-  const baseClass = 'cards-icon-horizontal';
+  const baseClass = 'cards-icon-left';
   const containerClass = `${baseClass}-list`;
   const itemWrapperClass = `${baseClass}-listItem`;
   const itemClass = `${baseClass}-item`;
