@@ -74,7 +74,7 @@
   }
 
   /* 画像サイズ */
-  &.img-small .cards-icon-left-item-image {
+  &.icon-s .cards-icon-left-item-image {
     max-width: 64px;
   }
 

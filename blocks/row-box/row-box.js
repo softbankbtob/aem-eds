@@ -1,12 +1,12 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 /**
- * media-normalブロックを装飾する関数
+ * row-boxブロックを装飾する関数
  * @param {HTMLElement} block - 装飾対象のブロック要素
  */
 export default function decorate(block) {
   // クラス名の定義
-  const baseClass = 'media-normal';
+  const baseClass = 'row-box';
   const itemsClass = `${baseClass}-items`;
   const imgClass = `${baseClass}-img`;
   const contentClass = `${baseClass}-content`;
