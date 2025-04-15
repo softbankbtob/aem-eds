@@ -8,13 +8,13 @@ export default function decorate(block) {
   if (!bgSectionBlock) return;
 
   // プライマリカラー
-  if (block.classList.contains('color-primary')) {
-    bgSectionBlock.classList.add('color-primary');
+  if (block.classList.contains('bg-gray01')) {
+    bgSectionBlock.classList.add('bg-gray01');
   }
 
   // セカンダリカラー
-  if (block.classList.contains('color-secondary')) {
-    bgSectionBlock.classList.add('color-secondary');
+  if (block.classList.contains('bg-gray02')) {
+    bgSectionBlock.classList.add('bg-gray02');
   }
 
   // 背景セクションのラップ要素を取得
