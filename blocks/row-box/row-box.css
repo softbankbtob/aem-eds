@@ -143,19 +143,19 @@
     }
 
     /* 背景色パターン */
-    &.bg-primary .row-box-items {
+    &.bg-gray01 .row-box-items {
             background-color: var(--background-blue-02);
             .row-box-content ul li {
             background-color: var(--background-color);
         }
     }
-    &.bg-secondary .row-box-items {
+    &.bg-gray02 .row-box-items {
         background-color: var(--background-blue-01);
     }
-    &.bg-tertiary .row-box-items {
+    &.bg-gray03 .row-box-items {
         background-color: var(--background-gray-01);
     }
-    &.bg-strong .row-box-items {
+    &.bg-navy .row-box-items {
         background-color: var(--background-blueblack);
         /* font系の設定 */
         p, h3, li {

@@ -291,10 +291,10 @@ main > .section{
     &.bg-section-container{
         max-width: 100%;
         padding: 0 0;
-        &.color-primary{
+        &.bg-gray01{
             background-color: var(--background-blue-01);
         }
-        &.color-secondary{
+        &.bg-gray02{
             background-color: var(--background-blue-02);
         }
 
