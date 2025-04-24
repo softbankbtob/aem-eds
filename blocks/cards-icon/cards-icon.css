@@ -272,6 +272,10 @@
     }
   }
 
+  .button:any-link {
+    width: 100%;
+  }
+
   .cards-icon-item-lists{
     margin-top: 16px;
     li {
