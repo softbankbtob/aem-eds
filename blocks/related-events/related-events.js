@@ -1,7 +1,7 @@
 export default async function decorate(block) {
   const ckParm = new Date().getTime().toString();
-  const contentsEndpoint = `https://publish-p25603-e86971.adobeaemcloud.com/graphql/execute.json/softbankbtob/all-events?${ckParm}`;
-  const tagsEndpoint = origin === `https://publish-p25603-e86971.adobeaemcloud.com/content/softbankbtob/jp/ja/biz/events/json/tag-lists.model.json?${ckParm}`;
+  const contentsEndpoint = `https://www.softbank.jp/biz/assets-api/execute.json/softbankbtob/all-events?${ckParm}`;
+  const tagsEndpoint = `https://www.softbank.jp/biz/events/json/tag-lists.model.json?${ckParm}`;
 
   let endpoints = [fetch(contentsEndpoint), fetch(tagsEndpoint)];
   endpoints = await Promise.all(endpoints);
