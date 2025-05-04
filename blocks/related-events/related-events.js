@@ -1,38 +1,29 @@
-export default function decorate(block) {
-  // 各イベントアイテムを処理
-  [...block.children].forEach((row) => {
-    // クラス名を追加
-    row.className = 'related-events-items';
+export default async function decorate(block) {
+  const ckParm = new Date().getTime().toString();
+  const contentsEndpoint = `https://publish-p25603-e86971.adobeaemcloud.com/graphql/execute.json/softbankbtob/all-events?${ckParm}`;
+  const tagsEndpoint = origin === `https://publish-p25603-e86971.adobeaemcloud.com/content/softbankbtob/jp/ja/biz/events/json/tag-lists.model.json?${ckParm}`;
 
-    // 各セクションにクラス名を追加
-    const [tagSection, dateSection, eventsSection] = row.children;
+  let endpoints = [fetch(contentsEndpoint), fetch(tagsEndpoint)];
+  endpoints = await Promise.all(endpoints);
 
-    // タグセクションの処理
-    if (tagSection) {
-      tagSection.className = 'related-events-tag';
-      const button = tagSection.querySelector('a.button');
-      if (button) {
-        button.classList.remove('button');
-      }
-    }
+  let contents, tags;
+  for (let i = 0; i < endpoints.length; i++) {
+    if (i === 0) {
+      contents = await endpoints[i].json();
+    } else if (i === 1) {
+      tags = await endpoints[i].json();
+    };
+  };
 
-    // 日付セクションの処理
-    if (dateSection) {
-      dateSection.className = 'related-events-date';
-    }
+  contents = contents.data.eventsList.items;
+  //配信日時が過ぎていた場合は処理をスキップ（アーカイブ以外）
+  const jstNow = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
+  const liveAllItems = contents.filter((item) => (item.style[0] !== "softbankbtob:events/style/archive") && (new Date(item.date_end) > jstNow));
+   //リストの並び替え
+  liveAllItems.sort((a, b) => (a.date_start > b.date_start ? 1 : -1));
+  const archiveAllItems = pageList.filter((item) => item.style[0] === "softbankbtob:events/style/archive");
+  archiveAllItems.sort((a, b) => (a.date_start < b.date_start ? 1 : -1));
+  const eventList = [...liveAllItems, ...archiveAllItems];
 
-    // イベントセクションの処理
-    if (eventsSection) {
-      eventsSection.className = 'related-events-events';
-      const button = eventsSection.querySelector('a.button');
-      if (button) {
-        button.classList.remove('button');
-      }
-    }
-
-    // button-containerクラスを削除
-    row.querySelectorAll('.button-container').forEach((container) => {
-      container.classList.remove('button-container');
-    });
-  });
+  console.log(eventList)
 }
