@@ -97,7 +97,7 @@ export default async function decorate(block) {
     };
 
     block.innerHTML = '';
-    for (i = 0; i < result.length; i++) {
+    for (let i = 0; i < result.length; i++) {
       if (i === 3) break;
       const item = document.createElement('div');
       item.classList.add('related-events-items');
