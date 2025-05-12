@@ -32,11 +32,9 @@ export default async function decorate(block) {
   //blockに設定されているタグを取得
   // let tags = ['オンデマンド配信', 'ワークスタイルの変革'];
   let tags;
-  block.querySelector('.related-events p').forEach((p, i) => {
-    if (i === 0) tags = p.textContent.split(',');
-  });
-  tags = tags.map(tag => tag.trim());
-
+  if (block.querySelector('.related-events p')) {
+    tags = block.querySelector('.related-events p').textContent.split(',').map(tag => tag.trim());
+  };
   //タグのpathに変更
   tags = tags.map((tag) => {
     if (categoryTagNames.indexOf(tag) !== -1) {
