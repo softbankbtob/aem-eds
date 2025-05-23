@@ -43,7 +43,7 @@ export async function buildGlobalNav(isDesktop) {
 		jsHeaderSp(globalNav);
 	};
 
-	const form = globalNav.querySelector('form.sb-appshell-v1-header-nav_megadropdown-header-search-form');
+	const form = globalNav.querySelector('form');
 	form.action = 'https://www.softbank.jp/biz/search_result/';
     return globalNav;
 }
