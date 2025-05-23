@@ -44,7 +44,7 @@ export async function buildGlobalNav(isDesktop) {
 	};
 
 	const form = globalNav.querySelector('form');
-	form.action = 'https://www.softbank.jp/biz/search_result/';
+	form.action = 'https://www.softbank.jp/search_result/';
     return globalNav;
 }
 
