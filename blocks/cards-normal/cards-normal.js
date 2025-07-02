@@ -16,14 +16,17 @@ export default function decorate(block) {
   // アイテムの数
   const blockLength = block.children.length;
 
+  // col2-4クラスがあるかチェック
+  const hasColumnClass = block.classList.contains('col2') || block.classList.contains('col3') || block.classList.contains('col4');
+
   // 画像サイズの出しわけ設定
   const breakpoints = [
     { media: '(min-width: 1200px)', width: '2000' },
-    { width: `${blockLength <= 1 ? '900' : '600'}` }
+    { width: `${blockLength <= 1 && !hasColumnClass ? '900' : '600'}` }
   ];
 
-  // containerを作成（要素が1つのみの場合はdiv）
-  const container = blockLength <= 1 ? document.createElement('div') : document.createElement('ul');
+  // containerを作成（col2やcol3クラスがある場合は要素数に関係なくul、それ以外は要素が1つのみの場合はdiv）
+  const container = (blockLength <= 1 && !hasColumnClass) ? document.createElement('div') : document.createElement('ul');
   container.className = containerClass;
 
   [...block.children].forEach((row) => {
@@ -64,8 +67,8 @@ export default function decorate(block) {
       innerLink.closest('div').remove();
     }
 
-    // 要素が1つの場合は直接追加
-    if (blockLength === 1) {
+    // 要素が1つかつcol2/col3クラスがない場合は直接追加、それ以外はliでラップ
+    if (blockLength === 1 && !hasColumnClass) {
       container.append(section);
     } else {
       const li = document.createElement('li');
