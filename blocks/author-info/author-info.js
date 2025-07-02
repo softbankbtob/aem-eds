@@ -4,36 +4,19 @@
  */
 export default function decorate(block) {
   // 元のコンテンツを取得
-  const authorInfoBlock = block.querySelector('.author-info.block > div');
+  
+  const authorInfoBlock = block.children[0];
   if (!authorInfoBlock) return;
+  
+  const classes = ['picture', 'heading', 'text'];
+  classes.forEach((c, i) => {
+    const el = authorInfoBlock.children[i];
+    if (el) el.classList.add(`author-info-${c}`);
+  });
 
-  // 新しい構造のための要素を作成
-  const authorInfoHeading = document.createElement('div');
-  authorInfoHeading.className = 'author-info-heading';
-
-  const authorInfoText = document.createElement('div');
-  authorInfoText.className = 'author-info-text';
-
-  // pictureを移動
-  const picture = authorInfoBlock.querySelector('picture');
-  if (picture) {
-    authorInfoHeading.appendChild(picture.cloneNode(true));
+  const heading = authorInfoBlock.querySelector('.author-info-heading');
+  const pic = authorInfoBlock.querySelector('.author-info-picture');
+  if (heading && pic) {
+    heading.prepend(pic);
   }
-
-  // 執筆者情報のpタグを移動
-  const authorP = authorInfoBlock.querySelector('div:nth-child(2) p');
-  if (authorP) {
-    authorInfoHeading.appendChild(authorP.cloneNode(true));
-  }
-
-  // 説明文のpタグを移動
-  const descriptionP = authorInfoBlock.querySelector('div:nth-child(3) p');
-  if (descriptionP) {
-    authorInfoText.appendChild(descriptionP.cloneNode(true));
-  }
-
-  // 元のコンテンツを空にして新しい構造を追加
-  authorInfoBlock.textContent = '';
-  authorInfoBlock.appendChild(authorInfoHeading);
-  authorInfoBlock.appendChild(authorInfoText);
 }

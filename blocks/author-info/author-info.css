@@ -1,11 +1,11 @@
-.author-info-container{
+.author-info{
     margin-top: 56px;
 
     @media (width <= 768px) {
         margin-top: 40px;
     }
 
-    .author-info > div{
+    & > div{
         background-color: var(--background-gray-01);
         padding: 24px;
         border-radius: 8px;
