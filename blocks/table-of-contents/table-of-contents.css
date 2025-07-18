@@ -31,21 +31,21 @@
                 line-height: 1.5;
             }
 
-            &::after{
-                content: '';
-                display: inline-block;
-                width: 1em;
-                height: 1em;
-                vertical-align: middle;
-                background: url("../../icons/anchor-blue.svg") no-repeat center / contain;
-                margin-left: 4px;
-            }
-
             a{
                 color: var(--text-black);
 
                 @media (width <= 768px) {
                     font-size: 14px;
+                }
+
+                .icon{
+                    display: inline-block;
+                    margin-left: 4px;
+
+                    img{
+                        width: 1em;
+                        vertical-align: middle;
+                    }
                 }
             }
 
